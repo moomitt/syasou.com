@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     root to: 'homes#top'
 
-    get 'users/mypage' => 'users_show'
+    get 'users/mypage' => 'users#show'
     get 'users/information/edit' => 'users#edit'
     patch 'users/information' => 'users#update'
     get 'users/confirm'

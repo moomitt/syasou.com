@@ -1,2 +1,29 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container-fluid public">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <h4 class="heading my-5">
+        マイページ
+      </h4>
+    </div>
+
+    <div class="col-10 mx-auto bg-light pt-4" style="max-width: 500px;">
+      <div class="row my-4">
+        <p class="col-10 mx-auto">ニックネーム</p>
+        <p class="col-10 mx-auto"><%= @user.name %></p>
+      </div>
+      <div class="row my-4">
+        <p class="col-10 mx-auto">メールアドレス</p>
+        <p class="col-10 mx-auto"><%= @user.email %></p>
+      </div>
+      <div class="row my-4">
+        <p class="col-10 mx-auto">
+          <%= link_to 'ユーザー情報を変更', users_information_edit_path %>
+        </p>
+        <p class="col-10 mx-auto">
+          <%= link_to '退会をご希望の方はこちら', users_confirm_path %>
+        </p>
+      </div>
+    </div>
+    
+  </div>
+</div>
