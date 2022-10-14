@@ -14,14 +14,29 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     get 'users/:id/post' => 'users#post', as: 'user_post'
     resources :posts, only: [:index, :show, :destroy] do
-      member do
-        delete :post_comment_destroy
-      end
+      resources :comments, only: [:destroy]
     end
     get 'posts/search'
     resources :tags, only: [:index, :destroy]
   end
 
+  scope module: 'public' do
+    root to: 'homes#top'
+
+    get 'users/mypage' => 'users_show'
+    get 'users/information/edit' => 'users#edit'
+    patch 'users/information' => 'users#update'
+    get 'users/confirm'
+    patch 'users/withdraw'
+
+    resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:new, :create] do
+        resource :goods, only: [:create, :destroy]        #URLにgoodのidを含む必要がない
+      end
+      resource :bookmarks, only: [:create, :destroy]      #URLにbookmarkのidを含む必要がない
+    end
+    get 'posts/search'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
