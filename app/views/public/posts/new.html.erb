@@ -1,2 +1,15 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto my-5">
+        <input type="text" id="stationName" value="" />
+        <input type="submit" id="btn" value="候補を探す" />
+        <div id="station-data"></div>
+      <ul class="station-list">
+        <li class="item active"></li>
+      </ul>
+    </div>
+    <div id="map" style="height:200px; width:200px"></div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'map' %>
