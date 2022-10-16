@@ -16,7 +16,15 @@ function init() {                         // Rosen：イニシャライザ（ア
         $('#endStationName').text(stations[1].name);
         document.getElementById('startStationCord').value=stations[0].code;
         document.getElementById('endStationCord').value=stations[1].code;
-      });;
+      });
+      Rosen.getLineCodeBySectionCode([section.code])
+      .then(function(line_code) {
+        rosen.getLineByCode(line_code)
+        .then(function(line) {
+          $('#LineName').text(line.name);
+          document.getElementById('LineCord').value=line.code;
+        });
+      });
     });
   });
 }

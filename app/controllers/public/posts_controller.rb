@@ -20,9 +20,12 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @user = @post.user
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def search
@@ -30,6 +33,6 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :start_station, :end_station, :body, :spot)
+    params.require(:post).permit(:user_id, :start_station, :end_station, :line_code, :body, :spot)
   end
 end

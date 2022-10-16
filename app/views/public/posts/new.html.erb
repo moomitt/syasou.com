@@ -9,12 +9,15 @@
       <p>
         <span id="startStationName"></span>　駅～
         <span id="endStationName"></span>　駅間
+        <span id="LineName"></span>
       </p>
       <%= form_with model: @post, url: posts_detail_path do |f| %>
         <%= f.label :start_station, '駅１' %>
         <%= f.text_field :start_station, :id => "startStationCord" %>
         <%= f.label :end_station, '駅２' %>
         <%= f.text_field :end_station, :id => "endStationCord" %>
+        <%= f.label :line_code, '路線' %>
+        <%= f.text_field :line_code, :id => "LineCord" %>
         <%= f.submit 'この区間で登録' %>
       <% end %>
       <button id="resetButton">やりなおす</button>
@@ -22,4 +25,4 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'test' %>
+<%= javascript_pack_tag 'new' %>

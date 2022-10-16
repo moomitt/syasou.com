@@ -1,2 +1,27 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto my-5">
+      <h4>投稿詳細ページ</h4>
+      <div id="map" style="height:500px; width:500px;"></div>
+    </div>
+    <div class="col-10 mx-auto my-4">
+      <p>
+        <span id="startStationName"></span>　駅～
+        <span id="endStationName"></span>　駅間
+      </p>
+      <input type="hidden" id="startStationCord" value="<%= @post.start_station %>">
+      <input type="hidden" id="endStationCord" value="<%= @post.end_station %>">
+
+      <p>投稿者</p>
+      <p><%= @user.name %></p>
+
+      <p>投稿者コメント</p>
+      <p><%= @post.body %></p>
+
+      <p>周辺のおすすめスポット</p>
+      <p><%= @post.spot %></p>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'show' %>

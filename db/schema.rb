@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_14_073413) do
+ActiveRecord::Schema.define(version: 2022_10_16_132800) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2022_10_14_073413) do
     t.integer "start_station"
     t.integer "end_station"
     t.string "spot"
+    t.integer "line_code"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
