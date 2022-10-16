@@ -29,13 +29,14 @@ Rails.application.routes.draw do
     get 'users/confirm'
     patch 'users/withdraw'
 
+    post 'posts/detail'
+    get 'posts/search'
     resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:new, :create] do
         resource :goods, only: [:create, :destroy]        #URLにgoodのidを含む必要がない
       end
       resource :bookmarks, only: [:create, :destroy]      #URLにbookmarkのidを含む必要がない
     end
-    get 'posts/search'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

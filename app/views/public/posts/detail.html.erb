@@ -10,16 +10,21 @@
         <span id="startStationName"></span>　駅～
         <span id="endStationName"></span>　駅間
       </p>
-      <%= form_with model: @post, url: posts_detail_path do |f| %>
+      <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+
         <%= f.label :start_station, '駅１' %>
-        <%= f.text_field :start_station, :id => "startStationCord" %>
+        <%= f.text_field :start_station, :id => "startStationCord", :value => @post.start_station %>
         <%= f.label :end_station, '駅２' %>
-        <%= f.text_field :end_station, :id => "endStationCord" %>
+        <%= f.text_field :end_station, :id => "endStationCord", :value => @post.end_station %>
+
+        <%= f.label :body, '投稿者コメント' %>
+        <%= f.text_area :body %>
+        <%= f.label :spot, '近くのおすすめスポット' %>
+        <%= f.text_area :spot %>
         <%= f.submit 'この区間で登録' %>
       <% end %>
       <button id="resetButton">やりなおす</button>
     </div>
   </div>
 </div>
-
-<%= javascript_pack_tag 'test' %>
