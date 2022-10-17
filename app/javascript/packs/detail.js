@@ -9,6 +9,7 @@ function init() {                         // Rosen：イニシャライザ（ア
   /*global $*/
   var startStation = Number(document.getElementById('startStationCord').value);
   var endStation = Number(document.getElementById('endStationCord').value);
+  var Line = Number(document.getElementById('LineCord').value);
   rosen.getStationByCode(startStation)
   .then(function(station) {
     $('#startStationName').text(station.name);
@@ -17,6 +18,17 @@ function init() {                         // Rosen：イニシャライザ（ア
   .then(function(station) {
     $('#endStationName').text(station.name);
   });
+  rosen.getLineByCode(Line)
+  .then(function(line) {
+    $('#LineName').text(line.name);
+  });
+  rosen.getSectionsByStations(Line, startStation, endStation)
+  .then(function(sections) {
+    sections.forEach(function(section) {
+      rosen.fitBoundsBySectionCodes([section.code]);
+      rosen.highlightSections([section.code]);
+    })
+  })
 }
 
 window.addEventListener('DOMContentLoaded', init);

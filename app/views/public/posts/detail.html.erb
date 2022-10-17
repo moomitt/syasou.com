@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-10 mx-auto my-5">
+      <h4>投稿詳細ページ</h4>
       <div id="map" style="height:500px; width:500px;"></div>
-      <ul id="stationName"></ul>
     </div>
-    <div class="col-10 mx-auto my-5">
-      <p>選択中の区間</p>
+    <div class="col-10 mx-auto my-4">
       <p>
         <span id="startStationName"></span>　駅～
         <span id="endStationName"></span>　駅間
-        <span id="LineName"></span>
       </p>
+      <p id="LineName"></p>
+
       <%= form_with model: @post, url: posts_path, method: :post do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
 
@@ -23,11 +23,14 @@
 
         <%= f.label :body, '投稿者コメント' %>
         <%= f.text_area :body %>
+        <%= f.label :time_zone, 'おすすめ時間帯' %>
+        <%= f.text_area :time_zone %>
         <%= f.label :spot, '近くのおすすめスポット' %>
         <%= f.text_area :spot %>
-        <%= f.submit 'この区間で登録' %>
+
+        <%= f.submit 'この内容で登録', class: "btn btn-success px-4" %>
       <% end %>
-      <button id="resetButton">やりなおす</button>
+      <button id="resetButton" class="btn btn-secondary px-4">やりなおす</button>
     </div>
   </div>
 </div>

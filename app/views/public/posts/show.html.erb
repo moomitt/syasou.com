@@ -9,14 +9,20 @@
         <span id="startStationName"></span>　駅～
         <span id="endStationName"></span>　駅間
       </p>
+      <p id="LineName"></p>
+
       <input type="hidden" id="startStationCord" value="<%= @post.start_station %>">
       <input type="hidden" id="endStationCord" value="<%= @post.end_station %>">
+      <input type="hidden" id="LineCord" value="<%= @post.line_code %>">
 
       <p>投稿者</p>
       <p><%= @user.name %></p>
 
       <p>投稿者コメント</p>
       <p><%= @post.body %></p>
+
+      <p>おすすめ時間帯</p>
+      <p><%= @post.time_zone %></p>
 
       <p>周辺のおすすめスポット</p>
       <p><%= @post.spot %></p>
