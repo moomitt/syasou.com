@@ -9,6 +9,7 @@
       <p>
         <span id="startStationName"></span>　駅～
         <span id="endStationName"></span>　駅間
+        <span id="LineName"></span>
       </p>
       <%= form_with model: @post, url: posts_path, method: :post do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -17,6 +18,8 @@
         <%= f.text_field :start_station, :id => "startStationCord", :value => @post.start_station %>
         <%= f.label :end_station, '駅２' %>
         <%= f.text_field :end_station, :id => "endStationCord", :value => @post.end_station %>
+        <%= f.label :line_code, '路線' %>
+        <%= f.text_field :line_code, :id => "LineCord", :value => @post.line_code  %>
 
         <%= f.label :body, '投稿者コメント' %>
         <%= f.text_area :body %>
