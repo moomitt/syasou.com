@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-10 mx-auto my-5">
-      <div id="map" style="height:500px; width:500px;"></div>
+      <div id="map" style="height:500px; width:800px;"></div>
       <ul id="stationName"></ul>
     </div>
-    <div class="col-10 mx-auto my-5">
+    <div class="col-10 mx-auto mt-3 mb-5">
       <p>選択中の区間</p>
       <p>
         <span id="startStationName"></span>　駅～
@@ -12,13 +12,29 @@
       </p>
       路線名：　<p id="LineName"></p>
       <button id="resetButton" class="btn btn-secondary px-4 my-3">区間を選びなおす</button>
+
       <%= form_with model: @post, url: posts_detail_path do |f| %>
-        <%= f.label :start_station, '駅１' %>
-        <%= f.text_field :start_station, :id => "startStationCord" %>
-        <%= f.label :end_station, '駅２' %>
-        <%= f.text_field :end_station, :id => "endStationCord" %>
-        <%= f.label :line_code, '路線' %>
-        <%= f.text_field :line_code, :id => "LineCord" %>
+        <div>
+          <%= f.label :start_station, '駅コード１' %>
+          <%= f.text_field :start_station, :id => "startStationCord" %>
+
+          <%= f.label :start_station_prefecture, '都道府県コード１' %>
+          <%= f.text_field :start_station_prefecture, :id => "startStationPrefecture" %>
+        </div>
+
+        <div>
+          <%= f.label :end_station, '駅コード２' %>
+          <%= f.text_field :end_station, :id => "endStationCord" %>
+
+          <%= f.label :end_station_prefecture, '都道府県コード２' %>
+          <%= f.text_field :end_station_prefecture, :id => "endStationPrefecture" %>
+        </div>
+
+        <div>
+          <%= f.label :line_code, '路線コード' %>
+          <%= f.text_field :line_code, :id => "LineCord" %>
+        </div>
+
         <%= f.submit 'この区間で登録', class: "btn btn-success px-4 my-3" %>
       <% end %>
     </div>

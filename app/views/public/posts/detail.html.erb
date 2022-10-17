@@ -13,24 +13,48 @@
 
       <%= form_with model: @post, url: posts_path, method: :post do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
+        <div>
+          <%= f.label :start_station, '駅コード１' %>
+          <%= f.text_field :start_station, :id => "startStationCord",
+          :value => @post.start_station  %>
 
-        <%= f.label :start_station, '駅１' %>
-        <%= f.text_field :start_station, :id => "startStationCord", :value => @post.start_station %>
-        <%= f.label :end_station, '駅２' %>
-        <%= f.text_field :end_station, :id => "endStationCord", :value => @post.end_station %>
-        <%= f.label :line_code, '路線' %>
-        <%= f.text_field :line_code, :id => "LineCord", :value => @post.line_code  %>
+          <%= f.label :start_station_prefecture, '都道府県コード１' %>
+          <%= f.text_field :start_station_prefecture, :id => "startStationPrefecture" %>
+        </div>
 
-        <%= f.label :body, '投稿者コメント' %>
-        <%= f.text_area :body %>
-        <%= f.label :time_zone, 'おすすめ時間帯' %>
-        <%= f.text_area :time_zone %>
-        <%= f.label :spot, '近くのおすすめスポット' %>
-        <%= f.text_area :spot %>
+        <div>
+          <%= f.label :end_station, '駅コード２' %>
+          <%= f.text_field :end_station, :id => "endStationCord",
+          :value => @post.end_station %>
+
+          <%= f.label :end_station_prefecture, '都道府県コード２' %>
+          <%= f.text_field :end_station_prefecture, :id => "endStationPrefecture" %>
+        </div>
+
+        <div>
+          <%= f.label :line_code, '路線コード' %>
+          <%= f.text_field :line_code, :id => "LineCord",
+          :value => @post.line_code %>
+        </div>
+
+        <div>
+          <%= f.label :body, '投稿者コメント' %>
+          <%= f.text_area :body %>
+        </div>
+
+        <div>
+          <%= f.label :time_zone, 'おすすめ時間帯' %>
+          <%= f.text_area :time_zone %>
+        </div>
+
+        <div>
+          <%= f.label :spot, '近くのおすすめスポット' %>
+          <%= f.text_area :spot %>
+        </div>
 
         <%= f.submit 'この内容で登録', class: "btn btn-success px-4" %>
       <% end %>
-      <button id="resetButton" class="btn btn-secondary px-4">やりなおす</button>
+      <%= link_to '区間選択にもどる', new_post_path, class: "btn btn-secondary px-4" %>
     </div>
   </div>
 </div>

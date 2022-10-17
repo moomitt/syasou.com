@@ -18,6 +18,8 @@ function init() {                         // Rosen：イニシャライザ（ア
         $('#endStationName').text(stations[1].name);
         document.getElementById('startStationCord').value=stations[0].code;
         document.getElementById('endStationCord').value=stations[1].code;
+        document.getElementById('startStationPrefecture').value=stations[0].prefecture_code;
+        document.getElementById('endStationPrefecture').value=stations[1].prefecture_code;
       });
       const line_code = Rosen.getLineCodeBySectionCode([section.code]);
       rosen.getLineByCode(line_code)
