@@ -29,7 +29,7 @@ class Public::PostsController < ApplicationController
     @all_posts = Post.all
     @map_posts = Array::new
     @all_posts.each do |post|
-      @map_posts.push({"start_station" => post.start_station, "end_station" => post.end_station, "line_code" => post.line_code})
+      @map_posts.push({"post_id" => post.id, "post_body" => post.body, "start_station" => post.start_station, "end_station" => post.end_station, "line_code" => post.line_code})
     end
   end
 
