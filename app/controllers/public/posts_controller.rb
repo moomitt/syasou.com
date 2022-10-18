@@ -1,7 +1,4 @@
 class Public::PostsController < ApplicationController
-  def index
-  end
-
   def new
     @post = Post.new
   end
@@ -26,6 +23,14 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+  end
+
+  def index
+    @all_posts = Post.all
+    @map_posts = Array::new
+    @all_posts.each do |post|
+      @map_posts.push({"start_station" => post.start_station, "end_station" => post.end_station, "line_code" => post.line_code})
+    end
   end
 
   def search
