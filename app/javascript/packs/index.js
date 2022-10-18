@@ -15,10 +15,11 @@ function init() {                         // Rosen：イニシャライザ（ア
 
   mapPosts.map(function(post){
     var url = '/posts/' + post.post_id;
-    console.log(url);
+    var body = post.post_body;
+    console.log(body);
 
-    var text_popup = Rosen.textPopup();
-    text_popup.setComment('この投稿をみる');
+    var text_popup = Rosen.imagePopup();
+    text_popup.setComment(body);
     text_popup.setAnchor(url);
 
     rosen.setStationPopup([post.start_station], text_popup, false)
