@@ -44,7 +44,15 @@ class Public::PostsController < ApplicationController
     @all_posts = Post.all
     @map_posts = Array::new
     @all_posts.each do |post|
-      @map_posts.push({"post_id" => post.id, "post_body" => post.body, "start_station" => post.start_station, "end_station" => post.end_station, "line_code" => post.line_code})
+      hash = {"post_id" => post.id, "post_body" => post.body,
+      "start_station" => post.start_station, "end_station" => post.end_station,
+      "line_code" => post.line_code}
+      if post.post_image.attached?
+        hash["post_image"] = url_for(post.post_image)
+      else
+        hash["post_image"] = '/assets/no_image.png'
+      end
+      @map_posts.push(hash)
     end
   end
 

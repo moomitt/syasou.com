@@ -12,12 +12,14 @@ function init() {                         // Rosen：イニシャライザ（ア
   var mapPosts = $('#mapPosts').data('posts');
 
   mapPosts.map(function(post){
-    var url = '/posts/' + post.post_id;
+    var src = post.post_image;
     var body = post.post_body;
-    var text_popup = Rosen.imagePopup();
-    text_popup.setComment(body);
-    text_popup.setAnchor(url);
-    rosen.setStationPopup([post.start_station], text_popup, false)
+    var url = '/posts/' + post.post_id;
+    var image_popup = Rosen.imagePopup();
+    image_popup.setImageUrl(src);
+    image_popup.setComment(body);
+    image_popup.setAnchor(url);
+    rosen.setStationPopup([post.start_station], image_popup, false)
     .then(function (marker) {
       marker.closePopup();
     });
