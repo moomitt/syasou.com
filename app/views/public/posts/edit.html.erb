@@ -1,2 +1,55 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto my-5">
+      <h4>投稿詳細ページ</h4>
+      <div id="map" style="height:500px; width:500px;"></div>
+    </div>
+    <div class="col-10 mx-auto my-4">
+      <p>
+        <span id="startStationName"></span>　駅～
+        <span id="endStationName"></span>　駅間
+      </p>
+      路線名：　<p id="LineName"></p>
+
+      <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+
+        <div>
+          <%= f.label :start_station, '駅コード１' %>
+          <%= f.text_field :start_station, :id => "startStationCord" %>
+        </div>
+
+        <div>
+          <%= f.label :end_station, '駅コード２' %>
+          <%= f.text_field :end_station, :id => "endStationCord" %>
+        </div>
+
+        <div>
+          <%= f.label :line_code, '路線コード' %>
+          <%= f.text_field :line_code, :id => "LineCord" %>
+        </div>
+
+        <div>
+          <%= f.label :body, '投稿者コメント' %>
+          <%= f.text_area :body %>
+        </div>
+
+        <div>
+          <%= f.label :time_zone, 'おすすめ時間帯' %>
+          <%= f.text_area :time_zone %>
+        </div>
+
+        <div>
+          <%= f.label :spot, '近くのおすすめスポット' %>
+          <%= f.text_area :spot %>
+        </div>
+
+        <%= f.submit 'この内容で変更', class: "btn btn-success px-4" %>
+      <% end %>
+      <%= link_to '変更せずもどる', post_path(@post.id), class: "btn btn-secondary px-4" %>
+      <%= link_to '投稿を削除', post_path(@post.id), method: :delete,
+      data: {confirm: "削除した投稿は元に戻せません。本当にこの投稿を削除しますか？"} %>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'detail' %>

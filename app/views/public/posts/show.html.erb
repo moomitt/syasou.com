@@ -9,7 +9,7 @@
         <span id="startStationName"></span>　駅～
         <span id="endStationName"></span>　駅間
       </p>
-      <p id="LineName"></p>
+      路線名：　<p id="LineName"></p>
 
       <input type="hidden" id="startStationCord" value="<%= @post.start_station %>">
       <input type="hidden" id="endStationCord" value="<%= @post.end_station %>">
@@ -26,6 +26,10 @@
 
       <p>周辺のおすすめスポット</p>
       <p><%= @post.spot %></p>
+
+      <% if @post.user_id == current_user.id %>
+        <%= link_to '投稿を編集', edit_post_path(@post.id) %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -9,7 +9,7 @@
         <span id="startStationName"></span>　駅～
         <span id="endStationName"></span>　駅間
       </p>
-      <p id="LineName"></p>
+      路線名：　<p id="LineName"></p>
 
       <%= form_with model: @post, url: posts_path, method: :post do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
