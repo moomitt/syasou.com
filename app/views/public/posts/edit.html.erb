@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-10 mx-auto my-5">
       <h4>投稿詳細ページ</h4>
-      <div id="map" style="height:500px; width:500px;"></div>
     </div>
     <div class="col-10 mx-auto my-4">
       <p>
@@ -29,6 +28,11 @@
         </div>
 
         <div>
+          <%= f.label :image, '画像' %>
+          <%= f.file_field :post_image %>
+        </div>
+
+        <div>
           <%= f.label :body, '投稿者コメント' %>
           <%= f.text_area :body %>
         </div>
@@ -45,9 +49,12 @@
 
         <%= f.submit 'この内容で変更', class: "btn btn-success px-4" %>
       <% end %>
+
       <%= link_to '変更せずもどる', post_path(@post.id), class: "btn btn-secondary px-4" %>
       <%= link_to '投稿を削除', post_path(@post.id), method: :delete,
       data: {confirm: "削除した投稿は元に戻せません。本当にこの投稿を削除しますか？"} %>
+
+      <div id="map" class="my-4" style="height:500px; width:500px;"></div>
     </div>
   </div>
 </div>

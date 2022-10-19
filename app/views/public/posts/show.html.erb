@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-10 mx-auto my-5">
       <h4>投稿詳細ページ</h4>
-      <div id="map" style="height:500px; width:500px;"></div>
     </div>
     <div class="col-10 mx-auto my-4">
       <p>
@@ -14,6 +13,13 @@
       <input type="hidden" id="startStationCord" value="<%= @post.start_station %>">
       <input type="hidden" id="endStationCord" value="<%= @post.end_station %>">
       <input type="hidden" id="LineCord" value="<%= @post.line_code %>">
+
+      <p>画像</p>
+      <% if @post.post_image.attached? %>
+        <%= image_tag @post.post_image, size: "300x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "230x200" %>
+      <% end %>
 
       <p>投稿者</p>
       <p><%= @user.name %></p>
@@ -30,6 +36,8 @@
       <% if @post.user_id == current_user.id %>
         <%= link_to '投稿を編集', edit_post_path(@post.id) %>
       <% end %>
+
+      <div id="map" class="my-4" style="height:500px; width:500px;"></div>
     </div>
   </div>
 </div>

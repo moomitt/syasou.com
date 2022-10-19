@@ -38,6 +38,11 @@
         </div>
 
         <div>
+          <%= f.label :image, '画像' %>
+          <%= f.file_field :image %>
+        </div>
+
+        <div>
           <%= f.label :body, '投稿者コメント' %>
           <%= f.text_area :body %>
         </div>

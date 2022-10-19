@@ -133,7 +133,7 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:user_id, :start_station, :end_station,
     :start_station_prefecture, :end_station_prefecture, :line_code,
-    :body, :time_zone, :spot)
+    :body, :time_zone, :spot, :post_image)
   end
 end
 
