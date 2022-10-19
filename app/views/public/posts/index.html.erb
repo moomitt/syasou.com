@@ -2,9 +2,18 @@
   <div class="row">
     <div class="col-10 mx-auto my-5">
       <h4>地図からさがす</h4>
-      <div id="map" style="height:640px; width:800px;"></div>
+      <div id="map" style="height:700px; width:800px;"></div>
     </div>
     <div class="col-10 mx-auto mt-3 mb-5">
+      <h4>エリアからさがす</h4>
+      <%= link_to '北海道', search_area_path(1), class: "ml-3" %>
+      <%= link_to '東北', search_area_path(2), class: "ml-3" %>
+      <%= link_to '関東', search_area_path(3), class: "ml-3" %>
+      <%= link_to '中部（中央・北陸・東海）', search_area_path(4), class: "ml-3" %>
+      <%= link_to '近畿', search_area_path(5), class: "ml-3" %>
+      <%= link_to '中国', search_area_path(6), class: "ml-3" %>
+      <%= link_to '四国', search_area_path(7), class: "ml-3" %>
+      <%= link_to '九州・沖縄', search_area_path(8), class: "ml-3" %>
     </div>
   </div>
 </div>

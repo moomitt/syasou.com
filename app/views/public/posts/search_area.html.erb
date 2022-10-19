@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto mt-5 mb-4">
+      <h4><%= @area_name %> エリアの投稿一覧</h4>
+    </div>
+
+　　<div class="col-10 mx-auto mb-4">
+　　  <% if @area_name != "北海道" %>
+        <h4>都道府県でさがす</h4>
+        <% @prefectures.each do |prefecture| %>
+          <%= link_to search_prefecture_path(prefecture.id), class: "ml-3" do %>
+            <%= prefecture.name %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-10 mx-auto mt-3 mb-5">
+      <div class="row">
+        <% if @all_posts.present? %>
+          <% @all_posts.each do |post| %>
+            <%= link_to post_path(post.id), class: "col-12 my-4" do %>
+              <%= post.body %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>投稿がありません</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

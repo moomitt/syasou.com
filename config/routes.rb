@@ -30,7 +30,8 @@ Rails.application.routes.draw do
     patch 'users/withdraw'
 
     post 'posts/detail'
-    get 'posts/search'
+    get 'posts/search_area/:id' => 'posts#search_area', as: 'search_area'
+    get 'posts/search_prefecture/:id' => 'posts#search_prefecture', as: 'search_prefecture'
     resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:new, :create] do
         resource :goods, only: [:create, :destroy]        #URLにgoodのidを含む必要がない
