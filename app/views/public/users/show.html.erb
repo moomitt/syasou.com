@@ -8,18 +8,30 @@
 
     <div class="col-10 mx-auto bg-light pt-4" style="max-width: 500px;">
       <div class="row my-4">
+        <p class="col-10 mx-auto">画像</p>
+        <% if @user.user_image.attached? %>
+          <%= image_tag @user.user_image, size: "200x200" %>
+        <% else %>
+          <%= image_tag 'user', size: "200x200" %>
+        <% end %>
+      </div>
+
+      <div class="row my-4">
         <p class="col-10 mx-auto">ニックネーム</p>
         <p class="col-10 mx-auto"><%= @user.name %></p>
       </div>
+
       <div class="row my-4">
         <p class="col-10 mx-auto">メールアドレス</p>
         <p class="col-10 mx-auto"><%= @user.email %></p>
       </div>
+
       <div class="row my-4">
         <p class="col-10 mx-auto">
           <%= link_to 'ユーザー情報を変更', users_information_edit_path %>
         </p>
       </div>
+
     </div>
 
   </div>

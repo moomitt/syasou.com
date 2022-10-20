@@ -22,6 +22,11 @@
       <% end %>
 
       <p>投稿者</p>
+      <% if @user.user_image.attached? %>
+          <%= image_tag @user.user_image, size: "70x70" %>
+        <% else %>
+          <%= image_tag 'user', size: "70x70" %>
+        <% end %>
       <p><%= @user.name %></p>
 
       <p>投稿者コメント</p>
