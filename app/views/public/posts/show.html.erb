@@ -14,22 +14,21 @@
       <input type="hidden" id="endStationCord" value="<%= @post.end_station %>">
       <input type="hidden" id="LineCord" value="<%= @post.line_code %>">
 
-      <p>画像</p>
       <% if @post.post_image.attached? %>
-        <%= image_tag @post.post_image, size: "300x200" %>
+        <%= image_tag @post.post_image.variant(resize_to_fill: [400, 280]).processed %>
       <% else %>
-        <%= image_tag 'no_image', size: "230x200" %>
+        <%= image_tag 'no_image', size: "300x200" %>
       <% end %>
-
-      <p>投稿者</p>
-      <% if @user.user_image.attached? %>
-          <%= image_tag @user.user_image, size: "70x70" %>
+      <div class="my-3">
+        <% if @user.user_image.attached? %>
+          <%= image_tag @user.user_image.variant(resize_to_fill: [50, 50]).processed,
+          class: "rounded-circle mr-2" %>
         <% else %>
-          <%= image_tag 'user', size: "70x70" %>
+          <%= image_tag 'user', class: "rounded-circle mr-2", size: "50x50" %>
         <% end %>
-      <p><%= @user.name %></p>
+        <%= @user.name %>
+      </div>
 
-      <p>投稿者コメント</p>
       <p><%= @post.body %></p>
 
       <p>おすすめ時間帯</p>

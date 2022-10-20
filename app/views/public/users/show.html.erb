@@ -10,9 +10,10 @@
       <div class="row my-4">
         <p class="col-10 mx-auto">画像</p>
         <% if @user.user_image.attached? %>
-          <%= image_tag @user.user_image, size: "200x200" %>
+          <%= image_tag @user.user_image.variant(resize_to_fill: [128, 128]).processed,
+          class: "rounded-circle" %>
         <% else %>
-          <%= image_tag 'user', size: "200x200" %>
+          <%= image_tag 'user', class: "rounded-circle", size: "200x200" %>
         <% end %>
       </div>
 
