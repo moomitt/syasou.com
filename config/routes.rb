@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get 'posts/search_area/:id' => 'posts#search_area', as: 'search_area'
     get 'posts/search_prefecture/:id' => 'posts#search_prefecture', as: 'search_prefecture'
     resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:new, :create] do
+      resources :comments, only: [:create, :destroy] do
         resource :goods, only: [:create, :destroy]        #URLにgoodのidを含む必要がない
       end
       resource :bookmarks, only: [:create, :destroy]      #URLにbookmarkのidを含む必要がない

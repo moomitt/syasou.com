@@ -37,6 +37,32 @@
         <%= render partial: 'public/bookmarks/bookmark', locals: { post: @post} %>
       </div>
 
+      <p>コメント一覧</p>
+      <% if @comments.present? %>
+        <p><small>（全 <%= @comments.count %> 件）</small></p>
+        <% @comments.each do |comment| %>
+          <div>
+            <%= comment.text %>
+            <%= comment.user.name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+            <% if comment.user_id = current_user.id %>
+              <%= link_to 'コメントを削除', post_comment_path(@post.id, comment.id), method: :delete,
+              data: {confirm: "削除したコメントは元に戻せません。本当にこのコメントを削除しますか？"} %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>この投稿へのコメントはありません</p>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= form_with model: @comment, url: post_comments_path(@post.id), method: :post do |f| %>
+          <%= f.label :text %>
+          <%= f.text_area :text %>
+          <%= f.submit 'コメントを投稿' %>
+        <% end %>
+      <% end %>
+
       <% if @post.user_id == current_user.id %>
         <%= link_to '投稿を編集', edit_post_path(@post.id) %>
       <% end %>
