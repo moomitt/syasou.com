@@ -1,73 +1,63 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mx-auto my-5">
-      <h4>新規投稿ページ</h4>
-      <div id="map" style="height:500px; width:500px;"></div>
-    </div>
-    <div class="col-10 mx-auto my-4">
-      <p>
-        <span id="startStationName"></span>　駅～
-        <span id="endStationName"></span>　駅間
-      </p>
-      路線名：　<p id="LineName"></p>
+    <div class="col-10 mx-auto">
+      <h4 class="mt-5 mb-4">新しい投稿</h4>
 
-      <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <div>
-          <%= f.label :start_station, '駅コード１' %>
-          <%= f.text_field :start_station, :id => "startStationCord",
-          :value => @post.start_station  %>
+      <div class="row selected-section">
+        <p class="col-12">選択中の区間</p>
+        <p class="col-3 station-name text-center">
+          <span id="startStationName"></span>　駅
+        </p>
+        <p class="col-1 text-center">↔</p>
+        <p class="col-3 station-name text-center">
+          <span id="endStationName"></span>  駅
+        </p>
+        <p class="col-3 line-name text-center">
+          <span id="LineName"></span>
+        </p>
+      </div>
 
-          <%= f.label :start_station_prefecture, '都道府県コード１' %>
-          <%= f.text_field :start_station_prefecture, :id => "startStationPrefecture" %>
-        </div>
-        
-        <div>
-          <%= f.label :latitude, '緯度' %>
-          <%= f.text_field :latitude, :id => "startStationLatitude" %>
-          
-          <%= f.label :longitude, '経度' %>
-          <%= f.text_field :longitude, :id => "startStationLongitude" %>
-        </div>
+      <div id="map" style="height:300px; width:400px; margin: 30px 0;"></div>
 
-        <div>
-          <%= f.label :end_station, '駅コード２' %>
-          <%= f.text_field :end_station, :id => "endStationCord",
-          :value => @post.end_station %>
+      <div class="my-4">
+        <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :start_station, :id => "startStationCord" %>
+          <%= f.hidden_field :start_station_prefecture, :id => "startStationPrefecture" %>
+          <%= f.hidden_field :latitude, :id => "startStationLatitude" %>
+          <%= f.hidden_field :longitude, :id => "startStationLongitude" %>
+          <%= f.hidden_field :end_station, :id => "endStationCord" %>
+          <%= f.hidden_field :end_station_prefecture, :id => "endStationPrefecture" %>
+          <%= f.hidden_field :line_code, :id => "LineCord" %>
 
-          <%= f.label :end_station_prefecture, '都道府県コード２' %>
-          <%= f.text_field :end_station_prefecture, :id => "endStationPrefecture" %>
-        </div>
+          <div class="imput-group-sm mb-3">
+            <%= f.label :image, '画像', class: "label-control" %></br>
+            <%= f.file_field :image, class: "file-control" %>
+          </div>
 
-        <div>
-          <%= f.label :line_code, '路線コード' %>
-          <%= f.text_field :line_code, :id => "LineCord",
-          :value => @post.line_code %>
-        </div>
+          <div class="imput-group-sm mb-3">
+            <%= f.label :body, '投稿者コメント', class: "label-control" %>
+            <%= f.text_area :body, class: "form-control" %>
+          </div>
 
-        <div>
-          <%= f.label :image, '画像' %>
-          <%= f.file_field :image %>
-        </div>
+          <div class="imput-group-sm mb-3">
+            <%= f.label :time_zone, 'おすすめ時間帯', class: "label-control" %>
+            <%= f.text_area :time_zone, class: "form-control" %>
+          </div>
 
-        <div>
-          <%= f.label :body, '投稿者コメント' %>
-          <%= f.text_area :body %>
-        </div>
+          <div class="imput-group-sm mb-3">
+            <%= f.label :spot, '近くのおすすめスポット', class: "label-control" %>
+            <%= f.text_area :spot, class: "form-control" %>
+          </div>
 
-        <div>
-          <%= f.label :time_zone, 'おすすめ時間帯' %>
-          <%= f.text_area :time_zone %>
-        </div>
+          <%= f.submit 'この内容で登録', class: "btn btn-sm btn-success mr-3 px-4" %>
+          <%= link_to '区間選択にもどる', new_post_path,
+          class: "btn btn-sm btn-secondary px-4" %>
+        <% end %>
 
-        <div>
-          <%= f.label :spot, '近くのおすすめスポット' %>
-          <%= f.text_area :spot %>
-        </div>
+      </div>
 
-        <%= f.submit 'この内容で登録', class: "btn btn-success px-4" %>
-      <% end %>
-      <%= link_to '区間選択にもどる', new_post_path, class: "btn btn-secondary px-4" %>
+
     </div>
   </div>
 </div>
