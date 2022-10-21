@@ -29,21 +29,11 @@ li{
 }
 
 .popup-image {
-  width: 150px; /* 省略せずに表示するサイズを指定 */
+  width: 150px;
   height: 100px;
   padding : 0;
   margin: 0;
 }
-
-// .post_popup .leaflet-popup-content {
-//   max-height: 200px;
-//   max-width: 200px;
-// }
-
-// .post_popup .leaflet-popup-content-wrapper {
-//   max-height: 200px;
-//   max-width: 200px;
-// }
 
 .map-caption {
   max-width: 400px;
@@ -64,7 +54,7 @@ li{
   position: relative;
 }
 
-.popup_edge .leaflet-popup-tip{
+.popup .leaflet-popup-tip{
   display: none;
 }
 

@@ -25,27 +25,28 @@ function init() {                         // Rosen：イニシャライザ（ア
 
     if(latitude > 40 && longitude > 142){
       var hinode_popup = Rosen.htmlPopup({
-        className: "popup_edge",
+        className: "popup",
         offset: [-100, 200]
       }).setHTML(html);
     } else if(latitude > 40){
       var hinode_popup = Rosen.htmlPopup({
-        className: "popup_edge",
+        className: "popup",
         offset: [0, 200]
       }).setHTML(html);
     } else if(longitude > 142){
       var hinode_popup = Rosen.htmlPopup({
-        className: "popup_edge",
+        className: "popup",
         offset: [-100, 0]
       }).setHTML(html);
     } else if(longitude < 131){
       var hinode_popup = Rosen.htmlPopup({
-        className: "popup_edge",
+        className: "popup",
         offset: [60, 20]
       }).setHTML(html);
     } else {
       var hinode_popup = Rosen.htmlPopup({
-        className: "popup"
+        className: "popup",
+        offset: [0, 20]
       }).setHTML(html);
     };
 
