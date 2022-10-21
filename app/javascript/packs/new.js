@@ -21,6 +21,8 @@ function init() {                         // Rosen：イニシャライザ（ア
         document.getElementById('endStationCord').value=stations[1].code;
         document.getElementById('startStationPrefecture').value=stations[0].prefecture_code;
         document.getElementById('endStationPrefecture').value=stations[1].prefecture_code;
+        document.getElementById('startStationLatitude').value=stations[0].latitude;
+        document.getElementById('startStationLongitude').value=stations[0].longitude;
       });
       const line_code = Rosen.getLineCodeBySectionCode([section.code]);
       rosen.getLineByCode(line_code)

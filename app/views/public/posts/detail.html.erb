@@ -21,6 +21,14 @@
           <%= f.label :start_station_prefecture, '都道府県コード１' %>
           <%= f.text_field :start_station_prefecture, :id => "startStationPrefecture" %>
         </div>
+        
+        <div>
+          <%= f.label :latitude, '緯度' %>
+          <%= f.text_field :latitude, :id => "startStationLatitude" %>
+          
+          <%= f.label :longitude, '経度' %>
+          <%= f.text_field :longitude, :id => "startStationLongitude" %>
+        </div>
 
         <div>
           <%= f.label :end_station, '駅コード２' %>

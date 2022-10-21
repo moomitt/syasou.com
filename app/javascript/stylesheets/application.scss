@@ -10,3 +10,60 @@
 body{
 
 }
+
+li{
+  list-style: none;
+}
+
+.area_list li {
+  margin: 10px 0;
+}
+
+.popup-text {
+  width: 150px; /* 省略せずに表示するサイズを指定 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding : 0;
+  margin: 0;
+}
+
+.popup-image {
+  width: 150px; /* 省略せずに表示するサイズを指定 */
+  height: 100px;
+  padding : 0;
+  margin: 0;
+}
+
+// .post_popup .leaflet-popup-content {
+//   max-height: 200px;
+//   max-width: 200px;
+// }
+
+// .post_popup .leaflet-popup-content-wrapper {
+//   max-height: 200px;
+//   max-width: 200px;
+// }
+
+.map-caption {
+  max-width: 400px;
+  height: 180px;
+  background-color: red;
+  padding: 0 10px;
+  position: absolute;
+  z-index: 9;
+  top: 10px;
+  left: 80px;
+}
+
+.map-caption p {
+  font-size: 0.8rem;
+}
+
+#map {
+  position: relative;
+}
+
+.popup_edge .leaflet-popup-tip{
+  display: none;
+}

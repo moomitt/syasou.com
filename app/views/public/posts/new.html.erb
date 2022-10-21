@@ -23,6 +23,14 @@
         </div>
 
         <div>
+          <%= f.label :latitude, '緯度' %>
+          <%= f.text_field :latitude, :id => "startStationLatitude" %>
+
+          <%= f.label :longitude, '経度' %>
+          <%= f.text_field :longitude, :id => "startStationLongitude" %>
+        </div>
+
+        <div>
           <%= f.label :end_station, '駅コード２' %>
           <%= f.text_field :end_station, :id => "endStationCord" %>
 

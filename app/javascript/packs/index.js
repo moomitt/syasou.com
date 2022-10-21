@@ -5,7 +5,8 @@ function init() {                         // Rosen：イニシャライザ（ア
     apiSetting: "https",                  // HTTPS版のAPIサーバを指定
     tileSetting: "https",                 // HTTPS版のタイルサーバを指定
     zoom: 10,
-    sideMenuControl: true
+    sideMenuControl: true,
+    center: [356, 209, 10]
   });
 
   /*global $*/
@@ -15,11 +16,40 @@ function init() {                         // Rosen：イニシャライザ（ア
     var src = post.post_image;
     var body = post.post_body;
     var url = '/posts/' + post.post_id;
-    var image_popup = Rosen.imagePopup();
-    image_popup.setImageUrl(src);
-    image_popup.setComment(body);
-    image_popup.setAnchor(url);
-    rosen.setStationPopup([post.start_station], image_popup, false)
+    var latitude = Number(post.latitude);
+    var longitude = Number(post.longitude);
+    console.log(latitude);
+    console.log(longitude);
+    var html = '<a href=' + url + '><img class="popup-image" src=' +
+               src + '></img></br> <p class="popup-text">' + body + '</p></a>'
+
+    if(latitude > 40 && longitude > 142){
+      var hinode_popup = Rosen.htmlPopup({
+        className: "popup_edge",
+        offset: [-100, 200]
+      }).setHTML(html);
+    } else if(latitude > 40){
+      var hinode_popup = Rosen.htmlPopup({
+        className: "popup_edge",
+        offset: [0, 200]
+      }).setHTML(html);
+    } else if(longitude > 142){
+      var hinode_popup = Rosen.htmlPopup({
+        className: "popup_edge",
+        offset: [-100, 0]
+      }).setHTML(html);
+    } else if(longitude < 131){
+      var hinode_popup = Rosen.htmlPopup({
+        className: "popup_edge",
+        offset: [60, 20]
+      }).setHTML(html);
+    } else {
+      var hinode_popup = Rosen.htmlPopup({
+        className: "popup"
+      }).setHTML(html);
+    };
+
+    rosen.setStationPopup([post.start_station], hinode_popup, false)
     .then(function (marker) {
       marker.closePopup();
     });

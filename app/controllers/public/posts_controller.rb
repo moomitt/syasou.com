@@ -48,9 +48,10 @@ class Public::PostsController < ApplicationController
     @all_posts.each do |post|
       hash = {"post_id" => post.id, "post_body" => post.body,
       "start_station" => post.start_station, "end_station" => post.end_station,
-      "line_code" => post.line_code}
+      "line_code" => post.line_code,
+      "latitude" => post.latitude, "longitude" => post.longitude }
       if post.post_image.attached?
-        hash["post_image"] = url_for(post.post_image)
+        hash["post_image"] = url_for(post.post_image.variant(resize_to_fill: [150, 100]))
       else
         hash["post_image"] = '/assets/no_image.png'
       end
@@ -143,7 +144,7 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:user_id, :start_station, :end_station,
     :start_station_prefecture, :end_station_prefecture, :line_code,
-    :body, :time_zone, :spot, :post_image)
+    :body, :time_zone, :spot, :post_image, :latitude, :longitude)
   end
 end
 
