@@ -1,78 +1,128 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mx-auto my-5">
-      <h4>投稿詳細ページ</h4>
-    </div>
-    <div class="col-10 mx-auto my-4">
-      <p>
-        <span id="startStationName"></span>　駅～
-        <span id="endStationName"></span>　駅間
-      </p>
-      路線名：　<p id="LineName"></p>
-
-      <input type="hidden" id="startStationCord" value="<%= @post.start_station %>">
-      <input type="hidden" id="endStationCord" value="<%= @post.end_station %>">
-      <input type="hidden" id="LineCord" value="<%= @post.line_code %>">
-
-      <% if @post.post_image.attached? %>
-        <%= image_tag @post.post_image.variant(resize_to_fill: [400, 280]).processed %>
-      <% else %>
-        <%= image_tag 'no_image', size: "300x200" %>
-      <% end %>
-      <div class="my-3">
-        <% if @user.user_image.attached? %>
-          <%= image_tag @user.user_image.variant(resize_to_fill: [50, 50]).processed,
-          class: "rounded-circle mr-2" %>
-        <% else %>
-          <%= image_tag 'user', class: "rounded-circle mr-2", size: "50x50" %>
-        <% end %>
-        <%= @user.name %>
+    <div class="col-lg-10 col-md-10 col-10 mx-auto bg-light my-5 pt-5"
+    style="max-width: 500px;">
+      <div class="row selected-section mb-3">
+        <p class="col-5 station-name text-center">
+          <span id="startStationName"></span>　駅
+        </p>
+        <p class="col-2 text-center">↔</p>
+        <p class="col-5 station-name text-center">
+          <span id="endStationName"></span>　駅
+        </p>
+        <p class="col-12 line-name text-center">
+          <span id="LineName"></span>
+        </p>
       </div>
 
-      <p><%= @post.body %></p>
+      <div class="row">
+        <input type="hidden" id="startStationCord" value="<%= @post.start_station %>">
+        <input type="hidden" id="endStationCord" value="<%= @post.end_station %>">
+        <input type="hidden" id="LineCord" value="<%= @post.line_code %>">
 
-      <p>おすすめ時間帯</p>
-      <p><%= @post.time_zone %></p>
+        <div class="col-12 text-center mb-3">
+          <% if @post.post_image.attached? %>
+            <%= image_tag @post.post_image.variant(resize_to_fill: [300, 200]).processed %>
+          <% else %>
+            <%= image_tag 'no_image', size: "300x200" %>
+          <% end %>
+        </div>
 
-      <p>周辺のおすすめスポット</p>
-      <p><%= @post.spot %></p>
+        <div class="col-11 mx-auto mb-3 pr-5">
+          <% if @user.user_image.attached? %>
+            <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
+            class: "rounded-circle mx-2" %>
+          <% else %>
+            <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+          <% end %>
+          <%= @user.name %>
+        </div>
 
-      <div class="bookmark_buttons_<%= @post.id %>">
-        <%= render partial: 'public/bookmarks/bookmark', locals: { post: @post} %>
-      </div>
-
-      <p>コメント一覧</p>
-      <% if @comments.present? %>
-        <p><small>（全 <%= @comments.count %> 件）</small></p>
-        <% @comments.each do |comment| %>
-          <div>
-            <%= comment.text %>
-            <%= comment.user.name %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %>
-            <% if comment.user_id = current_user.id %>
-              <%= link_to 'コメントを削除', post_comment_path(@post.id, comment.id), method: :delete,
-              data: {confirm: "削除したコメントは元に戻せません。本当にこのコメントを削除しますか？"} %>
-            <% end %>
+        <div class="col-11 mx-auto mb-3">
+          <p class="post-heading">投稿者コメント</p>
+          <div class="post-contents">
+            <%= @post.body %>
           </div>
-        <% end %>
-      <% else %>
-        <p>この投稿へのコメントはありません</p>
-      <% end %>
+        </div>
 
-      <% if user_signed_in? %>
-        <%= form_with model: @comment, url: post_comments_path(@post.id), method: :post do |f| %>
-          <%= f.label :text %>
-          <%= f.text_area :text %>
-          <%= f.submit 'コメントを投稿' %>
-        <% end %>
-      <% end %>
+        <div class="col-11 mx-auto mb-3">
+          <p class="post-heading">おすすめ時間帯</p>
+          <div class="post-contents">
+            <%= @post.time_zone %>
+          </div>
+        </div>
 
-      <% if @post.user_id == current_user.id %>
-        <%= link_to '投稿を編集', edit_post_path(@post.id) %>
-      <% end %>
+        <div class="col-11 mx-auto mb-3">
+          <p class="post-heading">周辺のおすすめスポット</p>
+          <div class="post-contents">
+            <%= @post.spot %>
+          </div>
+        </div>
 
-      <div id="map" class="my-4" style="height:500px; width:500px;"></div>
+        <div class="col-11 mx-auto text-right mb-4">
+          <div class="bookmark_buttons_<%= @post.id %>">
+            <%= render partial: 'public/bookmarks/bookmark', locals: { post: @post} %>
+          </div>
+        </div>
+
+        <div class="col-11 mx-auto mb-3">
+          <div id="map" style="height:300px; width:100%;"></div>
+        </div>
+
+        <div class="col-11 mx-auto mb-3 text-right">
+          <% if @post.user_id == current_user.id %>
+            <p class="message">
+              <%= link_to '投稿を編集', edit_post_path(@post.id) %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="col-11 mx-auto mb-3">
+          <% if @comments.present? %>
+            <p class="my-3">
+              コメント一覧
+              <small>（全 <%= @comments.count %> 件）</small>
+            </p>
+            <% @comments.each do |comment| %>
+              <div class="row comment-box mx-auto py-2">
+                <p class="col-12"><%= comment.text %></p>
+                <p class="col-4 text-right"><%= comment.user.name %></p>
+                <p class="col-6 text-right"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+                <p class="col-2 text-right"></p>
+                <p class="col-12 text-right" style="font-size:0.7rem">
+                  <% if comment.user_id = current_user.id %>
+                    <%= link_to 'コメントを削除', post_comment_path(@post.id, comment.id), method: :delete,
+                    data: {confirm: "削除したコメントは元に戻せません。本当にこのコメントを削除しますか？"} %>
+                  <% end %>
+                </p>
+              </div>
+            <% end %>
+          <% else %>
+            <p>
+              コメント一覧
+              <small>（全 0 件）</small>
+            </p>
+            <p class="message my-2">この投稿へのコメントはありません</p>
+          <% end %>
+        </div>
+
+        <div class="col-11 mx-auto mb-3">
+          <p class="my-3">
+            コメントを投稿
+          </p>
+
+          <% if user_signed_in? %>
+            <%= form_with model: @comment, url: post_comments_path(@post.id), method: :post do |f| %>
+              <div class="input-group-sm">
+                <%= f.text_area :text, class: "form-control mb-2" %>
+                <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-secondary mb-2 px-3" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 

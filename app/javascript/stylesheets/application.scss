@@ -7,12 +7,16 @@
   margin: 0;
 }
 
-body{
+body {
 
 }
 
-li{
+li {
   list-style: none;
+}
+
+p {
+  margin-bottom: 0;
 }
 
 .area_list li {
@@ -62,4 +66,34 @@ li{
 
 .selected-section{
   background-color: #e9dfe5;
+  padding: 20px 10px;
+  p {
+    padding: 5px 0;
+  }
+}
+
+//showページ
+.comment-box {
+  border-top: 1px solid #a9a9a9;
+  border-bottom: 1px solid #a9a9a9;
+  p {
+    font-size: 0.8rem;
+  }
+}
+
+.message{
+  font-size: 0.8rem;
+}
+
+.post-heading {
+  font-size: 0.9rem;
+  padding: 5px;
+}
+
+.post-contents {
+  background-color: #e9dfe5;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  min-height: 40px;
+  padding: 10px 15px;
 }
