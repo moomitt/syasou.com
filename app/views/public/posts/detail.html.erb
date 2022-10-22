@@ -31,8 +31,9 @@
           <%= f.hidden_field :line_code, :id => "LineCord" %>
 
           <div class="imput-group-sm mb-3">
-            <%= f.label :image, '画像', class: "label-control" %></br>
-            <%= f.file_field :image, class: "file-control" %>
+            <%= f.label :post_images, '画像を登録', class: "label-control col-12" %>
+            <%= f.file_field :post_images, multiple: true, accept: "image/*",
+            class: "file-control col-12" %>
           </div>
 
           <div class="imput-group-sm mb-3">

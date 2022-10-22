@@ -28,14 +28,16 @@
           </div>
 
           <div class="row input-group-sm mb-3">
-            <%= f.label :image, '画像を登録', class: "label-control col-12" %>
-            <%= f.file_field :post_image, accept: "image/*", class: "file-control col-12" %>
+            <%= f.label :post_images, '画像を登録', class: "label-control col-12" %>
+            <%= f.file_field :post_images, multiple: true, accept: "image/*", class: "file-control col-12" %>
 
             <label class="label-control my-3 col-12">登録中の画像</label>
-              <% if @post.post_image.attached? %>
-                <%= image_tag @post.post_image.variant(resize_to_fill: [150, 100]).processed %>
-                <%= link_to '削除', post_img_destroy_path(@post), method: :delete,
-                "data-confirm" => "画像を削除しますか？" %>
+              <% if @post.post_images.attached? %>
+                <% @post.post_images.each do |image| %>
+                  <%= image_tag image.variant(resize_to_fill: [150, 100]).processed %>
+                  <%= link_to '削除', post_img_destroy_path(@post), method: :delete,
+                  "data-confirm" => "画像を削除しますか？" %>
+                <% end %>
               <% else %>
                 <p class="message my-2">画像が登録されていません</p>
               <% end %>

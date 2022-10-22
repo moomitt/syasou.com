@@ -105,3 +105,43 @@ p {
   padding-right: 0;
   font-size: 0.9rem;
 }
+
+
+//スライダー
+
+#slide{
+  margin:0 auto;
+}
+
+.swiper-container{
+  position:relative;
+}
+
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 650px;
+  position: relative;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    --swiper-navigation-size: 30px;
+    --swiper-theme-color: #a9a9a9;
+    --swiper-navigation-color: #a9a9a9;
+}
+
+.swiper-pagination {
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+}
+
+.swiper-pagination-bullet {
+  margin: 0 3px;
+}
+
+.swiper-pagination-bullet-active {
+  margin: 0 3px;
+  --swiper-theme-color: #ffc0cb;
+  background: #ffc0cb;
+}

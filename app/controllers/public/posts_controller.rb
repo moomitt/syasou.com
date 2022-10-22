@@ -29,8 +29,8 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.post_image.attached?
-      @post.post_image.purge_later
+    if @post.post_images.attached?
+      @post.post_images.purge_later
     end
     if @post.update(post_params)
       redirect_to post_path(@post.id)
@@ -41,7 +41,7 @@ class Public::PostsController < ApplicationController
 
   def img_destroy
     @post = Post.find(params[:id])
-    if @post.post_image.purge
+    if @post.post_images.purge
       redirect_to edit_post_path(@post.id)
     else
       render :edit
@@ -67,8 +67,8 @@ class Public::PostsController < ApplicationController
       "start_station" => post.start_station, "end_station" => post.end_station,
       "line_code" => post.line_code,
       "latitude" => post.latitude, "longitude" => post.longitude }
-      if post.post_image.attached?
-        hash["post_image"] = url_for(post.post_image.variant(resize_to_fill: [150, 100]))
+      if post.post_images.attached?
+        hash["post_image"] = url_for(post.post_images[0].variant(resize_to_fill: [150, 100]))
       else
         hash["post_image"] = '/assets/no_image.png'
       end
@@ -159,9 +159,13 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :start_station, :end_station,
-    :start_station_prefecture, :end_station_prefecture, :line_code,
-    :body, :time_zone, :spot, :post_image, :latitude, :longitude)
+    params.require(:post).permit(
+      :user_id, :start_station, :end_station,
+      :start_station_prefecture, :end_station_prefecture, :line_code,
+      :body, :time_zone, :spot, :latitude, :longitude,
+      post_images: [],
+      images_attachments_attributes: [ :id, :_destroy ]
+    )
   end
 end
 
