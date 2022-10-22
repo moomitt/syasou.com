@@ -29,6 +29,9 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    if @post.post_image.attached?
+      @post.post_image.purge_later
+    end
     if @post.update(post_params)
       redirect_to post_path(@post.id)
     else
@@ -36,10 +39,24 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def img_destroy
+    @post = Post.find(params[:id])
+    if @post.post_image.purge
+      redirect_to edit_post_path(@post.id)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.post_image.attached?
+      @post.post_image.purge_later && @post.destroy
+      redirect_to posts_path
+    else
+      @post.destroy
+      redirect_to posts_path
+    end
   end
 
   def index

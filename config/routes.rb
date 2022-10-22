@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     post 'posts/detail'
     get 'posts/search_area/:id' => 'posts#search_area', as: 'search_area'
     get 'posts/search_prefecture/:id' => 'posts#search_prefecture', as: 'search_prefecture'
+    delete 'post_image_delete/:id' => 'posts#img_destroy', as: 'post_img_destroy'
     resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy] do
         resource :goods, only: [:create, :destroy]        #URLにgoodのidを含む必要がない

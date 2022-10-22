@@ -1,60 +1,81 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mx-auto my-5">
-      <h4>投稿詳細ページ</h4>
-    </div>
-    <div class="col-10 mx-auto my-4">
-      <p>
-        <span id="startStationName"></span>　駅～
-        <span id="endStationName"></span>　駅間
-      </p>
-      路線名：　<p id="LineName"></p>
+    <div class="col-lg-10 col-md-10 col-10 mx-auto bg-light my-5 pt-5"
+    style="max-width: 500px;">
 
-      <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+      <h5 class="mb-4 text-center">投稿を編集</h5>
 
-        <div>
-          <%= f.label :start_station, '駅コード１' %>
-          <%= f.text_field :start_station, :id => "startStationCord" %>
+      <div class="row selected-section mb-3">
+        <p class="col-5 station-name text-center">
+          <span id="startStationName"></span>　駅
+        </p>
+        <p class="col-2 text-center">↔</p>
+        <p class="col-5 station-name text-center">
+          <span id="endStationName"></span>　駅
+        </p>
+        <p class="col-12 line-name text-center">
+          <span id="LineName"></span>
+        </p>
+      </div>
+
+      <div class="col-10 mx-auto px-0">
+        <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+
+          <div>
+            <%= f.hidden_field :start_station, :id => "startStationCord" %>
+            <%= f.hidden_field :end_station, :id => "endStationCord" %>
+            <%= f.hidden_field :line_code, :id => "LineCord" %>
+          </div>
+
+          <div class="row input-group-sm mb-3">
+            <%= f.label :image, '画像を登録', class: "label-control col-12" %>
+            <%= f.file_field :post_image, accept: "image/*", class: "file-control col-12" %>
+
+            <label class="label-control my-3 col-12">登録中の画像</label>
+              <% if @post.post_image.attached? %>
+                <%= image_tag @post.post_image.variant(resize_to_fill: [150, 100]).processed %>
+                <%= link_to '削除', post_img_destroy_path(@post), method: :delete,
+                "data-confirm" => "画像を削除しますか？" %>
+              <% else %>
+                <p class="message my-2">画像が登録されていません</p>
+              <% end %>
+          </div>
+
+          <div class="row input-group-sm mb-3">
+            <%= f.label :body, '投稿者コメント', class: "label-control col-12" %>
+            <%= f.text_area :body, class: "form-control col-12" %>
+          </div>
+
+          <div class="row input-group-sm mb-3">
+            <%= f.label :time_zone, 'おすすめ時間帯', class: "label-control col-12" %>
+            <%= f.text_area :time_zone, class: "form-control col-12" %>
+          </div>
+
+          <div class="row input-group-sm mb-4">
+            <%= f.label :spot, '近くのおすすめスポット', class: "label-control col-12" %>
+            <%= f.text_area :spot, class: "form-control col-12" %>
+          </div>
+
+          <div class="row input-group-sm mb-5">
+            <%= link_to '変更せずもどる', post_path(@post.id), class: "btn btn-sm btn-secondary px-4 mr-3" %>
+            <%= f.submit '変更を保存', class: "btn btn-sm btn-success px-4 mr-3" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-11 mx-auto mb-3">
+          <div id="map" style="height:300px; width:100%;"></div>
         </div>
 
-        <div>
-          <%= f.label :end_station, '駅コード２' %>
-          <%= f.text_field :end_station, :id => "endStationCord" %>
+        <div class="col-11 mx-auto mb-3 text-right">
+          <p class="message pr-1">
+            <%= link_to 'この投稿を削除', post_path(@post.id), method: :delete,
+            data: {confirm: "削除した投稿は元に戻せません。本当にこの投稿を削除しますか？"} %>
+          </p>
         </div>
+      </div>
 
-        <div>
-          <%= f.label :line_code, '路線コード' %>
-          <%= f.text_field :line_code, :id => "LineCord" %>
-        </div>
-
-        <div>
-          <%= f.label :image, '画像' %>
-          <%= f.file_field :post_image, accept: "image/*" %>
-        </div>
-
-        <div>
-          <%= f.label :body, '投稿者コメント' %>
-          <%= f.text_area :body %>
-        </div>
-
-        <div>
-          <%= f.label :time_zone, 'おすすめ時間帯' %>
-          <%= f.text_area :time_zone %>
-        </div>
-
-        <div>
-          <%= f.label :spot, '近くのおすすめスポット' %>
-          <%= f.text_area :spot %>
-        </div>
-
-        <%= f.submit 'この内容で変更', class: "btn btn-success px-4" %>
-      <% end %>
-
-      <%= link_to '変更せずもどる', post_path(@post.id), class: "btn btn-secondary px-4" %>
-      <%= link_to '投稿を削除', post_path(@post.id), method: :delete,
-      data: {confirm: "削除した投稿は元に戻せません。本当にこの投稿を削除しますか？"} %>
-
-      <div id="map" class="my-4" style="height:500px; width:500px;"></div>
     </div>
   </div>
 </div>
