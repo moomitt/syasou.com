@@ -28,19 +28,28 @@
           </div>
 
           <div class="row input-group-sm mb-3">
-            <%= f.label :post_images, '画像を登録', class: "label-control col-12" %>
+            <%= f.label :post_images, '画像の追加／削除', class: "label-control col-12" %>
+            <%= f.label :post_images, '新しい画像', class: "label-control col-12" %>
             <%= f.file_field :post_images, multiple: true, accept: "image/*", class: "file-control col-12" %>
 
-            <label class="label-control my-3 col-12">登録中の画像</label>
+            <label class="label-control my-3 col-12">登録済みの画像</label>
+            <div class="post-contents col-12">
               <% if @post.post_images.attached? %>
                 <% @post.post_images.each do |image| %>
-                  <%= image_tag image.variant(resize_to_fill: [150, 100]).processed %>
-                  <%= link_to '削除', post_img_destroy_path(@post), method: :delete,
-                  "data-confirm" => "画像を削除しますか？" %>
+                  <div class="image-list">
+                    <div class="d-flex align-items-center">
+                      <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
+                      <label for="post_image_ids_<%= image.id %>">この画像を削除</label>
+                    </div>
+                    <label for="post_image_ids_<%= image.id %>">
+                      <%= image_tag image.variant(resize_to_fill: [150, 100]).processed %>
+                    </label>
+                  </div>
                 <% end %>
               <% else %>
                 <p class="message my-2">画像が登録されていません</p>
               <% end %>
+            </div>
           </div>
 
           <div class="row input-group-sm mb-3">
