@@ -15,6 +15,15 @@ li {
   list-style: none;
 }
 
+a {
+  color: #808080;
+}
+
+a:hover {
+  color: #c97586;
+  text-decoration: none;
+}
+
 p {
   margin-bottom: 0;
 }
@@ -101,6 +110,13 @@ p {
   }
 }
 
+.image-box {
+  display: inline-block;
+  width: 130px;
+  span {
+    font-size: 0.9rem;
+  }
+}
 
 //スライダー
 

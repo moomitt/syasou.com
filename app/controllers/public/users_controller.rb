@@ -7,6 +7,15 @@ class Public::UsersController < ApplicationController
     @user = current_user
   end
 
+  def image_destroy
+    @user = current_user
+    if @user.user_image.purge
+      redirect_to users_information_edit_path
+    else
+      render :edit
+    end
+  end
+
   def update
     @user = current_user
     if @user.update(user_params)

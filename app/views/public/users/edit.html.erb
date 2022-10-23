@@ -24,8 +24,27 @@
         </div>
 
         <div class="row input-group-sm my-4">
-          <label class="label-control col-10 mx-auto px-0">画像</label>
-          <%= f.file_field :user_image, accept: "image/*", class: "col-10 px-0 mx-auto"  %>
+          <label class="label-control col-10 mx-auto px-0">ユーザアイコン</label>
+
+          <label class="label-control col-10 mx-auto px-0">登録中の画像</label>
+          <div class="col-10 mx-auto mb-4">
+            <% if @user.user_image.attached? %>
+              <%= link_to user_image_destroy_path, method: :delete,
+              data: { confirm: "本当に画像を削除しますか？" }, class: "image-box" do %>
+                <p class="message text-right">
+                  削除
+                  <i class="fas fa-times-circle"></i>
+                </p>
+                <%= image_tag @user.user_image.variant(resize_to_fill: [130, 130]).processed %>
+              <% end %>
+            <% else %>
+              <p class="message">登録されていません</p>
+            <% end %>
+          </div>
+
+          <label class="label-control col-10 mx-auto px-0">新しい画像を登録</label>
+          <%= f.file_field :user_image, accept: "image/*",
+          class: "file-control col-10 px-0 mx-auto"  %>
         </div>
 
         <div class="row input-group-sm my-4">

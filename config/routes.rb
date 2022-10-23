@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     patch 'users/information' => 'users#update'
     get 'users/confirm'
     patch 'users/withdraw'
+    delete 'users/user_image_destroy' => 'users#image_destroy', as: 'user_image_destroy'
 
     post 'posts/detail'
     get 'posts/search_area/:id' => 'posts#search_area', as: 'search_area'
