@@ -1,0 +1,2 @@
+$('.good_buttons_<%= @comment.id %>')
+.html("<%= j(render partial: 'public/goods/good', locals: { post: @post, comment: @comment }) %>");

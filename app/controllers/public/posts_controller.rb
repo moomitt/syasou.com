@@ -19,7 +19,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-    @comment = Comment.new
+    @new_comment = Comment.new
     @comments = Comment.where(post_id: @post.id)
   end
 
@@ -40,9 +40,6 @@ class Public::PostsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def img_destroy
   end
 
   def destroy

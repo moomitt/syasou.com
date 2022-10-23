@@ -62,21 +62,21 @@
         <div class="col-11 mx-auto mb-3">
           <p class="post-heading">投稿者コメント</p>
           <div class="post-contents">
-            <%= @post.body %>
+            <%= safe_join(@post.body.split("\r"),tag(:br)) %>
           </div>
         </div>
 
         <div class="col-11 mx-auto mb-3">
           <p class="post-heading">おすすめ時間帯</p>
           <div class="post-contents">
-            <%= @post.time_zone %>
+            <%= safe_join(@post.time_zone.split("\r"),tag(:br)) %>
           </div>
         </div>
 
         <div class="col-11 mx-auto mb-3">
           <p class="post-heading">周辺のおすすめスポット</p>
           <div class="post-contents">
-            <%= @post.spot %>
+            <%= safe_join(@post.spot.split("\r"),tag(:br)) %>
           </div>
         </div>
 
@@ -109,7 +109,9 @@
                 <p class="col-12"><%= comment.text %></p>
                 <p class="col-4 text-right"><%= comment.user.name %></p>
                 <p class="col-6 text-right"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-                <p class="col-2 text-right"></p>
+                <div class="good_buttons_<%= comment.id %> col-2 text-right">
+                  <%= render partial: 'public/goods/good', locals: { post: @post, comment: comment } %>
+                </div>
                 <p class="col-12 text-right" style="font-size:0.7rem">
                   <% if comment.user_id = current_user.id %>
                     <%= link_to 'コメントを削除', post_comment_path(@post.id, comment.id), method: :delete,
@@ -133,7 +135,7 @@
           </p>
 
           <% if user_signed_in? %>
-            <%= form_with model: @comment, url: post_comments_path(@post.id), method: :post do |f| %>
+            <%= form_with model: @new_comment, url: post_comments_path(@post.id), method: :post do |f| %>
               <div class="input-group-sm">
                 <%= f.text_area :text, class: "form-control mb-2" %>
                 <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-secondary mb-2 px-3" %>
