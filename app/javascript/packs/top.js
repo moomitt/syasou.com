@@ -2,7 +2,7 @@ $(function(){
   var mySwiper = new Swiper ('.swiper-container', {
     speed: 500,
     autoplay: {
-      delay: 5000,
+      delay: 4000,
       disableOnInteraction: false,
     },
 		slidesPerView: 1,      //画像を何枚表示するか

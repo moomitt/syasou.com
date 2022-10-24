@@ -253,3 +253,24 @@ p {
     width: 100%;
   }
 }
+
+//ボタン
+
+.btn-main{
+  background-color: #a6949b;
+  color: #fff;
+}
+
+.btn-main:hover{
+  background-color: #c9bec3;
+  color: #000;
+}
+
+.btn-accent{
+  background-color: #e5bdbd;
+}
+
+.btn-accent:hover{
+  background-color: #ceaaaa;
+  color: #fff;
+}
