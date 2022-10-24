@@ -11,18 +11,7 @@ function init() {                         // Rosen：イニシャライザ（ア
   var startStation = Number(document.getElementById('startStationCord').value);
   var endStation = Number(document.getElementById('endStationCord').value);
   var Line = Number(document.getElementById('LineCord').value);
-  rosen.getStationByCode(startStation)
-  .then(function(station) {
-    $('#startStationName').text(station.name);
-  });
-  rosen.getStationByCode(endStation)
-  .then(function(station) {
-    $('#endStationName').text(station.name);
-  });
-  rosen.getLineByCode(Line)
-  .then(function(line) {
-    $('#LineName').text(line.name);
-  });
+
   rosen.getSectionsByStations(Line, startStation, endStation)
   .then(function(sections) {
     sections.forEach(function(section) {

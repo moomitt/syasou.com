@@ -14,14 +14,17 @@ function init() {                         // Rosen：イニシャライザ（ア
   rosen.getStationByCode(startStation)
   .then(function(station) {
     $('#startStationName').text(station.name);
+    document.getElementById('startStationNameInput').value=station.name;
   });
   rosen.getStationByCode(endStation)
   .then(function(station) {
     $('#endStationName').text(station.name);
+    document.getElementById('endStationNameInput').value=station.name;
   });
   rosen.getLineByCode(Line)
   .then(function(line) {
     $('#LineName').text(line.name);
+    document.getElementById('lineNameInput').value=line.name;
   });
   rosen.getSectionsByStations(Line, startStation, endStation)
   .then(function(sections) {

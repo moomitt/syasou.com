@@ -44,8 +44,8 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.post_image.attached?
-      @post.post_image.purge_later && @post.destroy
+    if @post.post_images.attached?
+      @post.post_images.purge_later && @post.destroy
       redirect_to posts_path
     else
       @post.destroy
@@ -154,8 +154,9 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(
-      :user_id, :start_station, :end_station,
-      :start_station_prefecture, :end_station_prefecture, :line_code,
+      :user_id, :start_station, :end_station, :line_code,
+      :start_station_name, :end_station_name, :line_name,
+      :start_station_prefecture, :end_station_prefecture,
       :body, :time_zone, :spot, :latitude, :longitude,
       post_images: [],
       images_attachments_attributes: [ :id, :_destroy ]
