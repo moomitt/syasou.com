@@ -6,7 +6,6 @@ function init() {                         // Rosen：イニシャライザ（ア
     tileSetting: "https",                 // HTTPS版のタイルサーバを指定
     zoom: 10,
     sideMenuControl: true,
-    center: [356, 209, 10]
   });
 
   /*global $*/
