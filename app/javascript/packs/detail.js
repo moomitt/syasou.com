@@ -1,5 +1,5 @@
 var rosen;
-function init() {                         // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
+$(function(){                         // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
   rosen = new Rosen("map", {              // "map"=<div>のid
     apiKey: process.env.ROSEN_JS_API_KEY, // アクセスキーを認証
     apiSetting: "https",                  // HTTPS版のAPIサーバを指定
@@ -31,8 +31,6 @@ function init() {                         // Rosen：イニシャライザ（ア
     sections.forEach(function(section) {
       rosen.fitBoundsBySectionCodes([section.code]);
       rosen.highlightSections([section.code]);
-    })
-  })
-}
-
-window.addEventListener('DOMContentLoaded', init);
+    });
+  });
+});
