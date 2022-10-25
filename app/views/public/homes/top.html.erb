@@ -1,11 +1,9 @@
 <div class="container-fluid top">
   <div class="row">
 
-    <div class="col-12 top-image">
-
-
+    <div class="col-12 top-image pt-5">
       <div class="row swiper-container-cover text-center my-5">
-        <div class="col-12 swiper-container">
+        <div class="col-11 swiper-container">
           <ul class="swiper-wrapper">
             <li class="swiper-slide">
               <div class="frame"><%= image_tag 'slide1' %></div>
@@ -40,14 +38,48 @@
           <%= link_to '投稿をさがす', posts_path,
           class: "btn btn-light mx-1" %>
         </span>
-        <span class="col-6 px-1">
-          <%= link_to 'ログイン', new_user_session_path,
-          class: "btn btn-main mx-1" %>
-        </span>
-        <span class="col-6 px-1">
-          <%= link_to '新規登録', new_user_registration_path,
-          class: "btn btn-accent mx-1" %>
-        </span>
+        <% if user_signed_in? %>
+          <span class="col-12 px-1 mb-3">
+            <%= link_to '投稿する', posts_path,
+            class: "btn btn-accent mx-1" %>
+          </span>
+        <% else %>
+          <span class="col-6 px-1">
+            <%= link_to 'ログイン', new_user_session_path,
+            class: "btn btn-main mx-1" %>
+          </span>
+          <span class="col-6 px-1">
+            <%= link_to '新規登録', new_user_registration_path,
+            class: "btn btn-accent mx-1" %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-lg-10 col-11 mx-auto top-caption mt-5" style="max-width: 1200px;">
+      <div class="row">
+        <div class="col-lg-6 col-md-7 col-12 top-caption-text my-4 px-5">
+          <h4 class="py-5">
+            ふと顔を上げた時、</br>
+            車窓のむこうに広がる景色に</br>
+            思いがけず心を奪われる。
+          </h4>
+          <h6>そんな経験がありませんか？</h6>
+          <h6>
+            となり町へちょっぴり足をのばした日に。</br>
+            旅先でのふとした瞬間に。</br>
+            心ときめく「車窓」との出会いは、</br>
+            いつも突然で、偶然です。
+          </h6>
+          <h6>
+            車窓.comは、そんな「車窓」とあなたとの</br>
+            素敵な出会いを応援します。
+          </h6>
+          <h6>日常の中に隠れたときめきを、探しにいきましょう。</h6>
+        </div>
+        <div class="col-lg-6 col-md-5 col-12 top-caption-image my-5">
+
+        </div>
       </div>
     </div>
 

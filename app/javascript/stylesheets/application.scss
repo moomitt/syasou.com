@@ -214,24 +214,25 @@ p {
   }
 }
 
-//スライダー top
+//topページ
+//スライダー
 
 .top-image{
   background: #e9e5e6;
   color: #000;
-  height: 700px;
+  height: calc(100vh - 72px);
   .swiper-container-cover{
     margin-left: auto;
     margin-right: auto;
-    max-width: 600px;
+    max-width: 800px;
   }
   .swiper-container{
     margin-left: auto;
     margin-right: auto;
-    max-width: 600px;
+    max-width: 800px;
   }
   li {
-    height: 320px;
+    height:  calc(40vh + 15px);
     width: 100%;
   }
   .frame {
@@ -245,7 +246,7 @@ p {
   img {
     object-fit: cover;
     width: 100%;
-    height: 300px;
+    height: 40vh;
     border-radius: 30px;
     border: 3px solid #696969;
   }
@@ -253,6 +254,26 @@ p {
     width: 100%;
   }
 }
+
+//その他
+
+.top-caption-image {
+  height: 600px;
+  background-image: url('/assets/top.jpg');
+  background-size: cover;
+  background-position: left;
+}
+
+.top-caption-text {
+  h4 {
+    line-height: 50px;
+  }
+  h6 {
+    line-height: 30px;
+    margin-bottom: 30px;
+  }
+}
+
 
 //ボタン
 
