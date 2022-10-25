@@ -1,22 +1,22 @@
-<div class="container-fulid">
+<div class="container-fluid public">
   <div class="row mx-auto" style="max-width:1200px">
-    <div class="col-lg-3 col-11">
-      <h4 class="mt-5 mb-4">エリアからさがす</h4>
-      <ul class="area_list">
-        <li><%= link_to '北海道', search_area_path(1), class: "ml-3" %></li>
-        <li><%= link_to '東北', search_area_path(2), class: "ml-3" %></li>
-        <li><%= link_to '関東', search_area_path(3), class: "ml-3" %></li>
-        <li><%= link_to '中部（中央・北陸・東海）', search_area_path(4), class: "ml-3" %></li>
-        <li><%= link_to '近畿', search_area_path(5), class: "ml-3" %></li>
-        <li><%= link_to '中国', search_area_path(6), class: "ml-3" %></li>
-        <li><%= link_to '四国', search_area_path(7), class: "ml-3" %></li>
-        <li><%= link_to '九州・沖縄', search_area_path(8), class: "ml-3" %></li>
-      </ul>
+    <div class="map-container col-lg-3 col-11 mx-auto mt-5">
+      <h5 class="my-4 text-center">エリアからさがす</h5>
+      <div class="area_list row px-3 text-center">
+        <div class="col-lg-12 col-sm-2  col-4 mx-auto mb-3"><%= link_to '北海道', search_area_path(1) %></div>
+        <div class="col-lg-12 col-sm-2 col-4 mx-auto mb-3"><%= link_to '東北', search_area_path(2) %></div>
+        <div class="col-lg-12 col-sm-2 col-4 mx-auto mb-3"><%= link_to '関東', search_area_path(3) %></div>
+        <div class="col-lg-12 col-sm-5 col-8 mx-auto mb-3"><%= link_to '中央・北陸・東海', search_area_path(4) %></div>
+        <div class="col-lg-12 col-sm-2 col-4 mx-auto mb-3"><%= link_to '近畿', search_area_path(5) %></div>
+        <div class="col-lg-12 col-sm-2 col-3 mx-auto mb-3"><%= link_to '中国', search_area_path(6) %></div>
+        <div class="col-lg-12 col-sm-2 col-3 mx-auto mb-3"><%= link_to '四国', search_area_path(7) %></div>
+        <div class="col-lg-12 col-sm-5 col-6 mx-auto mb-3"><%= link_to '九州・沖縄', search_area_path(8) %></div>
+      </div>
     </div>
 
-    <div class="col-lg-9 col-12">
-      <h4 class="mt-5 mb-4">地図からさがす</h4>
-      <div id="map" style="height:700px; width:100%;"></div>
+    <div class="map-container col-lg-8 col-11 mx-auto mt-5 pb-3">
+      <h5 class="my-4 text-center">路線図からさがす</h5>
+      <div id="map" style="height: 650px; max-height: calc(100vh - 200px); width:100%;"></div>
     </div>
     <div>
       <div id="mapPosts" data-posts="<%= @map_posts.to_json %>"></div>
