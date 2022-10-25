@@ -1,38 +1,36 @@
 <div class="container-fluid public">
   <div class="row">
-    <div class="col-12 mx-auto text-center">
-      <h4 class="heading my-5">
+
+    <div class="input-container col-md-10 col-10 mx-auto my-5">
+      <h4 class="heading my-5 text-center">
         ログイン
       </h4>
-    </div>
 
-    <div class="col-lg-10 col-md-10 col-10 mx-auto bg-light pt-4" style="max-width: 500px;">
       <%= form_with model: @user, url: user_session_path do |f| %>
-        <div class="row input-group-sm d-flex align-items-center my-3">
+        <div class="row input-group-sm pt-3 mb-3">
           <label class="label-control col-10 mx-auto px-0">メールアドレス</label>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-10 mx-auto"  %>
         </div>
 
-        <div class="row input-group-sm d-flex align-items-center my-3">
+        <div class="row input-group-sm my-3">
           <label class="label-control col-10 mx-auto px-0">パスワード</label>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control col-10 mx-auto"  %>
         </div>
 
-        <div class="row my-5">
-          <%= f.submit "ログイン", class: "btn btn-sm btn-primary col-10 mx-auto"  %>
+        <div class="row my-5 pb-5">
+          <%= f.submit "ログイン", class: "btn btn-sm btn-main col-10 mx-auto"  %>
         </div>
       <% end %>
+
+      <div class="input-container-accent mx-auto my-4 py-2 px-3 text-center">
+        <h6 class="my-4">
+          会員登録がお済みでない方
+        </h6>
+        <p class="my-3">
+          <%= link_to '新規登録はこちら', new_user_registration_path %>
+        </p>
+      </div>
     </div>
 
-    <div class="col-12 my-5 mx-auto text-center">
-      <h5 class="my-4">
-        会員登録がお済みでない方
-      </h5>
-      <p class="my-4">
-        <%= link_to 'こちら', new_user_registration_path, class: "text-primary" %>
-        から新規登録を行ってください。
-      </p>
-    </div>
-    
   </div>
 </div>
