@@ -37,6 +37,10 @@ p {
   margin-bottom: 0;
 }
 
+textarea.form-control {
+  height: 100px;
+}
+
 .area_list li {
   margin: 10px 0;
 }
@@ -85,9 +89,6 @@ p {
   p {
     font-size: 0.9rem;
   }
-  a {
-    font-weight: bold;
-  }
   .edit-icon {
     background-color: #ededed;
     padding: 20px;
@@ -108,19 +109,34 @@ p {
   }
 }
 
-//newページ
+//newページ showページ
 
-.selected-section{
-  background-color: #e9dfe5;
-  padding: 20px 10px;
+.selected-section {
+  background-color: #fff;
+  padding: 10px;
   p {
     padding: 5px 0;
   }
 }
 
-//showページ
+.selected-section-edit {
+  background-color: #fafbfa;
+  padding: 10px;
+  p {
+    padding: 5px 0;
+  }
+}
+
+.station-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.line-name {
+  font-size: 0.9rem;
+}
+
 .comment-box {
-  border-top: 1px solid #a9a9a9;
   border-bottom: 1px solid #a9a9a9;
   p {
     font-size: 0.8rem;
@@ -131,13 +147,17 @@ p {
   font-size: 0.8rem;
 }
 
+.date {
+  font-size: 0.8rem;
+}
+
 .post-heading {
   font-size: 0.9rem;
   padding: 5px;
 }
 
 .post-contents {
-  background-color: #e9dfe5;
+  background-color: #faf6f6;
   font-size: 0.9rem;
   border-radius: 8px;
   min-height: 40px;
@@ -145,6 +165,12 @@ p {
 }
 
 //editページ
+
+.label-sm, .file-sm {
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 0.9rem;
+}
 
 .image-list {
   display: inline-block;

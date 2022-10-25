@@ -1,14 +1,12 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-10 mx-auto bg-light my-5 pt-5"
-    style="max-width: 500px;">
+<div class="container-fluid public px-0">
+  <div class="row mx-auto" style="max-width:600px">
+    <div class="input-container col-sm-10 col-11 mx-auto my-5 py-4">
+
       <div class="row selected-section mb-3">
-        <p class="col-5 station-name text-center">
-          <%= @post.start_station_name %>　駅
-        </p>
-        <p class="col-2 text-center">↔</p>
-        <p class="col-5 station-name text-center">
-          <%= @post.end_station_name %>　駅
+        <p class="col-12 station-name text-center">
+          <%= @post.start_station_name %>駅
+          <span class="mx-2">↔</span>
+          <%= @post.end_station_name %>駅
         </p>
         <p class="col-12 line-name text-center">
           <%= @post.line_name %>
@@ -22,7 +20,7 @@
 
         <% if @post.post_images.attached? %>
           <% if @post.post_images.length != 1 %>
-            <div class="col-12 post-slide">
+            <div class="col-12 post-slide px-0">
               <div class="row swiper-container-cover text-center mb-5">
                 <div class="col-12 swiper-container">
                   <ul class="swiper-wrapper">
@@ -36,19 +34,19 @@
               </div>
             </div>
           <% else %>
-            <div class="col-12 text-center mb-4">
+            <div class="col-12 text-center mb-4 px-0">
               <% @post.post_images.each do |image| %>
                 <%= image_tag image.variant(resize_to_fill: [300, 200]).processed %>
               <% end %>
             </div>
           <% end %>
         <% else %>
-          <div class="col-12 text-center mb-4">
+          <div class="col-12 text-center mb-4 px-0">
             <%= image_tag 'no_image', size: "300x200" %>
           </div>
         <% end %>
 
-        <div class="col-11 mx-auto mb-3 pr-5">
+        <div class="col-sm-11 col-12 mx-auto mb-3 pr-5">
           <% if @user.user_image.attached? %>
             <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
             class: "rounded-circle mx-2" %>
@@ -58,57 +56,71 @@
           <%= @user.name %>
         </div>
 
-        <div class="col-11 mx-auto mb-3">
+        <div class="col-sm-11 col-12 mx-auto mb-3">
           <p class="post-heading">投稿者コメント</p>
           <div class="post-contents">
             <%= safe_join(@post.body.split("\r"),tag(:br)) %>
           </div>
         </div>
 
-        <div class="col-11 mx-auto mb-3">
+        <div class="col-sm-11 col-12 mx-auto mb-3">
           <p class="post-heading">おすすめ時間帯</p>
           <div class="post-contents">
             <%= safe_join(@post.time_zone.split("\r"),tag(:br)) %>
           </div>
         </div>
 
-        <div class="col-11 mx-auto mb-3">
+        <div class="col-sm-11 col-12 mx-auto mb-3">
           <p class="post-heading">周辺のおすすめスポット</p>
           <div class="post-contents">
             <%= safe_join(@post.spot.split("\r"),tag(:br)) %>
           </div>
         </div>
 
-        <div class="col-11 mx-auto text-right mb-4">
+        <div class="col-sm-11 col-12 mx-auto mb-4 text-right">
+          <p class="date">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+            <i class="far fa-edit ml-3 mr-1"></i>
+            <%= @post.updated_at.strftime('%Y/%m/%d %H:%M') %>
+          </p>
+        </div>
+
+        <div class="col-sm-11 col-12 mx-auto mb-4 text-right">
           <div class="bookmark_buttons_<%= @post.id %>">
             <%= render partial: 'public/bookmarks/bookmark', locals: { post: @post} %>
           </div>
         </div>
 
-        <div class="col-11 mx-auto mb-3">
+        <div class="col-sm-11 col-12 mx-auto mb-3">
           <div id="map" style="height:300px; width:100%;"></div>
         </div>
 
-        <div class="col-11 mx-auto mb-3 text-right">
+        <div class="col-sm-11 col-12 mx-auto mb-3 text-right">
           <% if @post.user_id == current_user.id %>
             <p class="message">
-              <%= link_to '投稿を編集', edit_post_path(@post.id) %>
+              <%= link_to edit_post_path(@post.id) do %>
+                <i class="fas fa-edit"></i>
+                投稿内容を編集
+              <% end %>
             </p>
           <% end %>
         </div>
 
-        <div class="col-11 mx-auto mb-3">
+        <div class="col-sm-11 col-12 mx-auto mb-3">
           <% if @comments.present? %>
-            <p class="my-3">
+            <p class="py-3" style="border-bottom: 1px solid #a9a9a9;">
               コメント一覧
               <small>（全 <%= @comments.count %> 件）</small>
             </p>
             <% @comments.each do |comment| %>
               <div class="row comment-box mx-auto py-2">
-                <p class="col-12"><%= comment.text %></p>
-                <p class="col-4 text-right"><%= comment.user.name %></p>
-                <p class="col-6 text-right"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-                <div class="good_buttons_<%= comment.id %> col-2 text-right">
+                <p class="col-12 mb-2"><%= safe_join(comment.text.split("\r"),tag(:br)) %></p>
+                <p class="col-4 text-right px-0"><%= comment.user.name %></p>
+                <p class="col-6 text-right px-0" style="font-size:0.7rem; padding-top:2px;">
+                  <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+                </p>
+                <div class="good_buttons_<%= comment.id %> col-2 text-right px-0">
                   <%= render partial: 'public/goods/good', locals: { post: @post, comment: comment } %>
                 </div>
                 <p class="col-12 text-right" style="font-size:0.7rem">
@@ -128,7 +140,7 @@
           <% end %>
         </div>
 
-        <div class="col-11 mx-auto mb-3">
+        <div class="col-sm-11 col-12 mx-auto mb-3">
           <p class="my-3">
             コメントを投稿
           </p>
@@ -137,7 +149,7 @@
             <%= form_with model: @new_comment, url: post_comments_path(@post.id), method: :post do |f| %>
               <div class="input-group-sm">
                 <%= f.text_area :text, class: "form-control mb-2" %>
-                <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-secondary mb-2 px-3" %>
+                <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-main col-12" %>
               </div>
             <% end %>
           <% end %>

@@ -1,17 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-10 mx-auto bg-light my-5 pt-5"
-    style="max-width: 500px;">
+<div class="container-fluid public px-0">
+  <div class="row mx-auto" style="max-width:600px">
+    <div class="input-container-edit col-sm-10 col-11 mx-auto my-5 py-4">
+      <h5 class="my-4 text-center">投稿を編集</h5>
 
-      <h5 class="mb-4 text-center">投稿を編集</h5>
-
-      <div class="row selected-section mb-3">
-        <p class="col-5 station-name text-center">
-          <%= @post.start_station_name %>　駅
-        </p>
-        <p class="col-2 text-center">↔</p>
-        <p class="col-5 station-name text-center">
-          <%= @post.end_station_name %>　駅
+      <div class="row selected-section-edit py-4">
+        <p class="col-12 station-name text-center">
+          <%= @post.start_station_name %>駅
+          <span class="mx-2">↔</span>
+          <%= @post.end_station_name %>駅
         </p>
         <p class="col-12 line-name text-center">
           <%= @post.line_name %>
@@ -28,12 +24,12 @@
           </div>
 
           <div class="row input-group-sm mb-3">
-            <%= f.label :post_images, '画像の追加／削除', class: "label-control col-12" %>
-            <%= f.label :post_images, '新しい画像', class: "label-control col-12" %>
-            <%= f.file_field :post_images, multiple: true, accept: "image/*", class: "file-control col-12" %>
+            <%= f.label :post_images, '画像の追加／削除', class: "label-sm col-12 mb-3" %>
+            <%= f.label :post_images, '新しい画像', class: "label-sm col-12" %>
+            <%= f.file_field :post_images, multiple: true, accept: "image/*", class: "file-sm col-12" %>
 
-            <label class="label-control my-3 col-12">登録済みの画像</label>
-            <div class="post-contents col-12">
+            <label class="label-sm my-3 col-12">登録済みの画像</label>
+            <div class="post-contents col-12 mb-3">
               <% if @post.post_images.attached? %>
                 <% @post.post_images.each do |image| %>
                   <div class="image-list">
@@ -53,23 +49,25 @@
           </div>
 
           <div class="row input-group-sm mb-3">
-            <%= f.label :body, '投稿者コメント', class: "label-control col-12" %>
+            <%= f.label :body, '投稿者コメント', class: "label-sm col-12" %>
             <%= f.text_area :body, class: "form-control col-12" %>
           </div>
 
           <div class="row input-group-sm mb-3">
-            <%= f.label :time_zone, 'おすすめ時間帯', class: "label-control col-12" %>
+            <%= f.label :time_zone, 'おすすめ時間帯', class: "label-sm col-12" %>
             <%= f.text_area :time_zone, class: "form-control col-12" %>
           </div>
 
           <div class="row input-group-sm mb-4">
-            <%= f.label :spot, '近くのおすすめスポット', class: "label-control col-12" %>
+            <%= f.label :spot, '近くのおすすめスポット', class: "label-sm col-12" %>
             <%= f.text_area :spot, class: "form-control col-12" %>
           </div>
 
           <div class="row input-group-sm mb-5">
-            <%= link_to '変更せずもどる', post_path(@post.id), class: "btn btn-sm btn-secondary px-4 mr-3" %>
-            <%= f.submit '変更を保存', class: "btn btn-sm btn-success px-4 mr-3" %>
+            <%= f.submit '変更を保存',
+            class: "btn btn-sm btn-accent mb-3 col-12" %>
+            <%= link_to '変更せずもどる', post_path(@post.id),
+            class: "btn btn-sm btn-back col-12" %>
           </div>
         <% end %>
       </div>
@@ -81,8 +79,11 @@
 
         <div class="col-11 mx-auto mb-3 text-right">
           <p class="message pr-1">
-            <%= link_to 'この投稿を削除', post_path(@post.id), method: :delete,
-            data: {confirm: "削除した投稿は元に戻せません。本当にこの投稿を削除しますか？"} %>
+            <%= link_to post_path(@post.id), method: :delete,
+            data: {confirm: "削除した投稿は元に戻せません。本当にこの投稿を削除しますか？"} do %>
+             <i class="fas fa-trash-alt"></i>
+             この投稿を削除
+            <% end %>
           </p>
         </div>
       </div>
