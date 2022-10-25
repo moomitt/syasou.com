@@ -91,7 +91,7 @@ class Public::PostsController < ApplicationController
       .or(Post.where(end_station_prefecture: 8..14))
     end
     if params[:id] == "4"
-      @area_name = "中部（中央・北陸・東海）"
+      @area_name = "中央・北陸・東海"
       ids = [15, 16, 17, 18, 19, 20, 21, 22, 23]
       @prefectures = Prefecture.find(ids)
       @all_posts = Post.where(start_station_prefecture: 15..23)
