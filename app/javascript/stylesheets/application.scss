@@ -70,14 +70,31 @@ p {
 .input-container {
   max-width: 500px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 20px;
+}
+
+.input-container-edit {
+  max-width: 500px;
+  background-color: #fafbfa;
+  border-radius: 20px;
+  p {
+    font-size: 0.9rem;
+  }
+  a {
+    font-weight: bold;
+  }
+  .edit-icon {
+    background-color: #ededed;
+    padding: 20px;
+    border-radius: 10px;
+  }
 }
 
 .input-container-accent {
   max-width: 500px;
   width: 89%;
   background-color: #faf6f6;
-  border-radius: 10px;
+  border-radius: 20px;
   p {
     font-size: 0.9rem;
   }
@@ -321,5 +338,14 @@ p {
 
 .btn-accent:hover{
   background-color: #ceaaaa;
+  color: #fff;
+}
+
+.btn-back{
+  background-color: #d3d3d3;
+}
+
+.btn-back:hover{
+  background-color: #c8c8c8;
   color: #fff;
 }

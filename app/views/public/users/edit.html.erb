@@ -1,12 +1,10 @@
 <div class="container-fluid public">
   <div class="row">
-    <div class="col-12 mx-auto text-center">
-      <h4 class="heading my-5">
+    <div class="input-container-edit col-md-10 col-10 mx-auto my-5">
+      <h4 class="heading my-5 text-center">
         マイページ
       </h4>
-    </div>
 
-    <div class="col-10 mx-auto bg-light pt-4" style="max-width: 500px;">
       <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
         <div class="row my-4">
           <h5 class="col-10 mx-auto">ユーザ情報を変更</p>
@@ -23,28 +21,30 @@
           <% end %>
         </div>
 
-        <div class="row input-group-sm my-4">
+        <div class="row input-group-sm mt-4 mb-5">
           <label class="label-control col-10 mx-auto px-0">ユーザアイコン</label>
 
-          <label class="label-control col-10 mx-auto px-0">登録中の画像</label>
-          <div class="col-10 mx-auto mb-4">
-            <% if @user.user_image.attached? %>
-              <%= link_to user_image_destroy_path, method: :delete,
-              data: { confirm: "本当に画像を削除しますか？" }, class: "image-box" do %>
-                <p class="message text-right">
-                  削除
-                  <i class="fas fa-times-circle"></i>
-                </p>
-                <%= image_tag @user.user_image.variant(resize_to_fill: [130, 130]).processed %>
+          <div class="edit-icon col-10 mx-auto">
+            <label class="label-control mb-0">登録中の画像</label>
+            <div class="mb-4 ml-2">
+              <% if @user.user_image.attached? %>
+                <%= link_to user_image_destroy_path, method: :delete,
+                data: { confirm: "本当に画像を削除しますか？" }, class: "image-box" do %>
+                  <p class="message text-right">
+                    削除
+                    <i class="fas fa-times-circle"></i>
+                  </p>
+                  <%= image_tag @user.user_image.variant(resize_to_fill: [130, 130]).processed %>
+                <% end %>
+              <% else %>
+                <p class="message">登録されていません</p>
               <% end %>
-            <% else %>
-              <p class="message">登録されていません</p>
-            <% end %>
+            </div>
+            <label class="label-control">画像を変更</label>
+            <%= f.file_field :user_image, accept: "image/*",
+            class: "file-control ml-2"  %>
           </div>
 
-          <label class="label-control col-10 mx-auto px-0">新しい画像を登録</label>
-          <%= f.file_field :user_image, accept: "image/*",
-          class: "file-control col-10 px-0 mx-auto"  %>
         </div>
 
         <div class="row input-group-sm my-4">
@@ -60,21 +60,18 @@
         </div>
 
         <div class="row my-5">
-          <%= f.submit "変更を保存", class: "btn btn-sm btn-success col-10 mx-auto mb-3"  %>
+          <%= f.submit "変更を保存", class: "btn btn-sm btn-accent col-10 mx-auto mb-3"  %>
           <%= link_to "キャンセル", users_mypage_path,
-          class: "btn btn-sm btn-secondary col-10 mx-auto"  %>
+          class: "btn btn-sm btn-back col-10 mx-auto"  %>
         </div>
       <% end %>
-    </div>
-  </div>
 
-  <div class-"row">
-    <div class="col-10 mx-auto" style="max-width: 500px;">
-      <p class="my-5">
-        退会をご希望の方は
-        <%= link_to 'こちら', users_confirm_path %>
-      </p>
+      <div class="row my-5">
+        <div class="col-10 mx-auto text-center">
+          <p>退会をご希望の方は<%= link_to ' こちら', users_confirm_path %></p>
+        </div>
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>
