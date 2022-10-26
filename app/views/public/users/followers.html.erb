@@ -1,0 +1,39 @@
+<div class="container-fluid public">
+  <div class="row mx-auto" style="max-width:800px">
+    <div class="map-container col-sm-10 col-12 mx-auto mt-5">
+      <h4 class="mt-5 mb-3 text-center">
+        フォロワー
+      </h4>
+
+      <div class="row pt-0 mt-0 my-3">
+        <div class="col-12 text-center my-3">
+          <%= link_to 'マイページに戻る', users_mypage_path, class: "ml-3" %>
+        </div>
+
+        <div class="col-10 mx-auto mb-5 px-0">
+          <% if @all_users.present? %>
+            <% @all_users.each do |user| %>
+              <div class="row my-4 mx-auto d-flex align-items-center">
+                <%= link_to search_user_path(user.id), class: "col-md-7 col-sm-8 col-12 px-0" do %>
+                  <% if user.user_image.attached? %>
+                    <%= image_tag user.user_image.variant(resize_to_fill: [50, 50]).processed,
+                    class: "rounded-circle mr-3" %>
+                  <% else %>
+                    <%= image_tag 'user', class: "rounded-circle mr-3", size: "50x50" %>
+                  <% end %>
+                  <p class="d-inline-block mb-0 px-0"><%= user.name %></p>
+                <% end %>
+                <div class="follow_buttons_<%= user.id %> col-md-5 col-sm-4 col-10 px-0 text-center">
+                  <%= render partial: 'public/follows/follow', locals: { user: user } %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-center">フォロワーがいません</p>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

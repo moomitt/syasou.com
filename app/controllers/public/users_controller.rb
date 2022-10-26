@@ -1,6 +1,18 @@
 class Public::UsersController < ApplicationController
   def show
     @user = current_user
+    @followings = @user.followings
+    @followers = @user.followers
+  end
+
+  def followings
+    @user = current_user
+    @all_users = @user.followings
+  end
+
+  def followers
+    @user = current_user
+    @all_users = @user.followers
   end
 
   def edit

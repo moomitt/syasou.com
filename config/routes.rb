@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     get 'users/mypage' => 'users#show'
     get 'users/posts' => 'users#posts'
     get 'users/bookmarks' => 'users#bookmarks'
+    get 'users/followings' => 'users#followings'
+    get 'users/followers' => 'users#followers'
     get 'users/information/edit' => 'users#edit'
     patch 'users/information' => 'users#update'
     get 'users/confirm'

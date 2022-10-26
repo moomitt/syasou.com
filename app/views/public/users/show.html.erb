@@ -37,6 +37,16 @@
             お気に入り一覧を見る
           <% end %>
         </p>
+        <p class="col-10 mx-auto my-3">
+          <%= link_to users_followings_path do %>
+            フォロー（<%= @followings.count %>）
+          <% end %>
+        </p>
+        <p class="col-10 mx-auto my-3">
+          <%= link_to users_followers_path do %>
+            フォロワー（<%= @followers.count %>）
+          <% end %>
+        </p>
       </div>
 
       <div class="row mt-5 mb-4 text-center">
