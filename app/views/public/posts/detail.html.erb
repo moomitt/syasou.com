@@ -1,26 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="col-10 mx-auto">
-      <h4 class="mt-5 mb-4">新しい投稿</h4>
+<div class="container-fluid public px-0">
+  <div class="row mx-auto" style="max-width:600px">
+    <div class="input-container-edit col-sm-10 col-11 mx-auto my-5 pb-3">
+      <h5 class="mt-4 text-center">新しい投稿</h5>
 
-      <div class="row selected-section">
-        <p class="col-12">選択中の区間</p>
-        <p class="col-3 station-name text-center">
-          <span id="startStationName"></span>　駅
+      <div class="row selected-section-edit py-4">
+        <p class="col-11 station-name text-center mx-auto">
+          <span id="startStationName"></span>
+          <span class="ml-3">駅</span>
+          <span class="mx-2">↔</span>
+          <span id="endStationName"></span>
+          <span class="ml-3">駅</span>
         </p>
-        <p class="col-1 text-center">↔</p>
-        <p class="col-3 station-name text-center">
-          <span id="endStationName"></span>  駅
-        </p>
-        <p class="col-3 line-name text-center">
+        <p class="col-11 line-name text-center mb-3 mx-auto">
           <span id="LineName"></span>
         </p>
+        <div id="map" style="height:300px; width:100%;" class="col-11 mx-auto"></div>
+        <%= link_to '区間選択に戻る', new_post_path,
+          class: "btn btn-sm btn-back col-11 mx-auto my-3" %>
       </div>
 
-      <div id="map" style="height:300px; width:400px; margin: 30px 0;"></div>
-
-      <div class="my-4">
-        <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+        <%= form_with model: @post, url: posts_path, method: :post, class: "row" do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :start_station, :id => "startStationCord" %>
           <%= f.hidden_field :end_station, :id => "endStationCord" %>
@@ -32,34 +31,36 @@
           <%= f.hidden_field :end_station_prefecture, :id => "endStationPrefecture" %>
           <%= f.hidden_field :latitude, :id => "startStationLatitude" %>
           <%= f.hidden_field :longitude, :id => "startStationLongitude" %>
-          
-          <div class="imput-group-sm mb-3">
-            <%= f.label :post_images, '画像を登録', class: "label-control col-12" %>
+
+          <div class="imput-group-sm mb-3 col-11 mx-auto">
+            <%= f.label :post_images, '画像を登録', class: "label-sm col-12" %>
             <%= f.file_field :post_images, multiple: true, accept: "image/*",
-            class: "file-control col-12" %>
+            class: "file-sm col-12" %>
           </div>
 
-          <div class="imput-group-sm mb-3">
-            <%= f.label :body, '投稿者コメント', class: "label-control" %>
+          <div class="imput-group-sm mb-3 col-11 mx-auto">
+            <%= f.label :body, '投稿者コメント', class: "label-sm" %>
             <%= f.text_area :body, class: "form-control" %>
           </div>
 
-          <div class="imput-group-sm mb-3">
-            <%= f.label :time_zone, 'おすすめ時間帯', class: "label-control" %>
+          <div class="imput-group-sm mb-3 col-11 mx-auto">
+            <%= f.label :time_zone, 'おすすめ時間帯', class: "label-sm" %>
             <%= f.text_area :time_zone, class: "form-control" %>
           </div>
 
-          <div class="imput-group-sm mb-3">
-            <%= f.label :spot, '近くのおすすめスポット', class: "label-control" %>
+          <div class="imput-group-sm mb-3 col-11 mx-auto">
+            <%= f.label :spot, '近くのおすすめスポット', class: "label-sm" %>
             <%= f.text_area :spot, class: "form-control" %>
           </div>
 
-          <%= f.submit 'この内容で登録', class: "btn btn-sm btn-success mr-3 px-4" %>
-          <%= link_to '区間選択にもどる', new_post_path,
-          class: "btn btn-sm btn-secondary px-4" %>
+          <div class="imput-group-sm mb-3 col-11 mx-auto">
+            <%= f.submit 'この内容で登録',
+            class: "btn btn-sm btn-accent my-3", :style => "width:100%" %>
+            <%= link_to '登録をやめる', new_post_path,
+            class: "btn btn-sm btn-back", :style => "width:100%" %>
+          </div>
         <% end %>
 
-      </div>
 
 
     </div>

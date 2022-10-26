@@ -37,12 +37,12 @@
                   <%= image_tag @user.user_image.variant(resize_to_fill: [130, 130]).processed %>
                 <% end %>
               <% else %>
-                <p class="message">登録されていません</p>
+                <p class="message mt-3">登録されていません</p>
               <% end %>
             </div>
-            <label class="label-control">画像を変更</label>
+            <label class="label-control">画像を変更</label></br>
             <%= f.file_field :user_image, accept: "image/*",
-            class: "file-control ml-2"  %>
+            class: "file-sm ml-2"  %>
           </div>
 
         </div>

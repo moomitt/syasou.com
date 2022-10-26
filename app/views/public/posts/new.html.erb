@@ -1,18 +1,18 @@
-<div class="container">
-  <div class="row">
-    <div class="col-10 mx-auto">
-      <h4 class="mt-5 mb-4">新しい投稿</h4>
+<div class="container-fluid public">
+  <div class="row mx-auto" style="max-width:1000px">
+    <div class="map-container col-md-10 col-12 mx-auto my-5 pb-3 text-center">
+      <h5 class="mt-4 text-center">新しい投稿</h5>
 
-      <div class="row selected-section">
-        <p class="col-12">選択中の区間</p>
-        <p class="col-3 station-name text-center">
+      <div class="row selected-section col-sm-10 col-12 text-center mx-auto px-4">
+        <p class="col-12">投稿する区間を選択してください</p>
+        <p class="col-md-5 col-12 station-name-select text-right px-3 py-1 my-1 mx-auto">
           <span id="startStationName"></span>　駅
         </p>
-        <p class="col-1 text-center">↔</p>
-        <p class="col-3 station-name text-center">
-          <span id="endStationName"></span>  駅
+        <p class="col-md-2 col-1 text-center py-1 my-1 mx-auto">↔</p>
+        <p class="col-md-5 col-11 station-name-select text-right px-3 py-1 my-1 mx-auto">
+          <span id="endStationName"></span>　駅
         </p>
-        <p class="col-3 line-name text-center">
+        <p class="col-12 line-name">
           <span id="LineName"></span>
         </p>
       </div>
@@ -26,12 +26,12 @@
           <%= f.hidden_field :end_station, :id => "endStationCord" %>
           <%= f.hidden_field :end_station_prefecture, :id => "endStationPrefecture" %>
           <%= f.hidden_field :line_code, :id => "LineCord" %>
-          <%= f.submit 'この区間で登録', class: "btn btn-sm btn-success px-4 my-3" %>
+          <%= f.submit '登録画面へ進む', class: "btn btn-sm btn-accent px-4 my-3" %>
         <% end %>
       </div>
-      <button id="resetButton" class="btn btn-sm btn-secondary px-4 my-3">選択を解除</button>
+      <button id="resetButton" class="btn btn-sm btn-back px-4 my-3">選択を解除</button>
 
-      <div id="map" style="height:650px; width:100%;"></div>
+      <div id="map" style="height: 650px; max-height: calc(100vh - 300px); width:100%;"></div>
     </div>
   </div>
 </div>

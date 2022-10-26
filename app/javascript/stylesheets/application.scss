@@ -130,6 +130,9 @@ textarea.form-control {
 .station-name {
   font-weight: bold;
   font-size: 1rem;
+  span {
+    font-size: 1rem;
+  }
 }
 
 .line-name {
@@ -346,7 +349,12 @@ textarea.form-control {
   }
 }
 
-//indexページ
+//newページ
+
+.station-name-select {
+  background-color: #faf6f6;
+  font-weight: bold;
+}
 
 
 //ボタン
