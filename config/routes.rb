@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     get 'users/confirm'
     patch 'users/withdraw'
     delete 'users/user_image_destroy' => 'users#image_destroy', as: 'user_image_destroy'
+    resources :users do
+      resource :follows, only: [:create, :destroy]
+    end
 
     post 'posts/detail'
     get 'posts/user/:id' => 'posts#search_user', as: 'search_user'

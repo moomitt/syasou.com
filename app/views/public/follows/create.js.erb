@@ -1,0 +1,2 @@
+$('.follow_buttons_<%= @user.id %>')
+.html("<%= j(render partial: 'public/follows/follow', locals: { user: @user }) %>");
