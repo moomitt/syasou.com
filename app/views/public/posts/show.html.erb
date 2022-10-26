@@ -48,13 +48,15 @@
         <% end %>
 
         <div class="col-sm-11 col-12 mx-auto mb-3 pr-5">
-          <% if @user.user_image.attached? %>
-            <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
-            class: "rounded-circle mx-2" %>
-          <% else %>
-            <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+          <%= link_to search_user_path(@user.id) do %>
+            <% if @user.user_image.attached? %>
+              <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
+              class: "rounded-circle mx-2" %>
+            <% else %>
+              <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+            <% end %>
+            <%= @user.name %>
           <% end %>
-          <%= @user.name %>
         </div>
 
         <div class="col-sm-11 col-12 mx-auto mb-3">

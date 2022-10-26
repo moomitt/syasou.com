@@ -70,6 +70,11 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def search_user
+    @user = User.find(params[:id])
+    @all_posts = Post.where(user_id: @user.id)
+  end
+
   def search_area
     if params[:id] == "1"
       @area_name = "北海道"
