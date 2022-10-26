@@ -26,6 +26,19 @@
         <p class="col-10 mx-auto"><%= @user.email %></p>
       </div>
 
+      <div class="row my-4 text-center">
+        <p class="col-10 mx-auto my-3">
+          <%= link_to users_posts_path do %>
+            あなたの投稿一覧を見る
+          <% end %>
+        </p>
+        <p class="col-10 mx-auto my-3">
+          <%= link_to users_bookmarks_path do %>
+            お気に入り一覧を見る
+          <% end %>
+        </p>
+      </div>
+
       <div class="row mt-5 mb-4 text-center">
         <p class="col-10 mx-auto text-right">
           <%= link_to users_information_edit_path do %>

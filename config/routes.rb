@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
 
     get 'users/mypage' => 'users#show'
+    get 'users/posts' => 'users#posts'
+    get 'users/bookmarks' => 'users#bookmarks'
     get 'users/information/edit' => 'users#edit'
     patch 'users/information' => 'users#update'
     get 'users/confirm'
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
     delete 'users/user_image_destroy' => 'users#image_destroy', as: 'user_image_destroy'
 
     post 'posts/detail'
+    get 'posts/user/:id' => 'posts#user', as: 'search_user'
     get 'posts/search_area/:id' => 'posts#search_area', as: 'search_area'
     get 'posts/search_prefecture/:id' => 'posts#search_prefecture', as: 'search_prefecture'
     resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do

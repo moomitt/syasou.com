@@ -32,6 +32,16 @@ class Public::UsersController < ApplicationController
   def withdraw
   end
 
+  def posts
+    @user = current_user
+    @all_posts = Post.where(user_id: @user.id)
+  end
+
+  def bookmarks
+    @user = current_user
+    @all_bookmarks = Bookmark.where(user_id: @user.id)
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :user_image)
