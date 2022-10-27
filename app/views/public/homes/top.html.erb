@@ -3,7 +3,7 @@
 
     <div class="col-12 top-image pt-5">
       <div class="frame">
-        <div class="swiper-container">
+        <div class="swiper-container slider1">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="slide-img slide1"></div>
@@ -79,8 +79,70 @@
           </div>
         </div>
       </div>
-
     </div>
+
+    <div class="col-md-10 col-12 mx-auto mt-5" style="max-width: 1000px;">
+      <h3 class="text-center">New Posts</h3>
+    </div>
+
+    <div class="col-md-10 col-12 popular-post mx-auto mt-4 mb-5" style="max-width: 1000px;">
+        <div class="swiper-container slider2">
+          <div class="swiper-wrapper">
+            <% @new_posts.each do |post| %>
+              <div class="swiper-slide post-card mx-3 text-center">
+                <%= link_to post_path(post.id), class: "" do %>
+                  <div class="">
+                    <p class="body">
+                      <%= safe_join(post.body.split("\r"),tag(:br)) %>
+                    </p>
+                    <p class="caption">
+                      <% start_station_prefecture = Prefecture.find(post.start_station_prefecture) %>
+                      <span><%= start_station_prefecture.name %></span>
+                      <% if post.start_station_prefecture != post.end_station_prefecture %>
+                        <% end_station_prefecture = Prefecture.find(post.end_station_prefecture) %>
+                        <span><%= end_station_prefecture.name %></span>
+                      <% end %>
+                      <%= post.line_name %>
+                    </p>
+                    <p class="section">
+                      <%= post.start_station_name %>駅
+                      －
+                      <%= post.end_station_name %>駅
+                    </p>
+                    <div class="post-image">
+                      <% if post.post_images.attached? %>
+                        <% if post.post_images.length == 1 %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 160]).processed %>
+                        <% elsif post.post_images.length == 2 %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [120, 160]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [120, 160]).processed %>
+                        <% elsif post.post_images.length == 3 %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 80]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
+                        <% else %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[3].variant(resize_to_fill: [119, 80]).processed %>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag 'no_image', size: "240x160" %>
+                      <% end %>
+                    </div>
+                    <div class="bookmark_buttons_<%= post.id %> text-right px-0 star">
+                      <%= render partial: 'public/bookmarks/bookmark', locals: { post: post} %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
 
   </div>
 </div>
