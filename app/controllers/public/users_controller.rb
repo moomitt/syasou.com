@@ -46,7 +46,9 @@ class Public::UsersController < ApplicationController
 
   def posts
     @user = current_user
-    @all_posts = Post.where(user_id: @user.id)
+    all_posts = Post.where(user_id: @user.id)
+    @popular_posts = all_posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+    @new_posts = all_posts.order('id desc')
   end
 
   def bookmarks
