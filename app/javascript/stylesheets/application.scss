@@ -16,7 +16,7 @@ body {
 }
 
 header{
-  height: 65px;
+  min-height: 65px;
 }
 
 footer {
@@ -29,6 +29,11 @@ footer {
 }
 
 .container-fluid.public {
+  background-color: #e9e5e6;
+  min-height: calc(100vh - 115px);
+}
+
+.container-fluid.admin {
   background-color: #e9e5e6;
   min-height: calc(100vh - 115px);
 }
