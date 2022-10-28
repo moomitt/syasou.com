@@ -69,7 +69,7 @@
         <div class="col-lg-7 col-md-6 col-12 top-caption-image"></div>
       </div>
 
-      <div class="row top-caption-sub">
+      <div class="row top-caption-sub mb-5">
         <div class="col-sm-10 col-11 top-caption-comment py-5">
           <div class="row">
             <p class="col-10 mx-auto py-4">そんな経験がありませんか？</p>
@@ -81,15 +81,16 @@
       </div>
     </div>
 
-    <div class="col-md-10 col-12 mx-auto mt-5" style="max-width: 1000px;">
-      <h3 class="text-center">New Posts</h3>
+    <div class="top-heading col-md-10 col-12 mx-auto mt-5">
+      <h2 class="text-center">Popular Posts</h2>
+      <h6 class="text-center mt-3">人気の投稿</h6>
     </div>
 
-    <div class="col-md-10 col-12 popular-post mx-auto mt-4 mb-5" style="max-width: 1000px;">
+    <div class="swiper-container-cover slider-cover2 col-12 mx-auto mb-3 px-0">
         <div class="swiper-container slider2">
           <div class="swiper-wrapper">
-            <% @new_posts.each do |post| %>
-              <div class="swiper-slide post-card mx-3 text-center">
+            <% @popular_posts.each do |post| %>
+              <div class="swiper-slide post-card text-center">
                 <%= link_to post_path(post.id), class: "" do %>
                   <div class="">
                     <p class="body">
@@ -143,6 +144,94 @@
           <div class="swiper-button-next"></div>
         </div>
       </div>
+
+    <div class="col-12 text-center">
+      <%= link_to '他の投稿をさがす', posts_path,
+      class: "px-5 mb-3 btn btn-accent posts-button" %>
+    </div>
+
+    <div class="top-heading col-md-10 col-12 mx-auto mt-5">
+      <h2 class="text-center">New Posts</h2>
+      <h6 class="text-center mt-3">新着</h6>
+    </div>
+
+    <div class="swiper-container-cover slider-cover3 col-12 mx-auto mb-3 px-0">
+        <div class="swiper-container slider3">
+          <div class="swiper-wrapper">
+            <% @new_posts.each do |post| %>
+              <div class="swiper-slide post-card text-center">
+                <%= link_to post_path(post.id), class: "" do %>
+                  <div class="">
+                    <p class="body">
+                      <%= safe_join(post.body.split("\r"),tag(:br)) %>
+                    </p>
+                    <p class="caption">
+                      <% start_station_prefecture = Prefecture.find(post.start_station_prefecture) %>
+                      <span><%= start_station_prefecture.name %></span>
+                      <% if post.start_station_prefecture != post.end_station_prefecture %>
+                        <% end_station_prefecture = Prefecture.find(post.end_station_prefecture) %>
+                        <span><%= end_station_prefecture.name %></span>
+                      <% end %>
+                      <%= post.line_name %>
+                    </p>
+                    <p class="section">
+                      <%= post.start_station_name %>駅
+                      －
+                      <%= post.end_station_name %>駅
+                    </p>
+                    <div class="post-image">
+                      <% if post.post_images.attached? %>
+                        <% if post.post_images.length == 1 %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 160]).processed %>
+                        <% elsif post.post_images.length == 2 %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [120, 160]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [120, 160]).processed %>
+                        <% elsif post.post_images.length == 3 %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 80]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
+                        <% else %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[3].variant(resize_to_fill: [119, 80]).processed %>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag 'no_image', size: "240x160" %>
+                      <% end %>
+                    </div>
+                    <div class="bookmark_buttons_<%= post.id %> text-right px-0 star">
+                      <%= render partial: 'public/bookmarks/bookmark', locals: { post: post} %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+
+    <div class="col-12 text-center">
+      <%= link_to '他の投稿をさがす', posts_path,
+      class: "px-5 mb-3 btn btn-accent posts-button" %>
+    </div>
+
+    <div class="top-heading your-post col-12 mt-5 pt-5">
+      <h2 class="text-center">Your Post</h2>
+      <h6 class="text-center mt-3">あなたの車窓を投稿しましょう</h6>
+
+      <div class="col-lg-4 mx-auto text-center my-5">
+        <%= link_to '投稿画面へ', new_post_path,
+        class: "col-12 mb-3 btn btn-main posts-button" %>
+        <%= link_to '過去の投稿はこちら', users_posts_path,
+        class: "col-12 mb-3 btn btn-light posts-button" %>
+      </div>
+    </div>
+
+
 
   </div>
 </div>

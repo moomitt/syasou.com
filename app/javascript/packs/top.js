@@ -10,15 +10,15 @@ $(function(){
 		spaceBetween: 30,       //何ピクセル画像の間隔をあけるか
 		loop: true,             //最後の画像までいったらループする
 	});
+});
 
+$(function(){
 	var mySwiper2 = new Swiper ('.slider2', {
 	  effect: 'slide',
-	  autoWidth: false,
-		slidesPerView: 3,       //画像を何枚表示するか
-		slidesPerGroup: 3,
-		spaceBetween: 10,       //何ピクセル画像の間隔をあけるか
-		centeredSlides : false,  //見切らせたい場合メイン画像をセンターにもってくるか,
-		loop: true,             //最後の画像までいったらループする
+	  spaceBetween: 30,
+		slidesPerView: 1,
+		slidesPerGroup: 1,
+		loop: true,
 		pagination: {
 		 el: '.swiper-pagination',
 		 type: 'bullets',
@@ -27,6 +27,49 @@ $(function(){
 		navigation: {
 		 nextEl: '.swiper-button-next',
 		 prevEl: '.swiper-button-prev',
-		}
+		},
+		breakpoints: {
+      768: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+      	centeredSlides : false,
+      },
+      1080: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        centeredSlides : false,
+      }
+    }
+	});
+});
+
+$(function(){
+	var mySwiper3 = new Swiper ('.slider3', {
+	  effect: 'slide',
+	  spaceBetween: 30,
+		slidesPerView: 1,
+		slidesPerGroup: 1,
+		loop: true,
+		pagination: {
+		 el: '.swiper-pagination',
+		 type: 'bullets',
+		 clickable: true,
+		},
+		navigation: {
+		 nextEl: '.swiper-button-next',
+		 prevEl: '.swiper-button-prev',
+		},
+		breakpoints: {
+      768: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+      	centeredSlides : false,
+      },
+      1080: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        centeredSlides : false,
+      }
+    }
 	});
 });

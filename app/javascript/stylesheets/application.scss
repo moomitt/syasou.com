@@ -405,9 +405,8 @@ textarea.form-control {
   background-color: #fffdf9;
   padding: 40px 20px 10px 20px;
   margin: 20px auto;
-  height: 430px;
-  min-width: 260px;
-  max-width: 280px;
+  height: 420px;
+  min-width: 282px;
   box-shadow: 0px 0px 15px 0 rgba(0, 0, 0, .3);
   p {
     color: black;
@@ -422,7 +421,6 @@ textarea.form-control {
   .caption {
     font-size: 0.8rem;
     height: 40px;
-    margin-bottom: 10px;
     span {
       background-color: #e4d2d8;
       padding: 3px 10px;
@@ -448,6 +446,76 @@ textarea.form-control {
   }
 }
 
+.top-heading {
+  h6 {
+    color: #4f4d4e;
+  }
+}
+.swiper-container-cover.slider-cover2,
+.swiper-container-cover.slider-cover3 {
+  max-width: 1080px;
+  position: relative;
+}
+.swiper-container.slider2,
+.swiper-container.slider3 {
+  padding: 20px 15px;
+  max-width: 950px;
+  position: relative;
+}
+
+
+@media screen and (max-width:1079px) {
+  .swiper-container-cover.slider-cover2,
+  .swiper-container-cover.slider-cover3 {
+    max-width: 760px;
+  }
+  .swiper-container.slider2,
+  .swiper-container.slider3 {
+    max-width: 630px;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .swiper-container-cover.slider-cover2,
+  .swiper-container-cover.slider-cover3 {
+    max-width: 445px;
+  }
+  .swiper-container.slider2,
+  .swiper-container.slider3 {
+    max-width: 315px;
+  }
+}
+
+.slider-cover2, .slider-cover3 {
+  .swiper-button-prev, .swiper-button-next {
+    --swiper-navigation-size: 40px;
+    --swiper-theme-color: #a9a9a9;
+    --swiper-navigation-color: #a9a9a9;
+  }
+  .swiper-button-prev {
+    left: -1px;
+  }
+  .swiper-button-next {
+    right: -1px;
+  }
+  .swiper-pagination {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+  }
+  .swiper-pagination-bullet {
+    margin: 0 3px;
+  }
+  .swiper-pagination-bullet-active {
+    margin: 0 3px;
+    --swiper-theme-color: #ffc0cb;
+    background: #ffc0cb;
+  }
+}
+
+.your-post {
+  background-color: #e9e5e6;
+}
 
 
 //newページ
