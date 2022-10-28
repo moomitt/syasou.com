@@ -19,9 +19,18 @@ header{
   height: 65px;
 }
 
+footer {
+  height: 50px;
+  background-color: #292121;
+  p {
+    font-size: 0.7rem;
+    color: #fff;
+  }
+}
+
 .container-fluid.public {
   background-color: #e9e5e6;
-  min-height: calc(100vh - 65px);
+  min-height: calc(100vh - 115px);
 }
 
 li {
