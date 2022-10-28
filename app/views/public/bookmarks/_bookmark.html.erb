@@ -9,14 +9,14 @@
   <% else %>
     <p>
       <%= link_to post_bookmarks_path(post.id), method: :post, remote: true do %>
-        <i class="fas fa-star" style=""></i>
+        <i class="fas fa-star" style="color: #a9a9a9;"></i>
         <%= post.bookmarks.count %>
       <% end %>
     </p>
   <% end %>
 <% else %>
   <p>
-    <i class="fas fa-star" style=""></i>
+    <i class="fas fa-star" style="color: #a9a9a9;"></i>
     <%= post.bookmarks.count %>
   </p>
 <% end %>

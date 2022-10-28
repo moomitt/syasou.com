@@ -2,58 +2,63 @@
   <div class="row">
 
     <div class="col-12 top-image pt-5">
-      <div class="frame">
-        <div class="swiper-container slider1">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="slide-img slide1"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="slide-img slide2"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="slide-img slide3"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="slide-img slide4"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="slide-img slide5"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="slide-img slide6"></div>
+      <div class="m-0 p-0">
+        <div class="frame">
+          <div class="swiper-container slider1">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="slide-img slide1"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-img slide2"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-img slide3"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-img slide4"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-img slide5"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-img slide6"></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
+        <div class="my-5 text-center">
+          <h4 class="px-4">
+             心ときめく「車窓」を、探しにいこう。
+          </h4>
+        </div>
 
-      <div class="my-5 text-center">
-        <h4 class="px-4">
-           心ときめく「車窓」を、探しにいこう。
-        </h4>
-      </div>
-
-      <div class="row mx-auto text-center mb-5" style="max-width: 450px;">
-        <span class="col-12 px-1 mb-3">
-          <%= link_to '投稿をさがす', posts_path,
-          class: "btn btn-light mx-1" %>
-        </span>
-        <% if user_signed_in? %>
-          <span class="col-12 px-1 mb-3">
-            <%= link_to '投稿する', posts_path,
-            class: "btn btn-accent mx-1" %>
-          </span>
-        <% else %>
-          <span class="col-6 px-1">
-            <%= link_to 'ログイン', new_user_session_path,
-            class: "btn btn-main mx-1" %>
-          </span>
-          <span class="col-6 px-1">
-            <%= link_to '新規登録', new_user_registration_path,
-            class: "btn btn-accent mx-1" %>
-          </span>
-        <% end %>
+        <div class="row mx-auto text-center mb-5" style="max-width: 450px;">
+          <% if user_signed_in? %>
+            <span class="col-12 px-1 mb-3">
+              <%= link_to '投稿をさがす', posts_path,
+              class: "btn btn-main mx-1" %>
+            </span>
+            <span class="col-12 px-1 mb-3">
+              <%= link_to '投稿する', posts_path,
+              class: "btn btn-accent mx-1" %>
+            </span>
+          <% else %>
+            <span class="col-12 px-1 mb-3">
+              <%= link_to 'さがしてみる', posts_path,
+              class: "btn btn-light mx-1" %>
+            </span>
+            <span class="col-6 px-1">
+              <%= link_to 'ログイン', new_user_session_path,
+              class: "btn btn-main mx-1" %>
+            </span>
+            <span class="col-6 px-1">
+              <%= link_to '新規登録', new_user_registration_path,
+              class: "btn btn-accent mx-1" %>
+            </span>
+          <% end %>
+        </div>
       </div>
     </div>
 
@@ -145,9 +150,9 @@
         </div>
       </div>
 
-    <div class="col-12 text-center">
+    <div class="col-lg-6 col-md-8 col-sm-5 col-10 mx-auto text-center mb-5">
       <%= link_to '他の投稿をさがす', posts_path,
-      class: "px-5 mb-3 btn btn-accent posts-button" %>
+      class: "col-12 btn btn-main posts-button" %>
     </div>
 
     <div class="top-heading col-md-10 col-12 mx-auto mt-5">
@@ -214,20 +219,20 @@
         </div>
       </div>
 
-    <div class="col-12 text-center">
+    <div class="col-lg-6 col-md-8 col-sm-5 col-10 mx-auto text-center mb-5">
       <%= link_to '他の投稿をさがす', posts_path,
-      class: "px-5 mb-3 btn btn-accent posts-button" %>
+      class: "col-12 btn btn-main posts-button" %>
     </div>
 
     <div class="top-heading your-post col-12 mt-5 pt-5">
       <h2 class="text-center">Your Post</h2>
       <h6 class="text-center mt-3">あなたの車窓を投稿しましょう</h6>
 
-      <div class="col-lg-4 mx-auto text-center my-5">
+      <div class="col-lg-6 col-md-8 col-sm-10 mx-auto text-center my-5">
         <%= link_to '投稿画面へ', new_post_path,
-        class: "col-12 mb-3 btn btn-main posts-button" %>
+        class: "col-12 mb-3 btn btn-accent" %>
         <%= link_to '過去の投稿はこちら', users_posts_path,
-        class: "col-12 mb-3 btn btn-light posts-button" %>
+        class: "col-12 mb-3 btn btn-light" %>
       </div>
     </div>
 
