@@ -11,14 +11,14 @@
     <p>
       <%= link_to post_comment_goods_path(post_id: post.id, comment_id: comment.id),
       method: :post, remote: true do %>
-        <i class="fas fa-heart" style=""></i>
+        <i class="fas fa-heart" style="color: #a9a9a9;"></i>
         <%= comment.goods.count %>
       <% end %>
     </p>
   <% end %>
 <% else %>
   <p>
-    <i class="fas fa-heart" style=""></i>
+    <i class="fas fa-heart" style="color: #a9a9a9;"></i>
     <%= comment.goods.count %>
   </p>
 <% end %>

@@ -1,0 +1,59 @@
+<% if posts.present? %>
+  <% posts.each do |post| %>
+    <div class="post-list mb-4">
+      <%= link_to admin_post_path(post.id), class: "row" do %>
+        <div class="post-text col-lg-6 col-12 mx-auto">
+          <p class="section">
+            <%= post.start_station_name %>駅
+            －
+            <%= post.end_station_name %>駅
+          </p>
+          <p class="body">
+            <%= safe_join(post.body.split("\r"),tag(:br)) %>
+          </p>
+          <p class="caption">
+            <% start_station_prefecture = Prefecture.find(post.start_station_prefecture) %>
+            <span><%= start_station_prefecture.name %></span>
+            <% if post.start_station_prefecture != post.end_station_prefecture %>
+              <% end_station_prefecture = Prefecture.find(post.end_station_prefecture) %>
+              <span><%= end_station_prefecture.name %></span>
+            <% end %>
+            <%= post.line_name %>
+          </p>
+        </div>
+
+        <div class="post-image col-lg-6 col-12 mx-auto px-0">
+          <% if post.post_images.attached? %>
+            <% if post.post_images.length == 1 %>
+              <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 160]).processed %>
+            <% elsif post.post_images.length == 2 %>
+              <%= image_tag post.post_images[0].variant(resize_to_fill: [120, 160]).processed %>
+              <%= image_tag post.post_images[1].variant(resize_to_fill: [120, 160]).processed %>
+            <% elsif post.post_images.length == 3 %>
+              <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 80]).processed %>
+              <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
+              <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
+            <% else %>
+              <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 80]).processed %>
+              <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
+              <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
+              <%= image_tag post.post_images[3].variant(resize_to_fill: [119, 80]).processed %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image', size: "240x160" %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="row bookmark-button">
+        <div class="bookmark_buttons_<%= post.id %> text-right col-12 px-0s">
+          <%= render partial: 'public/bookmarks/bookmark', locals: { post: post} %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+<% else %>
+  <p class="text-center">投稿がありません</p>
+<% end %>
