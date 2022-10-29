@@ -1,9 +1,16 @@
 <div class="container-fluid admin">
   <div class="row">
     <div class="input-container col-md-10 col-10 mx-auto my-5">
-      <h4 class="heading my-5 text-center">
+      <h4 class="heading mt-5 text-center">
         ユーザ情報
       </h4>
+      <p class="text-right mt-3 pr-4 mb-5">
+        <%= link_to admin_users_path do %>
+          ユーザ一覧へ戻る
+        <% end %>
+      </p>
+
+
       <div class="row mb-5 text-center">
         <p class="col-10 mx-auto mb-2">ユーザーアイコン</p>
         <div class="col-10 mx-auto">
@@ -17,6 +24,10 @@
       </div>
 
       <div class="row my-4 text-center">
+        <p class="col-10 mx-auto">ID : <%= @user.id %></p>
+      </div>
+
+      <div class="row my-4 text-center">
         <p class="col-10 mx-auto">ニックネーム</p>
         <p class="col-10 mx-auto"><%= @user.name %></p>
       </div>
@@ -24,6 +35,17 @@
       <div class="row my-4 text-center">
         <p class="col-10 mx-auto">メールアドレス</p>
         <p class="col-10 mx-auto"><%= @user.email %></p>
+      </div>
+
+      <div class="row my-4 text-center">
+        <p class="col-10 mx-auto">
+          ステータス：
+          <% if @user.is_deleted == true %>
+            <span class="text-secondary">退会</span>
+          <% else %>
+            <span class="text-success">有効</span>
+          <% end %>
+        </p>
       </div>
 
       <div class="row my-4 text-center">

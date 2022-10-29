@@ -48,7 +48,7 @@
         <% end %>
 
         <div class="col-sm-11 col-12 mx-auto mb-3 pr-5">
-          <%= link_to search_user_path(@user.id) do %>
+          <%= link_to admin_user_posts_path(@user.id) do %>
             <% if @user.user_image.attached? %>
               <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
               class: "rounded-circle mx-2" %>

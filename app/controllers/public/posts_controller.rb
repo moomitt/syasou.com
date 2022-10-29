@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
     @user = @post.user
     @new_comment = Comment.new
     @comments = Comment.where(post_id: @post.id)
+    session[:previous_url] = request.referer     #前ページセッションを保存
   end
 
   def edit
@@ -46,10 +47,10 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.post_images.attached?
       @post.post_images.purge_later && @post.destroy
-      redirect_to posts_path
+      redirect_to session[:previous_url]    #showページの1つ前のページにリダイレクト
     else
       @post.destroy
-      redirect_to posts_path
+      redirect_to session[:previous_url]    #showページの1つ前のページにリダイレクト
     end
   end
 

@@ -59,6 +59,16 @@
           class: "form-control col-10 mx-auto"  %>
         </div>
 
+        <div class="row input-group-sm my-4">
+          <label class="label-control col-10 mx-auto px-0">ステータス</label>
+          <div class="col-10 mx-auto px-4" style="font-size:1rem;">
+            <%= f.radio_button :is_deleted, :false, class: "form-check-input mr-5" %>
+            <%= f.label :is_deleted, '有効', value: :false, class: "form-check-label mr-5" %>
+            <%= f.radio_button :is_deleted, :true, class: "form-check-input" %>
+            <%= f.label :is_deleted, '退会', value: :true, class: "form-check-label" %>
+          </div>
+        </div>
+
         <div class="row my-5">
           <%= f.submit "変更を保存", class: "btn btn-sm btn-accent col-10 mx-auto mb-3"  %>
           <%= link_to "キャンセル", users_mypage_path,

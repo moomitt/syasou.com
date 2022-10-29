@@ -1,2 +1,44 @@
-<h1>Public::Users#confirm</h1>
-<p>Find me in app/views/public/users/confirm.html.erb</p>
+<div class="container-fluid admin">
+  <div class="row">
+    <div class="input-container col-md-10 col-11 mx-auto my-5">
+      <h4 class="heading my-5 text-center">
+        退会をご希望の方へ
+      </h4>
+      <div class="row my-4">
+        <h5 class="col-sm-10 col-11 mb-3 mx-auto text-center">
+          退会にあたっての注意事項
+        </h5>
+        <h6 class="col-sm-10 col-11 mb-5 mx-auto text-center">
+          ※必ずご確認ください
+        </h6>
+
+        <h6 class="col-sm-10 col-11 mb-3 mx-auto">
+          ① 退会後は、下記内容は実施できません。
+        </h6>
+        <p class="col-sm-10 col-11 mb-5 mx-auto">
+          ・投稿の新規作成、投稿の編集、削除</br>
+          ・投稿へのお気に入り登録</br>
+          ・ユーザーのフォロー</br>
+          ・コメント投稿、コメントへのいいね
+        </p>
+        <h6 class="col-sm-10 col-11 mb-3 mx-auto">
+          ② 退会後も、ご自身のコメント・投稿は削除されません。
+        </h6>
+        <p class="col-sm-10 col-11 mb-3 mx-auto">
+          必要に応じ、
+          <%= link_to 'マイページ', users_mypage_path %>
+          より退会前に削除をお願いいたします。
+        </p>
+
+        <%= link_to '上記内容を確認の上、退会する', users_withdraw_path, method: :patch,
+        data: { confirm: "本当に退会しても宜しいですか？" },
+        class: "btn btn-sm btn-danger col-sm-10 col-11 mt-5 mx-auto" %>
+        <%= link_to '退会せず戻る', users_mypage_path,
+        class: "btn btn-sm btn-back col-sm-10 col-11 my-4 mx-auto" %>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

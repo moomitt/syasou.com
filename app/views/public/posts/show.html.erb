@@ -48,14 +48,19 @@
         <% end %>
 
         <div class="col-sm-11 col-12 mx-auto mb-3 pr-5">
-          <%= link_to search_user_path(@user.id) do %>
-            <% if @user.user_image.attached? %>
-              <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
-              class: "rounded-circle mx-2" %>
-            <% else %>
-              <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+          <% if @user.is_deleted == false %>
+            <%= link_to search_user_path(@user.id) do %>
+              <% if @user.user_image.attached? %>
+                <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
+                class: "rounded-circle mx-2" %>
+              <% else %>
+                <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+              <% end %>
+              <%= @user.name %>
             <% end %>
-            <%= @user.name %>
+          <% else %>
+            <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+            <small>退会済みのユーザー</small>
           <% end %>
         </div>
 
@@ -101,10 +106,17 @@
 
         <div class="col-sm-11 col-12 mx-auto mb-3 text-right">
           <% if @post.user_id == current_user.id %>
-            <p class="message">
+            <p class="message mb-2">
               <%= link_to edit_post_path(@post.id) do %>
                 <i class="fas fa-edit"></i>
                 投稿内容を編集
+              <% end %>
+            </p>
+            <p class="message">
+              <%= link_to post_path(@post.id), method: :delete,
+              data: {confirm: "削除した投稿は元に戻せません。本当に削除しますか？"} do %>
+                <i class="fas fa-trash-alt"></i>
+                この投稿を削除
               <% end %>
             </p>
           <% end %>
@@ -119,7 +131,13 @@
             <% @comments.each do |comment| %>
               <div class="row comment-box mx-auto py-2">
                 <p class="col-12 mb-2"><%= safe_join(comment.text.split("\r"),tag(:br)) %></p>
-                <p class="col-4 text-right px-0"><%= comment.user.name %></p>
+                <p class="col-4 text-right px-0">
+                  <% if @user.is_deleted == false %>
+                    <%= comment.user.name %>
+                  <% else %>
+                    <small>退会済みのユーザー</small>
+                  <% end %>
+                </p>
                 <p class="col-6 text-right px-0" style="font-size:0.7rem; padding-top:2px;">
                   <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
                 </p>
@@ -127,7 +145,7 @@
                   <%= render partial: 'public/goods/good', locals: { post: @post, comment: comment } %>
                 </div>
                 <p class="col-12 text-right" style="font-size:0.7rem">
-                  <% if comment.user_id = current_user.id %>
+                  <% if comment.user_id == current_user.id %>
                     <%= link_to 'コメントを削除', post_comment_path(@post.id, comment.id), method: :delete,
                     data: {confirm: "削除したコメントは元に戻せません。本当にこのコメントを削除しますか？"} %>
                   <% end %>

@@ -42,6 +42,11 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
+    user = current_user
+    Follow.where(user_id: user.id).destroy_all
+    user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   def posts
