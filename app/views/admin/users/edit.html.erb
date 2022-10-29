@@ -1,2 +1,71 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container-fluid admin">
+  <div class="row">
+    <div class="input-container-edit col-md-10 col-10 mx-auto my-5">
+      <h4 class="heading my-5 text-center">
+        ユーザ情報
+      </h4>
+
+      <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+        <div class="row my-4">
+          <h5 class="col-10 mx-auto">ユーザ情報を変更</p>
+        </div>
+
+        <div class="row input-group-sm my-4 text-danger">
+          <% if @user.errors.any? %>
+            <p class="col-10 mx-auto px-0">登録エラー</p>
+            <ul class="col-10 mx-auto pl-4">
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+
+        <div class="row input-group-sm mt-4 mb-5">
+          <label class="label-control col-10 mx-auto px-0">ユーザアイコン</label>
+
+          <div class="edit-icon col-10 mx-auto">
+            <label class="label-control mb-0">登録中の画像</label>
+            <div class="mb-4 ml-2">
+              <% if @user.user_image.attached? %>
+                <%= link_to admin_user_image_destroy_path(@user), method: :delete,
+                data: { confirm: "本当に画像を削除しますか？" }, class: "image-box" do %>
+                  <p class="message text-right">
+                    削除
+                    <i class="fas fa-times-circle"></i>
+                  </p>
+                  <%= image_tag @user.user_image.variant(resize_to_fill: [130, 130]).processed %>
+                <% end %>
+              <% else %>
+                <p class="message mt-3">登録されていません</p>
+              <% end %>
+            </div>
+            <label class="label-control">画像を変更</label></br>
+            <%= f.file_field :user_image, accept: "image/*",
+            class: "file-sm ml-2"  %>
+          </div>
+
+        </div>
+
+        <div class="row input-group-sm my-4">
+          <label class="label-control col-10 mx-auto px-0">ニックネーム</label>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name",
+          class: "form-control col-10 mx-auto"  %>
+        </div>
+
+        <div class="row input-group-sm my-4">
+          <label class="label-control col-10 mx-auto px-0">メールアドレス</label>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",
+          class: "form-control col-10 mx-auto"  %>
+        </div>
+
+        <div class="row my-5">
+          <%= f.submit "変更を保存", class: "btn btn-sm btn-accent col-10 mx-auto mb-3"  %>
+          <%= link_to "キャンセル", users_mypage_path,
+          class: "btn btn-sm btn-back col-10 mx-auto"  %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

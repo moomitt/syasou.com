@@ -1,2 +1,59 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container-fluid admin">
+  <div class="row">
+    <div class="input-container col-md-10 col-10 mx-auto my-5">
+      <h4 class="heading my-5 text-center">
+        ユーザ情報
+      </h4>
+      <div class="row mb-5 text-center">
+        <p class="col-10 mx-auto mb-2">ユーザーアイコン</p>
+        <div class="col-10 mx-auto">
+          <% if @user.user_image.attached? %>
+            <%= image_tag @user.user_image.variant(resize_to_fill: [130, 130]).processed,
+            class: "rounded-circle" %>
+          <% else %>
+            <%= image_tag 'user', class: "rounded-circle", size: "130x130" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row my-4 text-center">
+        <p class="col-10 mx-auto">ニックネーム</p>
+        <p class="col-10 mx-auto"><%= @user.name %></p>
+      </div>
+
+      <div class="row my-4 text-center">
+        <p class="col-10 mx-auto">メールアドレス</p>
+        <p class="col-10 mx-auto"><%= @user.email %></p>
+      </div>
+
+      <div class="row my-4 text-center">
+        <p class="col-10 mx-auto my-3">
+          <%= link_to admin_user_posts_path(@user) do %>
+            投稿一覧画面へ
+          <% end %>
+        </p>
+        <p class="col-10 mx-auto my-3">
+          <%= link_to admin_user_followings_path(@user) do %>
+            フォロー（<%= @followings.count %>）
+          <% end %>
+        </p>
+        <p class="col-10 mx-auto my-3">
+          <%= link_to admin_user_followers_path(@user) do %>
+            フォロワー（<%= @followers.count %>）
+          <% end %>
+        </p>
+      </div>
+
+      <div class="row mt-5 mb-4 text-center">
+        <p class="col-10 mx-auto text-right">
+          <%= link_to edit_admin_user_path do %>
+            <i class="fas fa-edit"></i>
+            ユーザー情報を変更
+          <% end %>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>

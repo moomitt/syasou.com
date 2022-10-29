@@ -11,12 +11,18 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
+    get 'users/:id/posts' => 'users#posts', as: 'user_posts'
+    get 'users/:id/followings' => 'users#followings', as: 'user_followings'
+    get 'users/:id/followers' => 'users#followers', as: 'user_followers'
+    delete 'users/:id/user_image_destroy' => 'users#image_destroy', as: 'user_image_destroy'
     resources :users, only: [:index, :show, :edit, :update]
-    get 'users/:id/post' => 'users#post', as: 'user_post'
+
+    get 'posts/search_area/:id' => 'posts#search_area', as: 'search_area'
+    get 'posts/search_prefecture/:id' => 'posts#search_prefecture', as: 'search_prefecture'
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
-    get 'posts/search'
+
     resources :tags, only: [:index, :destroy]
   end
 
