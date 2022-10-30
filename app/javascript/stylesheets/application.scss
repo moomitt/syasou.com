@@ -132,6 +132,7 @@ textarea.form-control {
 .selected-section {
   background-color: #fff;
   padding: 10px;
+  padding-bottom: 0;
   p {
     padding: 5px 0;
   }
@@ -618,4 +619,44 @@ a.active {
 
 #map {
   z-index: 0;
+}
+
+.field_with_errors {
+  display: contents;
+  input {
+    @extend .is-invalid;
+  }
+  textarea {
+    @extend .is-invalid;
+    font-size: 0.9rem;
+  }
+}
+
+.presence-required {
+  font-size: 0.7rem;
+  background-color: #c7a2af;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.presence-optional {
+  font-size: 0.7rem;
+  background-color: #a8a8a8;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.text-danger {
+  font-size: 0.9rem;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
 }

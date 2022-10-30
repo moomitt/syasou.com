@@ -9,6 +9,7 @@ $(function(){                         // Rosen：イニシャライザ（アク�
   });
 
   /*global $*/
+
   rosen.on('selectSection', function(data) {
     rosen.clearHighlights();
     data.sections.forEach(function(section) {
@@ -31,17 +32,21 @@ $(function(){                         // Rosen：イニシャライザ（アク�
         document.getElementById('LineCord').value=line.code;
       });
     });
+
+    //駅コード・路線コードが空白でない場合のみ、登録画面へのボタンが出現
+    if( $('#startStationCord').value != "" && $('#endStationCord').value != "" && $('#lineCord').value != "" ){
+      $('#submitBtn').html('<button type="submit" class="btn btn-sm btn-accent px-4 my-3">登録画面へ進む</button>');
+    };
   });
 
-  $(function () {
-    $('#resetButton').on('click', function(){
-      rosen.clearHighlights();
-      $('#startStationName').text("");
-      $('#endStationName').text("");
-      $('#LineName').text("");
-      document.getElementById('startStationCord').value=""
-      document.getElementById('endStationCord').value=""
-      document.getElementById('LineCord').value=""
-    });
+  $('#resetButton').on('click', function(){
+    rosen.clearHighlights();
+    $('#startStationName').text("");
+    $('#endStationName').text("");
+    $('#LineName').text("");
+    document.getElementById('startStationCord').value=""
+    document.getElementById('endStationCord').value=""
+    document.getElementById('LineCord').value=""
+    $('#submitBtn').html('<button disabled class="btn btn-sm btn-accent px-4 my-3">選択されていません</button>');
   });
 });

@@ -32,25 +32,55 @@
           <%= f.hidden_field :latitude, :id => "startStationLatitude" %>
           <%= f.hidden_field :longitude, :id => "startStationLongitude" %>
 
+
           <div class="imput-group-sm mb-3 col-11 mx-auto">
-            <%= f.label :post_images, '画像を登録', class: "label-sm col-12" %>
+            <label class="label-sm col-12">
+              <span class="presence-optional">任意</span>
+              画像を登録
+            </label>
             <%= f.file_field :post_images, multiple: true, accept: "image/*",
             class: "file-sm col-12" %>
           </div>
 
-          <div class="imput-group-sm mb-3 col-11 mx-auto">
-            <%= f.label :body, '投稿者コメント', class: "label-sm" %>
-            <%= f.text_area :body, class: "form-control" %>
+          <div class="imput-group-sm mt-3 col-11 mx-auto text-danger">
+            <% if @post.errors.any? %>
+              <p class="col-12 mb-2"><strong>登録エラー</strong></p>
+              <ul class="col-12 pl-3">
+                <% @post.errors.full_messages.each do |message| %>
+                  <li>
+                    <i class="fas fa-exclamation-circle mr-1"></i>
+                    <%= message %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
 
           <div class="imput-group-sm mb-3 col-11 mx-auto">
-            <%= f.label :time_zone, 'おすすめ時間帯', class: "label-sm" %>
-            <%= f.text_area :time_zone, class: "form-control" %>
+            <label class="label-sm col-12">
+              <span class="presence-required">必須</span>
+              投稿者コメント
+              <small>（ <span id="counter-body">0</span> / 200文字）</small>
+            </label>
+            <%= f.text_area :body, class: "form-control", id: "input-body" %>
           </div>
 
           <div class="imput-group-sm mb-3 col-11 mx-auto">
-            <%= f.label :spot, '近くのおすすめスポット', class: "label-sm" %>
-            <%= f.text_area :spot, class: "form-control" %>
+            <label class="label-sm col-12">
+              <span class="presence-optional">任意</span>
+              おすすめ時間帯
+              <small>（ <span id="counter-timezone">0</span> / 200文字）</small>
+            </label>
+            <%= f.text_area :time_zone, class: "form-control", id: "input-timezone" %>
+          </div>
+
+          <div class="imput-group-sm mb-3 col-11 mx-auto">
+            <label class="label-sm col-12">
+              <span class="presence-optional">任意</span>
+              近くのおすすめスポット
+              <small>（ <span id="counter-spot">0</span> / 200文字）</small>
+            </label>
+            <%= f.text_area :spot, class: "form-control", id: "input-spot" %>
           </div>
 
           <div class="imput-group-sm mb-3 col-11 mx-auto">

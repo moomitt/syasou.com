@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :reverse_of_follows, class_name: 'Follow', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_follows, source: :user
 
+  validates :name, presence: true, length: { minimum: 2, maximum: 10 }
+
   def follow(other_user)
     unless self == other_user
       self.follows.find_or_create_by(follow_id: other_user.id)

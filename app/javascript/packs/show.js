@@ -51,4 +51,19 @@ $(function(){                         // Rosen：イニシャライザ（アク�
   $("#modal-signup").on('click',function(){
     document.getElementById("signUpBtn").click();
   });
+
+  //字数カウンター
+  let countNum = String($("#input-comment").val().length);
+  $("#counter-comment").text(countNum);
+  if (countNum > 150){
+    $("#counter-comment").css('color','red');
+  };
+  
+  $("#input-comment").on("keyup", function() {
+    countNum = String($(this).val().length);
+    $("#counter-comment").text(countNum);
+    if (countNum > 150){
+      $("#counter-comment").css('color','red');
+    };
+  });
 });

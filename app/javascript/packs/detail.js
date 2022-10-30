@@ -33,4 +33,49 @@ $(function(){                         // Rosen：イニシャライザ（アク�
       rosen.highlightSections([section.code]);
     });
   });
+
+
+  //字数カウンター
+
+  let countNum1 = String($("#input-body").val().length);
+  $("#counter-body").text(countNum1);
+  if (countNum1 > 200){
+    $("#counter-body").css('color','red');
+  };
+
+  let countNum2 = String($("#input-timezone").val().length);
+  $("#counter-timezone").text(countNum2);
+  if (countNum2 > 200){
+    $("#counter-timezone").css('color','red');
+  };
+
+  let countNum3 = String($("#input-spot").val().length);
+  $("#counter-spot").text(countNum3);
+  if (countNum3 > 200){
+    $("#counter-spot").css('color','red');
+  };
+
+  $("#input-body").on("keyup", function() {
+    countNum1 = String($(this).val().length);
+    $("#counter-body").text(countNum1);
+    if (countNum1 > 200){
+      $("#counter-body").css('color','red');
+    };
+  });
+
+  $("#input-timezone").on("keyup", function() {
+    countNum2 = String($(this).val().length);
+    $("#counter-timezone").text(countNum2);
+    if (countNum2 > 200){
+      $("#counter-timezone").css('color','red');
+    };
+  });
+
+  $("#input-spot").on("keyup", function() {
+    countNum3 = String($(this).val().length);
+    $("#counter-spot").text(countNum3);
+    if (countNum3 > 200){
+      $("#counter-spot").css('color','red');
+    };
+  });
 });

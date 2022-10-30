@@ -1,0 +1,78 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+      post:
+        body: 投稿者コメント
+        time_zone: おすすめ時間帯
+        spot: 近くのおすすめスポット
+        start_station: 区間データ
+        end_station: 区間データ
+        line: 区間データ
+        start_station_prefecture: 区間データ
+        end_station_prefecture: 区間データ
+        latitude: 区間データ
+        longitude: 区間データ
+        start_station_name: 区間データ
+        end_station_name: 区間データ
+        line_name: 区間データ
+      comment:
+        text: コメント
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: が入力されていません
+              too_short: は2～10文字で入力してください
+              too_long: は2～10文字で入力してください
+            email:
+              blank: が入力されていません
+              taken: はすでに使用されています
+            password:
+              blank: が入力されていません
+              too_short: は6文字以上で入力してください
+            password_confirmation:
+              blank: が入力されていません
+              confirmation: が一致しません
+        post:
+          attributes:
+            body:
+              blank: が入力されていません
+              too_long: が200文字を超えています
+            time_zone:
+              too_long: が200文字を超えています
+            spot:
+              too_long: が200文字を超えています
+            start_station:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            end_station:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            line:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            start_station_prefecture:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            end_station_prefecture:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            latitude:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            longitude:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            start_station_name:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            end_station_name:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+            line_name:
+              blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
+        comment:
+          attributes:
+            text:
+              blank: が入力されていません
+              too_long: が150文字を超えています
+
+
+

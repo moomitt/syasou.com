@@ -1,12 +1,14 @@
 class Public::CommentsController < ApplicationController
   def create
-    post = Post.find(params[:post_id])
-    comment = current_user.comments.new(comment_params)
-    comment.post_id = post.id
-    if comment.save
-      redirect_to post_path(post.id)
+    @post = Post.find(params[:post_id])
+    @new_comment = current_user.comments.new(comment_params)
+    @new_comment.post_id = @post.id
+    if @new_comment.save
+      redirect_to post_path(@post.id, anchor: 'comment-form')
     else
-      render template: "public/posts/show"
+      @user = @post.user
+      @comments = Comment.where(post_id: @post.id)
+      render "public/posts/show"
     end
   end
 
@@ -14,7 +16,7 @@ class Public::CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     post = Post.find(comment.post_id)
     comment.destroy
-    redirect_to post_path(post.id)
+    redirect_to post_path(post.id, anchor: 'comment-form')
   end
 
   private

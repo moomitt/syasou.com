@@ -26,7 +26,9 @@
           <%= f.hidden_field :end_station, :id => "endStationCord" %>
           <%= f.hidden_field :end_station_prefecture, :id => "endStationPrefecture" %>
           <%= f.hidden_field :line_code, :id => "LineCord" %>
-          <%= f.submit '登録画面へ進む', class: "btn btn-sm btn-accent px-4 my-3" %>
+          <div id="submitBtn" class="px-0">
+            <button disabled class="btn btn-sm btn-accent px-4 my-3">選択されていません</button>
+          </div>
         <% end %>
       </div>
       <button id="resetButton" class="btn btn-sm btn-back px-4 my-3">選択を解除</button>

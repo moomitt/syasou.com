@@ -177,15 +177,31 @@
           <% end %>
         </div>
 
-        <div class="col-sm-11 col-12 mx-auto mb-3">
+        <div class="col-sm-11 col-12 mx-auto mb-3" id="comment-form">
           <% if user_signed_in? %>
-            <p class="my-3">
+            <p class="mt-3">
               コメントを投稿
             </p>
-            <%= form_with model: @new_comment, url: post_comments_path(@post.id),
+            <%= form_with model: @new_comment,
+            url: post_comments_path(@post.id, anchor: 'comment-form'),
             method: :post do |f| %>
+              <% if @new_comment.errors.any? %>
+                <div class="input-group-sm text-danger">
+                    <ul class="col-12 mt-2 mb-0">
+                      <% @new_comment.errors.full_messages.each do |message| %>
+                        <li>
+                          <i class="fas fa-exclamation-circle mr-1"></i>
+                          <%= message %>
+                        </li>
+                      <% end %>
+                    </ul>
+                </div>
+              <% end %>
+              <p class="text-right">
+                <small>（ <span id="counter-comment">0</span> / 150文字）</small>
+              </p>
               <div class="input-group-sm">
-                <%= f.text_area :text, class: "form-control mb-2" %>
+                <%= f.text_area :text, class: "form-control mb-2", id: "input-comment" %>
                 <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-main col-12" %>
               </div>
             <% end %>
