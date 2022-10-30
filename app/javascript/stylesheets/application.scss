@@ -274,16 +274,17 @@ textarea.form-control {
 #slide{
   margin:0 auto;
 }
-
 .post-slide {
   .swiper-container{
     position: relative;
+    z-index: 0;
   }
   .swiper-container-cover{
     margin-left: auto;
     margin-right: auto;
     max-width: 650px;
     position: relative;
+    z-index: 1;
   }
   .swiper-button-prev, .swiper-button-next {
       --swiper-navigation-size: 30px;
@@ -586,4 +587,35 @@ textarea.form-control {
 
 a.active {
   color: #000;
+}
+
+//モーダルウィンドウ
+
+#modal-overlay {
+  display: none;   /* デフォルトは非表示 */
+  z-index: 2;      /* モーダルウィンドウと通常画面の間に表示 */
+  position: fixed; /* 表示を固定してスクロールで動かさない */
+  top: 0;          /* 全画面表示なので0 */
+  left: 0;         /* 全画面表示なので0 */
+  width: 100%;     /* 全画面表示なので100% */
+  height: 120%;    /* 全画面表示なので100%。スマートフォンでの表示対応する場合は120%に */
+  background-color: rgba(0,0,0,0.75); /* 背景を黒の半透明に */
+}
+
+#modal-content {
+  z-index: 2;      /* 最前面に表示 */
+  position: fixed; /* 表示位置を固定 */
+  top: 50%;        /* 画面中央に表示 */
+  left: 50%;       /* 画面中央に表示 */
+  transform: translate(-50%, -50%); /* モーダルウィンドウの大きさ分中央にずらす */
+  max-width: 400px;
+  margin: 1.5em auto 0;
+  padding: 10px 20px;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  background: #fff;
+}
+
+#map {
+  z-index: 0;
 }

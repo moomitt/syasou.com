@@ -14,6 +14,27 @@
   </head>
 
   <body class="d-flex flex-column">
+    <div id="modal-overlay"> <%# モーダルウィンドウ表示時の黒背景 %>
+      <div id="modal-content" class="container">
+        <div class="row px-0 text-center">
+          <h6 class="col-12 my-4">ご利用にはログインが必要です</h6>
+          <div class="col-12 px-0">
+            <div class="row px-0">
+              <p class="col-10 mx-auto"><small>会員登録がお済みの方</small></p>
+              <a id="modal-login" class="col-10 mb-4 mx-auto btn btn-sm btn-main">ログイン</a>
+              <p class="col-10 mx-auto"><small>会員登録がお済みでない方</small></p>
+              <a id="modal-signup" class="col-10 mb-4 mx-auto btn btn-sm btn-accent">新規登録</a>
+              <a id="modal-close" href="javascript:void(0)" class="col-12 text-center">
+                <small>閉じる</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= link_to "", new_user_session_path, id: "logInBtn" %>
+    <%= link_to "", new_user_registration_path, id: "signUpBtn" %>
+
     <div class="wrapper p-0 m-0">
       <header class="shadow">
         <nav class="navbar navbar-expand-lg navbar-light" style="flex-direction: column;">

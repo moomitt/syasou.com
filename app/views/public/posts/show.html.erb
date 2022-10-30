@@ -20,7 +20,7 @@
 
         <% if @post.post_images.attached? %>
           <% if @post.post_images.length != 1 %>
-            <div class="col-12 post-slide px-0">
+            <div class="col-md-10 col-sm-11 col-12 mx-auto post-slide px-0">
               <div class="row swiper-container-cover text-center mb-5">
                 <div class="col-12 swiper-container">
                   <ul class="swiper-wrapper">
@@ -49,14 +49,26 @@
 
         <div class="col-sm-11 col-12 mx-auto mb-3 pr-5">
           <% if @user.is_deleted == false %>
-            <%= link_to search_user_path(@user.id) do %>
-              <% if @user.user_image.attached? %>
-                <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
-                class: "rounded-circle mx-2" %>
-              <% else %>
-                <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+            <% if user_signed_in? %>
+              <%= link_to search_user_path(@user.id) do %>
+                <% if @user.user_image.attached? %>
+                  <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
+                  class: "rounded-circle mx-2" %>
+                <% else %>
+                  <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+                <% end %>
+                <%= @user.name %>
               <% end %>
-              <%= @user.name %>
+            <% else %>
+              <a href="javascript:void(0)" class="modal-open">
+                <% if @user.user_image.attached? %>
+                  <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
+                  class: "rounded-circle mx-2" %>
+                <% else %>
+                  <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
+                <% end %>
+                <%= @user.name %>
+              </a>
             <% end %>
           <% else %>
             <%= image_tag 'user', class: "rounded-circle mx-2", size: "40x40" %>
@@ -105,20 +117,22 @@
         </div>
 
         <div class="col-sm-11 col-12 mx-auto mb-3 text-right">
-          <% if @post.user_id == current_user.id %>
-            <p class="message mb-2">
-              <%= link_to edit_post_path(@post.id) do %>
-                <i class="fas fa-edit"></i>
-                投稿内容を編集
-              <% end %>
-            </p>
-            <p class="message">
-              <%= link_to post_path(@post.id), method: :delete,
-              data: {confirm: "削除した投稿は元に戻せません。本当に削除しますか？"} do %>
-                <i class="fas fa-trash-alt"></i>
-                この投稿を削除
-              <% end %>
-            </p>
+          <% if user_signed_in? %>
+            <% if @post.user_id == current_user.id %>
+              <p class="message mb-2">
+                <%= link_to edit_post_path(@post.id) do %>
+                  <i class="fas fa-edit"></i>
+                  投稿内容を編集
+                <% end %>
+              </p>
+              <p class="message">
+                <%= link_to post_path(@post.id), method: :delete,
+                data: {confirm: "削除した投稿は元に戻せません。本当に削除しますか？"} do %>
+                  <i class="fas fa-trash-alt"></i>
+                  この投稿を削除
+                <% end %>
+              </p>
+            <% end %>
           <% end %>
         </div>
 
@@ -145,9 +159,11 @@
                   <%= render partial: 'public/goods/good', locals: { post: @post, comment: comment } %>
                 </div>
                 <p class="col-12 text-right" style="font-size:0.7rem">
-                  <% if comment.user_id == current_user.id %>
-                    <%= link_to 'コメントを削除', post_comment_path(@post.id, comment.id), method: :delete,
-                    data: {confirm: "削除したコメントは元に戻せません。本当にこのコメントを削除しますか？"} %>
+                  <% if user_signed_in? %>
+                    <% if comment.user_id == current_user.id %>
+                      <%= link_to 'コメントを削除', post_comment_path(@post.id, comment.id), method: :delete,
+                      data: {confirm: "削除したコメントは元に戻せません。本当にこのコメントを削除しますか？"} %>
+                    <% end %>
                   <% end %>
                 </p>
               </div>
@@ -162,12 +178,12 @@
         </div>
 
         <div class="col-sm-11 col-12 mx-auto mb-3">
-          <p class="my-3">
-            コメントを投稿
-          </p>
-
           <% if user_signed_in? %>
-            <%= form_with model: @new_comment, url: post_comments_path(@post.id), method: :post do |f| %>
+            <p class="my-3">
+              コメントを投稿
+            </p>
+            <%= form_with model: @new_comment, url: post_comments_path(@post.id),
+            method: :post do |f| %>
               <div class="input-group-sm">
                 <%= f.text_area :text, class: "form-control mb-2" %>
                 <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-main col-12" %>

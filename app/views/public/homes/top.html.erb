@@ -229,10 +229,14 @@
       <h6 class="text-center mt-3">あなたの車窓を投稿しましょう</h6>
 
       <div class="col-lg-6 col-md-8 col-sm-10 mx-auto text-center my-5">
-        <%= link_to '投稿画面へ', new_post_path,
-        class: "col-12 mb-3 btn btn-accent" %>
-        <%= link_to '過去の投稿はこちら', users_posts_path,
-        class: "col-12 mb-3 btn btn-light" %>
+        <% if user_signed_in? %>
+          <%= link_to '投稿画面へ', new_post_path,
+          class: "col-12 mb-3 btn btn-accent" %>
+          <%= link_to '過去の投稿はこちら', users_posts_path,
+          class: "col-12 mb-3 btn btn-light" %>
+        <% else %>
+          <a class="modal-open col-12 mb-3 btn btn-accent">投稿画面へ</a>
+        <% end %>
       </div>
     </div>
 
