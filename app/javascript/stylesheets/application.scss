@@ -425,7 +425,6 @@ textarea.form-control {
   background-color: #fffdf9;
   padding: 40px 20px 10px 20px;
   margin: 20px auto;
-  height: 420px;
   min-width: 282px;
   box-shadow: 0px 0px 15px 0 rgba(0, 0, 0, .3);
   p {
@@ -478,8 +477,8 @@ textarea.form-control {
 }
 .swiper-container.slider2,
 .swiper-container.slider3 {
-  padding: 20px 15px;
-  max-width: 950px;
+  padding: 20px 27px;
+  max-width: 1040px;
   position: relative;
 }
 
@@ -491,24 +490,24 @@ textarea.form-control {
   }
   .swiper-container.slider2,
   .swiper-container.slider3 {
-    max-width: 630px;
+    max-width: 680px;
   }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:689px) {
   .swiper-container-cover.slider-cover2,
   .swiper-container-cover.slider-cover3 {
     max-width: 445px;
   }
   .swiper-container.slider2,
   .swiper-container.slider3 {
-    max-width: 315px;
+    max-width: 340px;
   }
 }
 
 .slider-cover2, .slider-cover3 {
   .swiper-button-prev, .swiper-button-next {
-    --swiper-navigation-size: 40px;
+    --swiper-navigation-size: 35px;
     --swiper-theme-color: #bababa;
     --swiper-navigation-color: #bababa;
   }
@@ -625,6 +624,10 @@ a.active {
   display: contents;
   input {
     @extend .is-invalid;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
   }
   textarea {
     @extend .is-invalid;
@@ -656,7 +659,9 @@ a.active {
   font-size: 0.9rem;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+.main {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
 }

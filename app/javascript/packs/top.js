@@ -1,3 +1,4 @@
+/*global $*/
 $(function(){
   var mySwiper1 = new Swiper ('.slider1', {
     effect: 'fade',
@@ -15,7 +16,7 @@ $(function(){
 $(function(){
 	var mySwiper2 = new Swiper ('.slider2', {
 	  effect: 'slide',
-	  spaceBetween: 30,
+	  spaceBetween: 54,
 		slidesPerView: 1,
 		slidesPerGroup: 1,
 		loop: true,
@@ -29,7 +30,7 @@ $(function(){
 		 prevEl: '.swiper-button-prev',
 		},
 		breakpoints: {
-      768: {
+      680: {
         slidesPerView: 2,
         slidesPerGroup: 2,
       	centeredSlides : false,
@@ -46,7 +47,7 @@ $(function(){
 $(function(){
 	var mySwiper3 = new Swiper ('.slider3', {
 	  effect: 'slide',
-	  spaceBetween: 30,
+	  spaceBetween: 48,
 		slidesPerView: 1,
 		slidesPerGroup: 1,
 		loop: true,
@@ -60,7 +61,7 @@ $(function(){
 		 prevEl: '.swiper-button-prev',
 		},
 		breakpoints: {
-      768: {
+      690: {
         slidesPerView: 2,
         slidesPerGroup: 2,
       	centeredSlides : false,

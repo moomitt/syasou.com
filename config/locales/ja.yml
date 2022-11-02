@@ -12,7 +12,7 @@ ja:
         spot: 近くのおすすめスポット
         start_station: 区間データ
         end_station: 区間データ
-        line: 区間データ
+        line_code: 区間データ
         start_station_prefecture: 区間データ
         end_station_prefecture: 区間データ
         latitude: 区間データ
@@ -52,7 +52,7 @@ ja:
               blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
             end_station:
               blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
-            line:
+            line_code:
               blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。
             start_station_prefecture:
               blank: の登録エラーが発生しました。申し訳ありませんが、もう一度区間選択からやり直してください。

@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :spot,                                     length: { maximum: 200 }
   validates :start_station,            presence: true
   validates :end_station,              presence: true
-  validates :line,                     presence: true
+  validates :line_code,                presence: true
   validates :start_station_prefecture, presence: true
   validates :end_station_prefecture,   presence: true
   validates :latitude,                 presence: true

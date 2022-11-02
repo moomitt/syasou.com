@@ -120,17 +120,17 @@
                         <% if post.post_images.length == 1 %>
                           <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 160]).processed %>
                         <% elsif post.post_images.length == 2 %>
-                          <%= image_tag post.post_images[0].variant(resize_to_fill: [120, 160]).processed %>
-                          <%= image_tag post.post_images[1].variant(resize_to_fill: [120, 160]).processed %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 160]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 160]).processed %>
                         <% elsif post.post_images.length == 3 %>
-                          <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 80]).processed %>
-                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
-                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 78]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 78]).processed %>
+                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 78]).processed %>
                         <% else %>
-                          <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 80]).processed %>
-                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
-                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
-                          <%= image_tag post.post_images[3].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 78]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 78]).processed %>
+                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 78]).processed %>
+                          <%= image_tag post.post_images[3].variant(resize_to_fill: [119, 78]).processed %>
                         <% end %>
                       <% else %>
                         <%= image_tag 'no_image', size: "240x160" %>
@@ -189,17 +189,17 @@
                         <% if post.post_images.length == 1 %>
                           <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 160]).processed %>
                         <% elsif post.post_images.length == 2 %>
-                          <%= image_tag post.post_images[0].variant(resize_to_fill: [120, 160]).processed %>
-                          <%= image_tag post.post_images[1].variant(resize_to_fill: [120, 160]).processed %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 160]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 160]).processed %>
                         <% elsif post.post_images.length == 3 %>
-                          <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 80]).processed %>
-                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
-                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 78]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 78]).processed %>
+                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 78]).processed %>
                         <% else %>
-                          <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 80]).processed %>
-                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>
-                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 80]).processed %>
-                          <%= image_tag post.post_images[3].variant(resize_to_fill: [119, 80]).processed %>
+                          <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 78]).processed %>
+                          <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 78]).processed %>
+                          <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 78]).processed %>
+                          <%= image_tag post.post_images[3].variant(resize_to_fill: [119, 78]).processed %>
                         <% end %>
                       <% else %>
                         <%= image_tag 'no_image', size: "240x160" %>
@@ -239,8 +239,6 @@
         <% end %>
       </div>
     </div>
-
-
 
   </div>
 </div>
