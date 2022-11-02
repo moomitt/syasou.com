@@ -1,6 +1,6 @@
 var rosen;
 $(function(){                         // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
-  rosen = new Rosen("map", {              // "map"=<div>のid
+  rosen = new Rosen("map-new", {              // "map"=<div>のid
     apiKey: process.env.ROSEN_JS_API_KEY, // アクセスキーを認証
     apiSetting: "https",                  // HTTPS版のAPIサーバを指定
     tileSetting: "https",                  // HTTPS版のタイルサーバを指定
@@ -48,5 +48,13 @@ $(function(){                         // Rosen：イニシャライザ（アク�
     document.getElementById('endStationCord').value=""
     document.getElementById('LineCord').value=""
     $('#submitBtn').html('<button disabled class="btn btn-sm btn-accent px-4 my-3">選択されていません</button>');
+  });
+
+	// モーダルウィンドウ　操作方法
+	$("#modal-new-open").on('click',function(){
+    $("#modal-new-overlay").fadeIn("fast");
+  });
+  $("#modal-new-close,#modal-new-overlay").on('click',function(){
+    $("#modal-new-overlay").fadeOut("fast");
   });
 });

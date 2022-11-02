@@ -4,7 +4,13 @@
       <h5 class="mt-4 text-center">新しい投稿</h5>
 
       <div class="row selected-section col-sm-10 col-12 text-center mx-auto px-4">
-        <p class="col-12">投稿する区間を選択してください</p>
+        <p class="col-12">
+          投稿する区間を選択してください
+          <button id="modal-new-open" class="btn btn-sm btn-light py-0 mx-3">
+            <i class="far fa-question-circle mr-1"></i>
+            操作方法
+          </button>
+        </p>
         <p class="col-md-5 col-12 station-name-select text-right px-3 py-1 my-1 mx-auto">
           <span id="startStationName"></span>　駅
         </p>
@@ -33,7 +39,10 @@
       </div>
       <button id="resetButton" class="btn btn-sm btn-back px-4 my-3">選択を解除</button>
 
-      <div id="map" style="height: 650px; max-height: calc(100vh - 300px); width:100%;"></div>
+      <div id="map-new" style="height: 650px; max-height: calc(100vh - 300px); width:100%;">
+      </div>
+
+
     </div>
   </div>
 </div>

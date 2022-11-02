@@ -74,15 +74,13 @@ $(function(){
     }
 	});
 
-	// #modal-openがクリックされたらモーダルウィンドウを表示
+	// モーダルウィンドウ　ゲストログイン用
 	$(".modal-open").on('click',function(){
       $("#modal-overlay").fadeIn("fast");
   });
-  // 閉じるボタンかオーバーレイ部をクリックでモーダルウィンドウ削除
   $("#modal-close,#modal-overlay").on('click',function(){
     $("#modal-overlay").fadeOut("fast");
   });
-  // ログイン・新規登録ボタンを押すと非表示のlink_toをクリックする
   $("#modal-login").on('click',function(){
     document.getElementById("logInBtn").click();
   });

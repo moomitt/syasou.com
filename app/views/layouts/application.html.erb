@@ -14,7 +14,7 @@
   </head>
 
   <body class="d-flex flex-column">
-    <div id="modal-overlay"> <%# モーダルウィンドウ表示時の黒背景 %>
+    <div id="modal-overlay"> <%# モーダルウィンドウ:ゲストログイン用 %>
       <div id="modal-content" class="container">
         <div class="row px-0 text-center">
           <h6 class="col-12 my-4">ご利用にはログインが必要です</h6>
@@ -34,6 +34,75 @@
     </div>
     <%= link_to "", new_user_session_path, id: "logInBtn" %>
     <%= link_to "", new_user_registration_path, id: "signUpBtn" %>
+
+    <div id="modal-new-overlay"> <%# モーダルウィンドウ:操作方法 %>
+      <div id="modal-new-content" class="container">
+        <div id="new-content" class="row px-0">
+          <h6 class="col-12 my-4 text-center">区間選択のしかた</h6>
+          <div class="col-sm-11 col-12 mx-auto px-0">
+            <div class="row px-0">
+              <h6 class="col-11 px-4">
+                ① 投稿したい区間まで移動
+              </h6>
+              <p class="col-11 pl-5 mb-3">
+                <strong>拡大/縮小：</strong>
+                  スクロールボタン または ＋/－キー</br>
+                <strong>移動：</strong>
+                  左クリック＋ドラッグ または 方向キー</br>
+              </p>
+              <p class="col-11 pl-5">
+                <u>マップ上の<strong>検索バー</strong>からも検索いただけます</br></u>
+                <strong>マップ右上のボタンをクリック</strong>
+                （検索バーが開きます）
+              </p>
+              <%= image_tag 'search-btn', size: "70x60", class: "ml-5 mb-3" %>
+              <p class="col-11 pl-5">
+                右上のボタンで検索方法を切替できます</br>
+              </p>
+              <div class="ml-5 mb-4 px-0">
+                <%= image_tag 'search-bar01', size: "240x80" %>
+                <%= image_tag 'search-bar02', size: "240x80" %>
+              </div>
+              <h6 class="col-11 px-4">
+                ② 投稿したい区間をクリック
+              </h6>
+              <p class="col-11 pl-5">
+                駅と駅の間にカーソルを合わせてクリックしてください。
+              </p>
+              <div class="ml-5 mb-2">
+                <%= image_tag 'section-click01', size: "180x150", class: "mr-2 mb-2" %>
+                <%= image_tag 'section-click02', size: "180x150", class: "mr-2 mb-2" %>
+              </div>
+              <p class="col-11 pl-5 mb-4">
+                ※１件の投稿で選択できるのは１区間（隣り合う駅同士）のみです。</br>
+                複数の区間にまたがった投稿はできません。
+              </p>
+
+              <h6 class="col-11 px-4">
+                ③ 登録画面へ進む
+              </h6>
+              <p class="col-11 pl-5">
+                「登録画面へ進む」ボタンを押して、詳細入力画面に進んでください。
+              </p>
+              <%= image_tag 'btn03', size: "175x60", class: "ml-5 mb-2" %>
+              <p class="col-11 pl-5">
+                <strong class="mt-3">ボタンが表示されない場合</strong></br>
+                正しく選択されていません。もう一度やり直してください。
+              </p>
+              <%= image_tag 'btn01', size: "200x60", class: "ml-5 mb-2" %>
+              <p class="col-11 pl-5">
+                <strong class="my-3">選択を解除したい場合</strong></br>
+                「選択を解除」ボタンをクリックしてください。
+              </p>
+              <%= image_tag 'btn02', size: "150x60", class: "ml-5 mb-2" %>
+              <a id="modal-new-close" href="javascript:void(0)" class="col-12 text-center my-2">
+                <small>閉じる</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="wrapper p-0 m-0">
       <header class="shadow">

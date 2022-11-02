@@ -589,7 +589,7 @@ a.active {
   color: #000;
 }
 
-//モーダルウィンドウ
+//モーダルウィンドウ ゲストログイン用
 
 #modal-overlay {
   display: none;   /* デフォルトは非表示 */
@@ -664,4 +664,49 @@ a.active {
     width: 5px;
     height: 5px;
   }
+}
+
+//モーダルウィンドウ 操作方法
+
+#modal-new-overlay {
+  display: none;   /* デフォルトは非表示 */
+  z-index: 2;      /* モーダルウィンドウと通常画面の間に表示 */
+  position: fixed; /* 表示を固定してスクロールで動かさない */
+  top: 0;          /* 全画面表示なので0 */
+  left: 0;         /* 全画面表示なので0 */
+  width: 100%;     /* 全画面表示なので100% */
+  height: 120%;    /* 全画面表示なので100%。スマートフォンでの表示対応する場合は120%に */
+  background-color: rgba(0,0,0,0.75); /* 背景を黒の半透明に */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
+#modal-new-content {
+  z-index: 2;      /* 最前面に表示 */
+  position: fixed; /* 表示位置を固定 */
+  top: 50%;        /* 画面中央に表示 */
+  left: 50%;       /* 画面中央に表示 */
+  transform: translate(-50%, -50%); /* モーダルウィンドウの大きさ分中央にずらす */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  background: #fff;
+  width: 90%;
+  height: 95vh;
+  overflow-y: scroll;
+  p {
+    font-size: 0.8rem;
+  }
+}
+
+#map-new {
+  position: relative;
+  z-index: 0;
+}
+
+#modal-new-open {
+  font-size: 0.7rem;
 }
