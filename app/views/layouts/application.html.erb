@@ -34,7 +34,6 @@
     </div>
     <%= link_to "", new_user_session_path, id: "logInBtn" %>
     <%= link_to "", new_user_registration_path, id: "signUpBtn" %>
-
     <div id="modal-new-overlay"> <%# モーダルウィンドウ:操作方法 %>
       <div id="modal-new-content" class="container">
         <div id="new-content" class="row px-0">
@@ -105,35 +104,78 @@
     </div>
 
     <div class="wrapper p-0 m-0">
-      <header class="shadow">
-        <nav class="navbar navbar-expand-lg navbar-light" style="flex-direction: column;">
-          <div class="container-fluid" style="max-width:1300px;">
-            <h2 class="ml-3"><%= link_to '車窓.com', root_path %></h2>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-auto">
-              <% if user_signed_in? %>
-                <li class="ml-4 mr-1 my-3"><%= link_to 'さがす', posts_path %></li>
-                <li class="ml-4 mr-1 my-3"><%= link_to '投稿する', new_post_path %></li>
-                <li class="ml-4 mr-1 my-3"><%= link_to 'マイページ', users_mypage_path %></li>
-                <li class="ml-4 mr-1 my-3"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-              <% elsif admin_signed_in? %>
-                <li class="ml-4 mr-1 my-3"><%= link_to 'トップ', admin_root_path %></li>
-                                <li class="ml-4 mr-1 my-3"><%= link_to '投稿一覧', admin_posts_path %></li>
-                <li class="ml-4 mr-1 my-3"><%= link_to 'ユーザ一覧', admin_users_path %></li>
-                <li class="ml-4 mr-1 my-3"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-              <% else %>
-                <li class="ml-4 mr-1 my-3"><%= link_to 'ログイン', new_user_session_path %></li>
-                <li class="ml-4 mr-1 my-3"><%= link_to '新規登録', new_user_registration_path %></li>
-              <% end %>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <div class="container-fluid header">
+        <h3 id="hm-logo"><%= link_to '車窓.com', root_path %></h3>
+        <div id="sp-menu">
+          <ul class="sp-list">
+            <% if user_signed_in? %>
+              <li class="mt-5 mb-4"><span>ようこそ、<%= current_user.name %> さん</span></li>
+              <li class="my-4">
+                <%= link_to posts_path do %>
+                    Search <small>投稿をさがす</small>
+                <% end %>
+              </li>
+              <li class="my-4">
+                <%= link_to new_post_path do %>
+                    Post <small>投稿する</small>
+                <% end %>
+              </li>
+              <li class="my-4">
+                <%= link_to users_mypage_path do %>
+                    My Page <small>マイページ</small>
+                <% end %>
+              </li>
+              <li class="my-4">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                    Log out <small>ログアウト</small>
+                <% end %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li class="mt-5 mb-4"><span>ようこそ、管理者 さん</span></li>
+              <li class="my-4">
+                <%= link_to admin_root_path do %>
+                    Top <small>トップページ</small>
+                <% end %>
+              </li>
+              <li class="my-4">
+                <%= link_to admin_posts_path do %>
+                    Posts <small>投稿一覧</small>
+                <% end %>
+              </li>
+              <li class="my-4">
+                <%= link_to admin_users_path do %>
+                    Users <small>ユーザ一覧</small>
+                <% end %>
+              </li>
+              <li class="my-4">
+                <%= link_to destroy_admin_session_path, method: :delete do %>
+                    Log out <small>ログアウト</small>
+                <% end %>
+              </li>
+            <% else %>
+              <li class="mt-5 mb-4"><span>ようこそ、ゲスト さん</span></li>
+              <li class="my-4">
+                <%= link_to new_user_session_path do %>
+                    Log in <small>ログイン</small>
+                <% end %>
+              </li>
+              <li class="my-4">
+                <%= link_to new_user_registration_path do %>
+                    Sign up <small>新規登録</small>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div id="hm-icon">
+          <a class="menu-trigger" href="#">
+            <span class="stick"></span>
+            <span class="stick"></span>
+            <span class="stick"></span>
+            <span class="menu">menu</span>
+          </a>
+        </div>
+      </div>
       <main>
         <%= yield %>
       </main>
@@ -141,5 +183,7 @@
     <footer class="text-center">
       <p class="my-3">© shasou.com</p>
     </footer>
+
+    <%= javascript_pack_tag 'header' %>
   </body>
 </html>
