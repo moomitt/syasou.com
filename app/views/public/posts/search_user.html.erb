@@ -1,6 +1,6 @@
 <div class="container-fluid public">
-  <div class="row mx-auto pb-5" style="max-width:800px">
-    <div class="map-container col-sm-10 col-12 mx-auto mt-5">
+  <div class="row mx-auto" style="max-width:800px">
+    <div class="map-container col-sm-10 col-12 mx-auto mb-3">
 
       <div class="row pt-0 mt-0 my-3">
         <div class="col-11 my-4 mx-auto d-flex align-items-center">
@@ -31,7 +31,7 @@
           <a href="#tab2" class="mx-2">新着順</a>
         </div>
 
-        <div id="tab-contents" class="col-lg-11 col-md-8 col-sm-8 col-10 mx-auto my-4 px-0">
+        <div id="tab-contents" class="col-lg-11 col-md-8 col-sm-8 col-10 mx-auto mt-4 px-0">
           <div id="tab1" class="tab px-0">
             <%= render partial: 'tab', locals: { posts: @popular_posts} %>
           </div>

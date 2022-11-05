@@ -1,10 +1,10 @@
 <div class="container-fluid public">
   <div class="row">
-    <div class="input-container col-md-10 col-10 mx-auto my-5">
+    <div class="input-container col-md-10 col-11 mx-auto mb-5">
       <h4 class="heading my-5 text-center">
         マイページ
       </h4>
-      <div class="row mb-5 text-center">
+      <div class="row mb-4 text-center">
         <p class="col-10 mx-auto mb-2">ユーザーアイコン</p>
         <div class="col-10 mx-auto">
           <% if @user.user_image.attached? %>
@@ -18,38 +18,38 @@
 
       <div class="row my-4 text-center">
         <p class="col-10 mx-auto">ニックネーム</p>
-        <p class="col-10 mx-auto"><%= @user.name %></p>
+        <p class="col-10 mx-auto"><strong><%= @user.name %></strong></p>
       </div>
 
       <div class="row my-4 text-center">
         <p class="col-10 mx-auto">メールアドレス</p>
-        <p class="col-10 mx-auto"><%= @user.email %></p>
+        <p class="col-10 mx-auto"><strong><%= @user.email %></strong></p>
       </div>
 
       <div class="row my-4 text-center">
-        <p class="col-10 mx-auto my-3">
+        <p class="col-10 mx-auto my-2">
           <%= link_to users_posts_path do %>
             あなたの投稿一覧を見る
           <% end %>
         </p>
-        <p class="col-10 mx-auto my-3">
+        <p class="col-10 mx-auto my-2">
           <%= link_to users_bookmarks_path do %>
             お気に入り一覧を見る
           <% end %>
         </p>
-        <p class="col-10 mx-auto my-3">
+        <p class="col-10 mx-auto my-2">
           <%= link_to users_followings_path do %>
             フォロー（<%= @followings.count %>）
           <% end %>
         </p>
-        <p class="col-10 mx-auto my-3">
+        <p class="col-10 mx-auto my-2">
           <%= link_to users_followers_path do %>
             フォロワー（<%= @followers.count %>）
           <% end %>
         </p>
       </div>
 
-      <div class="row mt-5 mb-4 text-center">
+      <div class="row my-4 text-center">
         <p class="col-10 mx-auto text-right">
           <%= link_to users_information_edit_path do %>
             <i class="fas fa-edit"></i>

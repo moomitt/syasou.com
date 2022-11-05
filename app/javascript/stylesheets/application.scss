@@ -26,14 +26,14 @@ footer {
 
 .container-fluid.public {
   background-color: #e9e5e6;
-  padding-top: 40px;
-  min-height: calc(100vh - 115px);
+  padding-top: 70px;
+  min-height: calc(100vh - 50px);
 }
 
 .container-fluid.admin {
   background-color: #e6e9ea;
-  padding-top: 40px;
-  min-height: calc(100vh - 115px);
+  padding-top: 70px;
+  min-height: calc(100vh - 50px);
 }
 
 li {
@@ -305,6 +305,35 @@ textarea.form-control {
   }
 }
 
+//indexページ
+
+.area-name {
+  display: inline-block;
+  text-align: center;
+  width: 80px;
+  line-height: 40px;
+}
+.area-name-long {
+  display: inline-block;
+  text-align: center;
+  width: 150px;
+  line-height: 40px;
+}
+#map-index {
+  height: 650px;
+  max-height: calc(100vh - 160px);
+  width: 100%;
+  z-index: 1;
+}
+.map-container.area-list {
+  height: 100%;
+}
+@media screen and (max-width:992px){
+  .map-container.area-list {
+    height: auto;
+  }
+}
+
 //topページ
 //スライダー
 
@@ -321,11 +350,11 @@ textarea.form-control {
   background-color: #e9e5e6;
   color: #000;
   padding-top: 70px;
-  min-height: calc(100vh - 65px);
+  min-height: 100vh;
   .frame {
     margin-left: auto;
     margin-right: auto;
-    max-width: 700px;
+    max-width: 800px;
     padding: 5px;
     background-color: #1a1a1a;
     border-radius: 25px;
@@ -370,15 +399,35 @@ textarea.form-control {
     background-size: cover;
     background-position: top;
     width: 100%;
-    height: 40vh;
+    height: 45vh;
     max-height: 450px;
-  }
-  h4 {
-    line-height: 45px;
-    word-break: keep-all;
   }
   .btn {
     width: 100%;
+  }
+}
+@media screen and (max-width:1400px){
+  .top-image .frame {
+    max-width: 700px;
+  }
+}
+@media screen and (max-width:1250px){
+  .top-image .frame {
+    max-width: 600px;
+  }
+}
+
+.top-copy {
+  width: 100%;
+  height: 20vh;
+  display: table;
+  text-align: center;
+  h4 {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 45px;
+    word-break: keep-all;
   }
 }
 
@@ -686,15 +735,15 @@ a.active {
   position: fixed; /* 表示位置を固定 */
   top: 50%;        /* 画面中央に表示 */
   left: 50%;       /* 画面中央に表示 */
-  transform: translate(-50%, -50%); /* モーダルウィンドウの大きさ分中央にずらす */
+  transform: translate(-50%, -55%); /* モーダルウィンドウの大きさ分中央にずらす */
   max-width: 600px;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 10px 20px;
   border: 2px solid #aaa;
   border-radius: 10px;
   background: #fff;
   width: 90%;
-  height: 95vh;
+  height: calc(95vh - 50px);
   overflow-y: scroll;
   p {
     font-size: 0.8rem;
@@ -720,6 +769,14 @@ a.active {
   top: 20px;
   z-index: 10;
 }
+#hm-logo.active {
+  a {
+    color: #fff;
+  }
+  a:hover {
+    color: #c97586;
+  }
+}
 #hm-icon {
   position: fixed;
   right: 20px;
@@ -734,51 +791,84 @@ a.active {
 }
 .menu-trigger {
   position: relative;
-  width: 30px;
-  height: 40px;
-  font-size: 0.7rem;
+  width: 36px;
+  height: 46px;
+  font-size: 0.8rem;
 }
 .menu-trigger span.stick {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 1px;
+  height: 2px;
   background-color: #808080;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 .menu-trigger span:nth-child(1) {
   top: 0;
 }
 .menu-trigger span:nth-child(2) {
-  top: 8px;
+  top: 10px;
 }
 .menu-trigger span:nth-child(3) {
-  bottom: 23px;
+  bottom: 24px;
 }
 .menu-trigger.active span:nth-child(1) {
-  -webkit-transform: translateY(8px) rotate(-45deg);
-  transform: translateY(8px) rotate(-45deg);
+  -webkit-transform: translateY(10px) rotate(-45deg);
+  transform: translateY(10px) rotate(-45deg);
   background-color: #fff;
 }
 .menu-trigger.active span:nth-child(2) {
   opacity: 0;
 }
 .menu-trigger.active span:nth-child(3) {
-  -webkit-transform: translateY(-8px) rotate(45deg);
-  transform: translateY(-8px) rotate(45deg);
+  -webkit-transform: translateY(-10px) rotate(45deg);
+  transform: translateY(-10px) rotate(45deg);
   background-color: #fff;
 }
 .menu-trigger span.menu {
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 23px;
+  height: 24px;
   width: 100%;
   text-align: center;
   padding-top: 5px;
 }
 .menu-trigger.active span.menu {
   display: none;
+}
+@media screen and (max-width:1080px){
+  #hm-logo {
+    font-size: 1.75rem;
+  }
+  .menu-trigger {
+    width: 30px;
+    height: 40px;
+    font-size: 0.7rem;
+  }
+  .menu-trigger span.stick {
+    height: 1px;
+    border-radius: 1px;
+  }
+  .menu-trigger span:nth-child(2) {
+    top: 8px;
+  }
+  .menu-trigger span:nth-child(3) {
+    bottom: 23px;
+  }
+  .menu-trigger.active span:nth-child(1) {
+    -webkit-transform: translateY(8px) rotate(-45deg);
+    transform: translateY(8px) rotate(-45deg);
+  }
+  .menu-trigger.active span:nth-child(3) {
+    -webkit-transform: translateY(-8px) rotate(45deg);
+    transform: translateY(-8px) rotate(45deg);
+  }
+  .menu-trigger span.menu {
+    height: 23px;
+    width: 100%;
+    padding-top: 5px;
+  }
 }
 
 //ヘッダー　メニュー
@@ -805,9 +895,8 @@ a.active {
 #sp-menu a {
   color: #fff;
   text-decoration: none;
-  font-weight: bold;
   border-bottom: 0.5px solid #fff;
-  padding: 25px 20px 5px 0px;
+  padding: 20px 20px 5px 0px;
 }
 #sp-menu a small {
   font-size: 0.8rem;

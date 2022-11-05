@@ -1,9 +1,9 @@
 <div class="container-fluid public">
-  <div class="row mx-auto pb-5" style="max-width:800px">
-    <div class="map-container col-sm-10 col-12 mx-auto mt-5">
-      <h4 class="mt-5 mb-3 text-center">
+  <div class="row mx-auto" style="max-width:800px">
+    <div class="map-container col-sm-10 col-12 mx-auto mb-3">
+      <h5 class="mt-5 mb-3 text-center">
         <%= @prefecture.name %> の投稿一覧
-      </h4>
+      </h5>
 
       <div class="row pt-0 mt-0 my-3">
         <div class="col-12 text-center">
@@ -16,7 +16,7 @@
           <a href="#tab2" class="mx-2">新着順</a>
         </div>
 
-        <div id="tab-contents" class="col-lg-11 col-md-8 col-sm-8 col-10 mx-auto my-4 px-0">
+        <div id="tab-contents" class="col-lg-11 col-md-8 col-sm-8 col-10 mx-auto mt-4 px-0">
           <div id="tab1" class="tab px-0">
             <%= render partial: 'tab', locals: { posts: @popular_posts} %>
           </div>

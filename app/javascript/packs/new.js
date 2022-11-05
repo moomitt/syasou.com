@@ -1,14 +1,14 @@
+/*global $*/
+/*global Rosen*/
 var rosen;
-$(function(){                         // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
-  rosen = new Rosen("map-new", {              // "map"=<div>のid
-    apiKey: process.env.ROSEN_JS_API_KEY, // アクセスキーを認証
-    apiSetting: "https",                  // HTTPS版のAPIサーバを指定
-    tileSetting: "https",                  // HTTPS版のタイルサーバを指定
+$(function(){                               // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
+  rosen = new Rosen("map-new", {            // "map"=<div>のid
+    apiKey: process.env.ROSEN_JS_API_KEY,   // アクセスキーを認証
+    apiSetting: "https",                    // HTTPS版のAPIサーバを指定
+    tileSetting: "https",                   // HTTPS版のタイルサーバを指定
     zoom: 10,
     sideMenuControl: true
   });
-
-  /*global $*/
 
   rosen.on('selectSection', function(data) {
     rosen.clearHighlights();
@@ -35,7 +35,7 @@ $(function(){                         // Rosen：イニシャライザ（アク�
 
     //駅コード・路線コードが空白でない場合のみ、登録画面へのボタンが出現
     if( $('#startStationCord').value != "" && $('#endStationCord').value != "" && $('#lineCord').value != "" ){
-      $('#submitBtn').html('<button type="submit" class="btn btn-sm btn-accent px-4 my-3">登録画面へ進む</button>');
+      $('#submitBtn').html('<button type="submit" class="btn btn-sm btn-accent px-3 mb-1">登録画面へ進む</button>');
     };
   });
 
@@ -47,7 +47,7 @@ $(function(){                         // Rosen：イニシャライザ（アク�
     document.getElementById('startStationCord').value=""
     document.getElementById('endStationCord').value=""
     document.getElementById('LineCord').value=""
-    $('#submitBtn').html('<button disabled class="btn btn-sm btn-accent px-4 my-3">選択されていません</button>');
+    $('#submitBtn').html('<button disabled class="btn btn-sm btn-accent px-4 mb-1">選択されていません</button>');
   });
 
 	// モーダルウィンドウ　操作方法

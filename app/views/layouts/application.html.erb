@@ -94,7 +94,7 @@
                 「選択を解除」ボタンをクリックしてください。
               </p>
               <%= image_tag 'btn02', size: "150x60", class: "ml-5 mb-2" %>
-              <a id="modal-new-close" href="javascript:void(0)" class="col-12 text-center my-2">
+              <a id="modal-new-close" href="javascript:void(0)" class="col-12 text-center mt-2">
                 <small>閉じる</small>
               </a>
             </div>
@@ -105,28 +105,29 @@
 
     <div class="wrapper p-0 m-0">
       <div class="container-fluid header">
-        <h3 id="hm-logo"><%= link_to '車窓.com', root_path %></h3>
+        <h2 id="hm-logo"><%= link_to '車窓.com', root_path %></h2>
         <div id="sp-menu">
           <ul class="sp-list">
             <% if user_signed_in? %>
               <li class="mt-5 mb-4"><span>ようこそ、<%= current_user.name %> さん</span></li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to posts_path do %>
                     Search <small>投稿をさがす</small>
                 <% end %>
               </li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to new_post_path do %>
                     Post <small>投稿する</small>
                 <% end %>
               </li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to users_mypage_path do %>
                     My Page <small>マイページ</small>
                 <% end %>
               </li>
-              <li class="my-4">
-                <%= link_to destroy_user_session_path, method: :delete do %>
+              <li class="my-5">
+                <%= link_to destroy_user_session_path, method: :delete,
+                data: { confirm: "ログアウトしますか？" } do %>
                     Log out <small>ログアウト</small>
                 <% end %>
               </li>
@@ -148,7 +149,8 @@
                 <% end %>
               </li>
               <li class="my-4">
-                <%= link_to destroy_admin_session_path, method: :delete do %>
+                <%= link_to destroy_admin_session_path, method: :delete,
+                data: { confirm: "ログアウトしますか？" } do %>
                     Log out <small>ログアウト</small>
                 <% end %>
               </li>
