@@ -30,15 +30,14 @@
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :start_station, :id => "startStationCord" %>
           <%= f.hidden_field :end_station, :id => "endStationCord" %>
-          <%= f.hidden_field :line_code, :id => "LineCord" %>
           <%= f.hidden_field :start_station_name, :id => "startStationNameInput" %>
           <%= f.hidden_field :end_station_name, :id => "endStationNameInput" %>
-          <%= f.hidden_field :line_name, :id => "lineNameInput" %>
           <%= f.hidden_field :start_station_prefecture, :id => "startStationPrefecture" %>
           <%= f.hidden_field :end_station_prefecture, :id => "endStationPrefecture" %>
           <%= f.hidden_field :latitude, :id => "startStationLatitude" %>
           <%= f.hidden_field :longitude, :id => "startStationLongitude" %>
-
+          <%= f.hidden_field :line_code, :id => "LineCord" %>
+          <%= f.hidden_field :line_name, :id => "lineNameInput" %>
 
           <div class="imput-group-sm mb-3 col-11 mx-auto">
             <label class="label-sm col-12">

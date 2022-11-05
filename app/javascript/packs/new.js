@@ -1,5 +1,7 @@
 /*global $*/
 /*global Rosen*/
+
+//路線図表示・区間選択機能
 var rosen;
 $(function(){                               // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
   rosen = new Rosen("map-new", {            // "map"=<div>のid
@@ -22,6 +24,8 @@ $(function(){                               // Rosen：イニシャライザ（�
         //station[0],[1]の各データをhidden_fieldに入力
         document.getElementById('startStationCord').value=stations[0].code;                  //駅1 駅コード
         document.getElementById('endStationCord').value=stations[1].code;                    //駅2 駅コード
+        document.getElementById('startStationNameInput').value=stations[0].name;             //駅1 駅名
+        document.getElementById('endStationNameInput').value=stations[1].name;               //駅2 駅名
         document.getElementById('startStationPrefecture').value=stations[0].prefecture_code; //駅1 都道府県コード
         document.getElementById('endStationPrefecture').value=stations[1].prefecture_code;   //駅2 都道府県コード
         document.getElementById('startStationLatitude').value=stations[0].latitude;          //駅1 緯度
@@ -32,7 +36,8 @@ $(function(){                               // Rosen：イニシャライザ（�
       .then(function(line) {
         $('#LineName').text(line.name);     //lineの路線名を路線名欄に表示
         //lineのデータをhidden_fieldに入力
-        document.getElementById('LineCord').value=line.code;  //路線コード
+        document.getElementById('LineCord').value=line.code;      //路線コード
+        document.getElementById('LineNameInput').value=line.name; //路線名
       });
     });
 
@@ -52,6 +57,8 @@ $(function(){                               // Rosen：イニシャライザ（�
     //hidden_fieldの値を全て空白に
     document.getElementById('startStationCord').value=""       //駅1 駅コード
     document.getElementById('endStationCord').value=""　　     //駅2 駅コード
+    document.getElementById('startStationNameInput').value=""  //駅1 駅名
+    document.getElementById('endStationNameInput').value=""    //駅2 駅名
     document.getElementById('startStationPrefecture').value="" //駅1 都道府県コード
     document.getElementById('endStationPrefecture').value=""   //駅2 都道府県コード
     document.getElementById('startStationLatitude').value=""   //駅1 緯度
@@ -60,8 +67,10 @@ $(function(){                               // Rosen：イニシャライザ（�
     //submitボタンをdisabledボタンに戻す
     $('#submitBtn').html('<button disabled class="btn btn-sm btn-accent px-4 mb-1">選択されていません</button>');
   });
+});
 
-	// モーダルウィンドウ（操作方法）表示切り替え
+// モーダルウィンドウ（操作方法）表示切り替え
+$(function(){
 	$("#modal-new-open").on('click',function(){
     $("#modal-new-overlay").fadeIn("fast");
   });

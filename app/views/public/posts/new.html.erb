@@ -26,12 +26,15 @@
       <div class="d-inline-block">
         <%= form_with model: @post, url: posts_detail_path do |f| %>
           <%= f.hidden_field :start_station, :id => "startStationCord" %>
+          <%= f.hidden_field :end_station, :id => "endStationCord" %>
+          <%= f.hidden_field :start_station_name, :id => "startStationNameInput" %>
+          <%= f.hidden_field :end_station_name, :id => "endStationNameInput" %>
           <%= f.hidden_field :start_station_prefecture, :id => "startStationPrefecture" %>
+          <%= f.hidden_field :end_station_prefecture, :id => "endStationPrefecture" %>
           <%= f.hidden_field :latitude, :id => "startStationLatitude" %>
           <%= f.hidden_field :longitude, :id => "startStationLongitude" %>
-          <%= f.hidden_field :end_station, :id => "endStationCord" %>
-          <%= f.hidden_field :end_station_prefecture, :id => "endStationPrefecture" %>
           <%= f.hidden_field :line_code, :id => "LineCord" %>
+          <%= f.hidden_field :line_name, :id => "LineNameInput" %>
           <div id="submitBtn" class="px-0">
             <button disabled class="btn btn-sm btn-accent px-4 mb-1">選択されていません</button>
           </div>
