@@ -57,29 +57,9 @@ textarea.form-control {
   height: 100px;
 }
 
-.area_list li {
-  margin: 10px 0;
-}
 
-.popup-text {
-  width: 150px; /* 省略せずに表示するサイズを指定 */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding : 0;
-  margin: 0;
-}
 
-.popup-image {
-  width: 150px;
-  height: 100px;
-  padding : 0;
-  margin: 0;
-}
 
-.popup .leaflet-popup-tip{
-  display: none;
-}
 
 .label-control, .file-control {
   padding-left: 0;
@@ -305,7 +285,7 @@ textarea.form-control {
   }
 }
 
-//indexページ
+//*** indexページ ***//
 
 .area-name {
   display: inline-block;
@@ -316,9 +296,11 @@ textarea.form-control {
 .area-name-long {
   display: inline-block;
   text-align: center;
-  width: 150px;
+  width: 130px;
   line-height: 40px;
 }
+
+//map
 #map-index {
   height: 650px;
   max-height: calc(100vh - 160px);
@@ -333,10 +315,41 @@ textarea.form-control {
     height: auto;
   }
 }
+.popup-text {
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding : 0;
+  margin: 0;
+}
+.popup-image {
+  width: 150px;
+  height: 100px;
+  padding : 0;
+  margin: 0;
+}
+.popup .leaflet-popup-content-wrapper {
+  .leaflet-popup-content {
+    margin: 16px 16px 5px 13px;
+  }
+  a {
+    color: #808080;
+  }
+  a:hover {
+    color: #c97586;
+  }
+  p {
+    margin: 8px 0;
+  }
+}
+.popup .leaflet-popup-tip{
+  display: none;
+}
 
-//topページ
-//スライダー
+//*** topページ ***//
 
+//top-image スライダー
 @keyframes zoomUp {
   0% {
     transform: scale(1);
@@ -345,7 +358,6 @@ textarea.form-control {
     transform: scale(1.15);
   }
 }
-
 .top-image {
   background-color: #e9e5e6;
   color: #000;

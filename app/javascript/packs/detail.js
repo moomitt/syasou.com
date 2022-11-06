@@ -1,7 +1,7 @@
 /*global $*/
 /*global Rosen*/
 
-//路線図表示・区間選択機能
+//路線図表示・路線データ取得機能
 var rosen;
 $(function(){                             // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
   rosen = new Rosen("map", {              // "map"=<div>のid
