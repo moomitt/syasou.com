@@ -1,9 +1,9 @@
 <div class="container-fluid public px-0">
-  <div class="row mx-auto" style="max-width:600px">
+  <div class="row mx-auto">
     <div class="input-container-edit col-sm-10 col-11 mx-auto mb-5 py-4">
-      <h5 class="my-4 text-center">投稿を編集</h5>
+      <h5 class="heading mt-4 mb-3">投稿を編集</h5>
 
-      <div class="row selected-section-edit py-4">
+      <div class="row selected-section-edit mb-4">
         <p class="col-12 station-name text-center">
           <%= @post.start_station_name %>駅
           <span class="mx-2">↔</span>
@@ -24,11 +24,14 @@
           </div>
 
           <div class="row input-group-sm mb-3">
-            <%= f.label :post_images, '画像の追加／削除', class: "label-sm col-12 mb-3" %>
-            <%= f.label :post_images, '新しい画像', class: "label-sm col-12" %>
+            <label class="label-sm col-12 mb-3">
+              <span class="presence-optional">任意</span>
+              画像の追加／削除
+            </label>
+            <label class="label-sm col-12">新しい画像</label>
             <%= f.file_field :post_images, multiple: true, accept: "image/*", class: "file-sm col-12" %>
 
-            <label class="label-sm my-3 col-12">登録済みの画像</label>
+            <label class="label-sm col-12 my-3">登録済みの画像</label>
             <div class="post-contents col-12 mb-3">
               <% if @post.post_images.attached? %>
                 <% @post.post_images.each do |image| %>

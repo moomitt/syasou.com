@@ -23,6 +23,9 @@ a:hover {
   color: #c97586;
   text-decoration: none;
 }
+a.active {
+  color: #000;
+}
 p {
   margin-bottom: 0;
 }
@@ -51,7 +54,7 @@ footer {
 //*** コンテナ ***//
 
 .input-container {
-  max-width: 500px;
+  max-width: 600px;
   background-color: #fff;
   border-radius: 20px;
 }
@@ -59,8 +62,13 @@ footer {
   background-color: #fff;
   border-radius: 20px;
 }
+.post-container {
+  max-width: 750px;
+  background-color: #fff;
+  border-radius: 20px;
+}
 .input-container-edit {
-  max-width: 500px;
+  max-width: 600px;
   background-color: #fafbfa;
   border-radius: 20px;
   p {
@@ -86,12 +94,21 @@ footer {
 }
 
 //*** コンテンツ共通 ***//
-
+.heading {
+  text-align: center;
+  line-height: 30px;
+  word-break: keep-all;
+}
 .message{
   font-size: 0.8rem;
 }
 .date {
   font-size: 0.8rem;
+}
+@media screen and (max-width:700px){
+  .low-priority {
+    display: none;
+  }
 }
 
 //*** フォーム共通 ***//
@@ -180,9 +197,9 @@ textarea.form-control {
 }
 .station-name {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.1rem;
   span {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 .line-name {
@@ -265,6 +282,16 @@ textarea.form-control {
   padding: 10px;
   p {
     padding: 5px 0;
+  }
+  .station-name {
+  font-weight: bold;
+  font-size: 1.0rem;
+  span {
+      font-size: 1.0rem;
+    }
+  }
+  .line-name {
+    font-size: 0.9rem;
   }
 }
 .image-list {

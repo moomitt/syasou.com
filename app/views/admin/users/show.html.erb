@@ -1,18 +1,12 @@
 <div class="container-fluid admin">
   <div class="row">
-    <div class="input-container col-md-10 col-10 mx-auto my-5">
-      <h4 class="heading mt-5 text-center">
+    <div class="input-container col-md-10 col-10 mx-auto mb-3">
+      <h5 class="my-5 text-center">
         ユーザ情報
-      </h4>
-      <p class="text-right mt-3 pr-4 mb-5">
-        <%= link_to admin_users_path do %>
-          ユーザ一覧へ戻る
-        <% end %>
-      </p>
-
+      </h5>
 
       <div class="row mb-5 text-center">
-        <p class="col-10 mx-auto mb-2">ユーザーアイコン</p>
+        <p class="col-10 mx-auto mb-2">ユーザアイコン</p>
         <div class="col-10 mx-auto">
           <% if @user.user_image.attached? %>
             <%= image_tag @user.user_image.variant(resize_to_fill: [130, 130]).processed,
@@ -24,53 +18,59 @@
       </div>
 
       <div class="row my-4 text-center">
-        <p class="col-10 mx-auto">ID : <%= @user.id %></p>
+        <p class="col-10 mx-auto">ID : <strong><%= @user.id %></strong></p>
       </div>
 
       <div class="row my-4 text-center">
         <p class="col-10 mx-auto">ニックネーム</p>
-        <p class="col-10 mx-auto"><%= @user.name %></p>
+        <p class="col-10 mx-auto"><strong><%= @user.name %></strong></p>
       </div>
 
       <div class="row my-4 text-center">
         <p class="col-10 mx-auto">メールアドレス</p>
-        <p class="col-10 mx-auto"><%= @user.email %></p>
+        <p class="col-10 mx-auto"><strong><%= @user.email %></strong></p>
       </div>
 
       <div class="row my-4 text-center">
         <p class="col-10 mx-auto">
           ステータス：
           <% if @user.is_deleted == true %>
-            <span class="text-secondary">退会</span>
+            <span class="text-secondary"><strong>退会</strong></span>
           <% else %>
-            <span class="text-success">有効</span>
+            <span class="text-success"><strong>有効</strong></span>
           <% end %>
         </p>
       </div>
 
       <div class="row my-4 text-center">
-        <p class="col-10 mx-auto my-3">
+        <p class="col-10 mx-auto mb-4">
           <%= link_to admin_user_posts_path(@user) do %>
             投稿一覧画面へ
           <% end %>
         </p>
-        <p class="col-10 mx-auto my-3">
+        <p class="col-10 mx-auto mb-2">
           <%= link_to admin_user_followings_path(@user) do %>
             フォロー（<%= @followings.count %>）
           <% end %>
         </p>
-        <p class="col-10 mx-auto my-3">
+        <p class="col-10 mx-auto">
           <%= link_to admin_user_followers_path(@user) do %>
             フォロワー（<%= @followers.count %>）
           <% end %>
         </p>
       </div>
 
-      <div class="row mt-5 mb-4 text-center">
-        <p class="col-10 mx-auto text-right">
+      <div class="row mt-5 mb-3 text-center">
+        <p class="col-md-5 col-10 mx-auto text-center mb-3">
+          <%= link_to admin_users_path do %>
+            <i class="fas fa-arrow-left"></i>
+            ユーザ一覧へ戻る
+          <% end %>
+        </p>
+        <p class="col-md-5 col-10 mx-auto text-center">
           <%= link_to edit_admin_user_path do %>
             <i class="fas fa-edit"></i>
-            ユーザー情報を変更
+            ユーザ情報を変更
           <% end %>
         </p>
       </div>

@@ -133,22 +133,22 @@
               </li>
             <% elsif admin_signed_in? %>
               <li class="mt-5 mb-4"><span>ようこそ、管理者 さん</span></li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to admin_root_path do %>
                     Top <small>トップページ</small>
                 <% end %>
               </li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to admin_posts_path do %>
                     Posts <small>投稿一覧</small>
                 <% end %>
               </li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to admin_users_path do %>
                     Users <small>ユーザ一覧</small>
                 <% end %>
               </li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to destroy_admin_session_path, method: :delete,
                 data: { confirm: "ログアウトしますか？" } do %>
                     Log out <small>ログアウト</small>
@@ -156,12 +156,12 @@
               </li>
             <% else %>
               <li class="mt-5 mb-4"><span>ようこそ、ゲスト さん</span></li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to new_user_session_path do %>
                     Log in <small>ログイン</small>
                 <% end %>
               </li>
-              <li class="my-4">
+              <li class="my-5">
                 <%= link_to new_user_registration_path do %>
                     Sign up <small>新規登録</small>
                 <% end %>

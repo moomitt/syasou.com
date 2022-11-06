@@ -1,20 +1,20 @@
 <div class="container-fluid admin">
-  <div class="row mx-auto pb-5" style="max-width:800px">
-    <div class="map-container col-sm-10 col-12 mx-auto mt-5">
+  <div class="row mx-auto">
+    <div class="post-container col-md-10 col-12 mx-auto mb-3">
       <h5 class="my-5 text-center">
         ユーザ一覧
       </h5>
 
       <div class="row pt-0 mt-0 my-3">
-        <div class="col-11 mx-auto mb-5 px-0">
+        <div class="col-11 mx-auto mb-3 px-0">
           <% if @all_users.present? %>
             <table class="table table-hover text-center">
               <thead>
                 <th>ID</th>
                 <th>ニックネーム</th>
-                <th>メールアドレス</th>
+                <th class="low-priority">メールアドレス</th>
                 <th>ステータス</th>
-                <th></th>
+                <th class="low-priority"></th>
               </thead>
               <tbody>
                 <% @all_users.each do |user| %>
@@ -25,7 +25,7 @@
                       <%= user.name %>
                     <% end %>
                   </td>
-                  <td><%= user.email %></td>
+                  <td class="low-priority"><%= user.email %></td>
                   <td>
                     <% if user.is_deleted == true %>
                       <p class="text-secondary">退会</p>
@@ -33,7 +33,9 @@
                       <p class="text-success">有効</p>
                     <% end %>
                   </td>
-                  <td><%= link_to '投稿', admin_user_posts_path(user.id) %></td>
+                  <td class="low-priority">
+                    <%= link_to '投稿', admin_user_posts_path(user.id) %>
+                  </td>
                 </tr>
                 <% end %>
               </tbody>

@@ -1,11 +1,11 @@
 <div class="container-fluid admin">
-  <div class="row mx-auto pb-5" style="max-width:800px">
-    <div class="map-container col-sm-10 col-12 mx-auto mt-5">
-      <h4 class="mt-5 mb-3 text-center">
+  <div class="row mx-auto">
+    <div class="post-container col-sm-10 col-12 mx-auto mb-3">
+      <h5 class="my-5 text-center">
         管理者さん、ようこそ
-      </h4>
+      </h5>
 
-      <h6 class="mt-5 mb-3 text-center">
+      <h6 class="my-4 text-center">
         <%= link_to '投稿一覧をみる', admin_posts_path %>
       </h6>
       <h6 class="mb-5 text-center">
@@ -14,19 +14,25 @@
 
       <div id="tab-menu" class="col-12 text-center mt-4">
         <a href="#tab1" class="active mx-2">
-          人気の投稿<small>（上位6件）</small>
+          人気の投稿
         </a>
         <span>|</span>
         <a href="#tab2" class="mx-2">
-          最新の投稿<small>（新着6件）</small>
+          最新の投稿
         </a>
       </div>
 
-      <div id="tab-contents" class="col-lg-11 col-md-8 col-sm-8 col-10 mx-auto my-4 px-0">
+      <div id="tab-contents" class="col-lg-11 col-md-8 col-sm-8 col-10 mx-auto mb-4 px-0">
         <div id="tab1" class="tab px-0">
+          <p class="text-center mt-1 mb-3">
+            <small>（上位 6 件）</small>
+          </p>
           <%= render partial: 'admin/posts/tab', locals: { posts: @popular_posts} %>
         </div>
         <div id="tab2" class="tab px-0">
+          <p class="text-center mt-1 mb-3">
+            <small>（新着 6 件）</small>
+          </p>
           <%= render partial: 'admin/posts/tab', locals: { posts: @new_posts} %>
         </div>
       </div>

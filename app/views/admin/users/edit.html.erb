@@ -1,16 +1,16 @@
 <div class="container-fluid admin">
   <div class="row">
-    <div class="input-container-edit col-md-10 col-10 mx-auto my-5">
-      <h4 class="heading my-5 text-center">
+    <div class="input-container-edit col-md-10 col-10 mx-auto mb-3">
+      <h5 class="mt-5 text-center">
         ユーザ情報
-      </h4>
+      </h5>
 
       <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
         <div class="row my-4">
-          <h5 class="col-10 mx-auto">ユーザ情報を変更</p>
+          <h5 class="col-10 mx-auto px-0">ユーザ情報を変更</h5>
         </div>
 
-        <div class="row input-group-sm mt-4 mb-5">
+        <div class="row input-group-sm mb-5">
           <label class="label-control col-10 mx-auto px-0">ユーザアイコン</label>
 
           <div class="edit-icon col-10 mx-auto">
