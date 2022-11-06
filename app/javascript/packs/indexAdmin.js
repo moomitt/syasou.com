@@ -4,7 +4,7 @@
 //路線図表示・ポップアップ機能
 var rosen;
 $(function(){                             // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
-  rosen = new Rosen("map", {              // "map"=<div>のid
+  rosen = new Rosen("map-index", {              // "map"=<div>のid
     apiKey: process.env.ROSEN_JS_API_KEY, // アクセスキーを認証
     apiSetting: "https",                  // HTTPS版のAPIサーバを指定
     tileSetting: "https",                 // HTTPS版のタイルサーバを指定
@@ -14,7 +14,7 @@ $(function(){                             // Rosen：イニシャライザ（ア
 
   //htmlの#mappostsからjson形式で全投稿データを取得し、変数に格納
   var mapPosts = $('#mapPosts').data('posts');
-  
+
   //投稿データ1件ごとに処理を行う
   mapPosts.map(function(post){
     //ポップアップ表示用の変数を準備
@@ -30,7 +30,7 @@ $(function(){                             // Rosen：イニシャライザ（ア
     //htmlの内容でhtmlポップアップを作成
       // 緯度・経度によってポップアップのオフセット変更
       //（マップ外にはみ出す場合があるため）
-      
+
       //緯度40度超かつ経度142度超の場合：左下に表示
     if(latitude > 40 && longitude > 142){
       var hinode_popup = Rosen.htmlPopup({

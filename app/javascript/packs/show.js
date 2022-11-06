@@ -1,30 +1,37 @@
+/*global $*/
+/*global Rosen*/
+/*global Swiper*/
+
+//路線図表示機能
 var rosen;
-$(function(){                         // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
-  rosen = new Rosen("map-show", {              // "map"=<div>のid
+$(function(){                         　　// Rosen：イニシャライザ（アクセスキー認証／路線図表示）
+  rosen = new Rosen("map-show", {         // "map"=<div>のid
     apiKey: process.env.ROSEN_JS_API_KEY, // アクセスキーを認証
     apiSetting: "https",                  // HTTPS版のAPIサーバを指定
     tileSetting: "https",                 // HTTPS版のタイルサーバを指定
     maxZoom: 16
   });
 
-  /*global $*/
+  //hidden_fieldの値から駅コード1,2・路線コードを取得して変数に格納
   var startStation = Number(document.getElementById('startStationCord').value);
   var endStation = Number(document.getElementById('endStationCord').value);
   var Line = Number(document.getElementById('LineCord').value);
-
+  //駅コード・路線コードからsectionオブジェクトを取得
   rosen.getSectionsByStations(Line, startStation, endStation)
   .then(function(sections) {
     sections.forEach(function(section) {
-      rosen.fitBoundsBySectionCodes([section.code]);
-      rosen.highlightSections([section.code]);
+      rosen.fitBoundsBySectionCodes([section.code]); //sectionが画面に収まるよう表示
+      rosen.highlightSections([section.code]);       //sectionを強調
     })
-  })
+  });
+});
 
+//スライダー
+$(function(){
   var mySwiper = new Swiper ('.swiper-container', {
-		slidesPerView: 1,      //画像を何枚表示するか
-		spaceBetween: 10,      //何ピクセル画像の間隔をあけるか
-		centeredSlides : true, //見切らせたい場合メイン画像をセンターにもってくるか,
-		loop: true,            //最後の画像までいったらループする
+		slidesPerView: 1,
+		spaceBetween: 10,
+		loop: true,
 		pagination: {
 		 el: '.swiper-pagination',
 		 type: 'bullets',
@@ -35,12 +42,14 @@ $(function(){                         // Rosen：イニシャライザ（アク�
 		 prevEl: '.swiper-button-prev',
 		}
 	});
+});
 
-  // #modal-openがクリックされたらモーダルウィンドウを表示
+//モーダルウィンドウ（ゲストログイン用）
+$(function(){
+  //表示・非表示
 	$(".modal-open").on('click',function(){
       $("#modal-overlay").fadeIn("fast");
   });
-  // 閉じるボタンかオーバーレイ部をクリックでモーダルウィンドウ削除
   $("#modal-close,#modal-overlay").on('click',function(){
     $("#modal-overlay").fadeOut("fast");
   });
@@ -51,14 +60,17 @@ $(function(){                         // Rosen：イニシャライザ（アク�
   $("#modal-signup").on('click',function(){
     document.getElementById("signUpBtn").click();
   });
+});
 
-  //字数カウンター
+//コメント投稿フォーム：字数カウンター
+$(function(){
+  //初期表示
   let countNum = String($("#input-comment").val().length);
   $("#counter-comment").text(countNum);
   if (countNum > 150){
     $("#counter-comment").css('color','red');
   };
-  
+  //キーアップ時
   $("#input-comment").on("keyup", function() {
     countNum = String($(this).val().length);
     $("#counter-comment").text(countNum);
