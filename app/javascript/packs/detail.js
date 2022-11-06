@@ -4,7 +4,7 @@
 //路線図表示・路線データ取得機能
 var rosen;
 $(function(){                             // Rosen：イニシャライザ（アクセスキー認証／路線図表示）
-  rosen = new Rosen("map", {              // "map"=<div>のid
+  rosen = new Rosen("map-detail", {              // "map"=<div>のid
     apiKey: process.env.ROSEN_JS_API_KEY, // アクセスキーを認証
     apiSetting: "https",                  // HTTPS版のAPIサーバを指定
     tileSetting: "https",                 // HTTPS版のタイルサーバを指定
