@@ -8,8 +8,8 @@ $(function(){                             // Rosen：イニシャライザ（ア
     apiKey: process.env.ROSEN_JS_API_KEY, // アクセスキーを認証
     apiSetting: "https",                  // HTTPS版のAPIサーバを指定
     tileSetting: "https",                 // HTTPS版のタイルサーバを指定
-    zoom: 10,
-    sideMenuControl: true,
+    zoom: 10,                             // 初期ズーム：最小
+    sideMenuControl: true,                // サイドメニュー表示
   });
 
   //htmlの#mappostsからjson形式で全投稿データを取得し、変数に格納
