@@ -3,19 +3,19 @@
     <div class="input-container-edit col-sm-10 col-11 mx-auto mb-3 pb-3">
       <h5 class="heading mt-4">新しい投稿</h5>
 
-      <div class="row selected-section-edit py-4">
-        <p class="col-11 station-name text-center mx-auto">
+      <div class="selected-section-edit row py-4">
+        <p class="station-name col-11 mx-auto">
           <span id="startStationName"></span>
           <span class="ml-3">駅</span>
           <span class="mx-2">↔</span>
           <span id="endStationName"></span>
           <span class="ml-3">駅</span>
         </p>
-        <p class="col-11 line-name text-center mb-3 mx-auto">
+        <p class="line-name col-11 mx-auto mb-3">
           <span id="LineName"></span>
         </p>
         <div id="map-detail" class="col-11 mx-auto"></div>
-        <p class="col-12 line-name text-center my-2 mx-auto">
+        <p class="col-12 mx-auto my-2 text-center">
           <small>
             <strong>【 異なる場所（東京駅周辺）が表示される場合 】</strong></br>
             駅または路線データが正しく登録されていません。</br>
@@ -39,7 +39,7 @@
           <%= f.hidden_field :line_code, :id => "LineCord" %>
           <%= f.hidden_field :line_name, :id => "lineNameInput" %>
 
-          <div class="imput-group-sm mb-3 col-11 mx-auto">
+          <div class="imput-group-sm col-11 mx-auto mb-3">
             <label class="label-sm col-12">
               <span class="presence-optional">任意</span>
               画像を登録
@@ -48,7 +48,7 @@
             class: "file-sm col-12" %>
           </div>
 
-          <div class="imput-group-sm mt-3 col-11 mx-auto text-danger">
+          <div class="imput-group-sm col-11 mx-auto mt-3 text-danger">
             <% if @post.errors.any? %>
               <p class="col-12 mb-2"><strong>登録エラー</strong></p>
               <ul class="col-12 pl-3">
@@ -62,7 +62,7 @@
             <% end %>
           </div>
 
-          <div class="imput-group-sm mb-3 col-11 mx-auto">
+          <div class="imput-group-sm col-11 mx-auto mb-3">
             <label class="label-sm col-12">
               <span class="presence-required">必須</span>
               投稿者コメント
@@ -71,7 +71,7 @@
             <%= f.text_area :body, class: "form-control", id: "input-body" %>
           </div>
 
-          <div class="imput-group-sm mb-3 col-11 mx-auto">
+          <div class="imput-group-sm col-11 mx-auto mb-3">
             <label class="label-sm col-12">
               <span class="presence-optional">任意</span>
               おすすめ時間帯
@@ -80,7 +80,7 @@
             <%= f.text_area :time_zone, class: "form-control", id: "input-timezone" %>
           </div>
 
-          <div class="imput-group-sm mb-3 col-11 mx-auto">
+          <div class="imput-group-sm col-11 mx-auto mb-3">
             <label class="label-sm col-12">
               <span class="presence-optional">任意</span>
               近くのおすすめスポット
@@ -89,11 +89,11 @@
             <%= f.text_area :spot, class: "form-control", id: "input-spot" %>
           </div>
 
-          <div class="imput-group-sm mb-3 col-11 mx-auto">
+          <div class="imput-group-sm col-11 mx-auto mb-3">
             <%= f.submit 'この内容で登録',
-            class: "btn btn-sm btn-accent my-3", :style => "width:100%" %>
+            class: "btn btn-sm btn-accent my-3" %>
             <%= link_to '登録をやめる', new_post_path,
-            class: "btn btn-sm btn-back", :style => "width:100%" %>
+            class: "btn btn-sm btn-back" %>
           </div>
         <% end %>
 

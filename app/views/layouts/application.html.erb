@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>SyasouCom</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -21,9 +21,9 @@
           <div class="col-12 px-0">
             <div class="row px-0">
               <p class="col-10 mx-auto"><small>会員登録がお済みの方</small></p>
-              <a id="modal-login" class="col-10 mb-4 mx-auto btn btn-sm btn-main">ログイン</a>
+              <a id="modal-login" class="btn btn-sm btn-main col-10 mx-auto mb-4">ログイン</a>
               <p class="col-10 mx-auto"><small>会員登録がお済みでない方</small></p>
-              <a id="modal-signup" class="col-10 mb-4 mx-auto btn btn-sm btn-accent">新規登録</a>
+              <a id="modal-signup" class="btn btn-sm btn-accent col-10 mx-auto mb-4">新規登録</a>
               <a id="modal-close" href="javascript:void(0)" class="col-12 text-center">
                 <small>閉じる</small>
               </a>
@@ -94,7 +94,7 @@
                 「選択を解除」ボタンをクリックしてください。
               </p>
               <%= image_tag 'btn02', size: "150x60", class: "ml-5 mb-2" %>
-              <a id="modal-new-close" href="javascript:void(0)" class="col-12 text-center mt-2">
+              <a id="modal-new-close" href="javascript:void(0)" class="col-12 mt-2 text-center">
                 <small>閉じる</small>
               </a>
             </div>
@@ -104,7 +104,7 @@
     </div>
 
     <div class="wrapper p-0 m-0">
-      <div class="container-fluid header">
+      <header class="container-fluid">
         <h2 id="hm-logo"><%= link_to '車窓.com', root_path %></h2>
         <div id="sp-menu">
           <ul class="sp-list">
@@ -177,7 +177,7 @@
             <span class="menu">menu</span>
           </a>
         </div>
-      </div>
+      </header>
       <main>
         <%= yield %>
       </main>

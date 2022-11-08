@@ -1,16 +1,16 @@
 <div class="container-fluid admin">
-  <div class="row mx-auto">
-    <div class="post-container col-sm-10 col-12 mx-auto mb-3">
+  <div class="row">
+    <div class="post-container col-sm-10 col-11 mx-auto mb-3">
       <h5 class="heading mt-5 mb-3">
         <%= @user.name %>さんの フォロー中のユーザー
       </h5>
 
-      <div class="row pt-0 mt-0 my-3">
-        <div class="col-12 text-center my-3">
+      <div class="row mb-3 pt-0">
+        <div class="col-12 my-3 text-center">
           <%= link_to 'ユーザページへ', admin_user_path(@user) %>
         </div>
 
-        <div class="col-10 mx-auto mb-5 px-0">
+        <div class="col-10 mx-auto mb-4 px-0">
           <% if @all_users.present? %>
             <% @all_users.each do |user| %>
               <div class="row my-4 mx-auto d-flex align-items-center">
@@ -29,7 +29,7 @@
               </div>
             <% end %>
           <% else %>
-            <p class="text-center">フォロー中のユーザーがいません</p>
+            <p class="my-4 text-center">フォロー中のユーザーがいません</p>
           <% end %>
         </div>
       </div>

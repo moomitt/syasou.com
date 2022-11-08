@@ -1,16 +1,16 @@
 <div class="container-fluid public">
-  <div class="row mx-auto">
-    <div class="post-container col-sm-10 col-12 mx-auto mb-3">
+  <div class="row">
+    <div class="post-container col-md-11 col-sm-10 col-11 mx-auto mb-3 text-center">
       <h5 class="heading mt-5 mb-3">
         <%= @user.name %> さんの お気に入り一覧
       </h5>
 
       <div class="row pt-0 mt-0 my-3">
-        <div class="col-12 text-center my-3">
+        <div class="col-12 my-3">
           <%= link_to 'マイページに戻る', users_mypage_path %>
         </div>
 
-        <div id="tab-contents" class="col-lg-11 col-md-8 col-sm-8 col-10 mx-auto mt-4 px-0">
+        <div id="tab-contents" class="col-lg-10 col-md-11 col-sm-8 col-10 mx-auto mt-4 px-0">
           <div id="tab1" class="tab px-0">
             <%= render partial: 'public/posts/tab2', locals: { bookmarks: @all_bookmarks} %>
           </div>

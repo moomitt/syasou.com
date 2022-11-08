@@ -43,7 +43,7 @@ $(function(){                               // Rosen：イニシャライザ（�
 
     //駅コード・路線コードが空白でない場合のみ、submitボタンが出現
     if( $('#startStationCord').value != "" && $('#endStationCord').value != "" && $('#lineCord').value != "" ){
-      $('#submitBtn').html('<button type="submit" class="btn btn-sm btn-accent px-3 mb-1">登録画面へ進む</button>');
+      $('#submitBtn').html('<button type="submit" class="btn btn-sm btn-accent px-4 my-1">登録画面へ進む</button>');
     };
   });
 
@@ -65,7 +65,7 @@ $(function(){                               // Rosen：イニシャライザ（�
     document.getElementById('startStationLongitude').value=""  //駅1 経度
     document.getElementById('LineCord').value=""　　　　　     //路線コード
     //submitボタンをdisabledボタンに戻す
-    $('#submitBtn').html('<button disabled class="btn btn-sm btn-accent px-4 mb-1">選択されていません</button>');
+    $('#submitBtn').html('<button disabled class="btn btn-sm btn-accent px-4 my-1">選択されていません</button>');
   });
 });
 

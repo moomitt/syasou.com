@@ -2,13 +2,13 @@
   <div class="row mx-auto">
     <div class="input-container col-sm-10 col-11 mx-auto mb-3 py-4">
 
-      <div class="row selected-section mb-3">
-        <p class="col-12 station-name text-center">
+      <div class="selected-section row mb-3">
+        <p class="station-name col-12">
           <%= @post.start_station_name %>駅
           <span class="mx-2">↔</span>
           <%= @post.end_station_name %>駅
         </p>
-        <p class="col-12 line-name text-center">
+        <p class="line-name col-12">
           <%= @post.line_name %>
         </p>
       </div>
@@ -20,9 +20,9 @@
 
         <% if @post.post_images.attached? %>
           <% if @post.post_images.length != 1 %>
-            <div class="col-12 post-slide px-0">
-              <div class="row swiper-container-cover text-center mb-5">
-                <div class="col-lg-9 col-md-10 col-12 swiper-container">
+            <div class="post-slide col-md-8 col-sm-9 col-12 mx-auto px-0">
+              <div class="swiper-container-cover row mb-5">
+                <div class="swiper-container col-12">
                   <ul class="swiper-wrapper">
                     <% @post.post_images.each do |image| %>
                       <li class="swiper-slide"><%= image_tag image.variant(resize_to_fill: [330, 220]).processed %></li>
@@ -31,18 +31,18 @@
                   <div class="swiper-button-prev"></div>
                   <div class="swiper-button-next"></div>
                 </div>
-                <div class="col-12 swiper-pagination text-center px-0"></div>
+                <div class="swiper-pagination col-12 px-0"></div>
               </div>
             </div>
           <% else %>
-            <div class="col-12 text-center mb-4 px-0">
+            <div class="col-12 mb-4 px-0 text-center">
               <% @post.post_images.each do |image| %>
                 <%= image_tag image.variant(resize_to_fill: [300, 200]).processed %>
               <% end %>
             </div>
           <% end %>
         <% else %>
-          <div class="col-12 text-center mb-4 px-0">
+          <div class="col-12 mb-4 px-0 text-center">
             <%= image_tag 'no_image', size: "300x200" %>
           </div>
         <% end %>
@@ -111,21 +111,21 @@
 
         <div class="col-sm-11 col-12 mx-auto mb-3">
           <% if @comments.present? %>
-            <p class="py-3" style="border-bottom: 1px solid #a9a9a9;">
+            <p class="comment-heading py-3">
               コメント一覧
               <small>（全 <%= @comments.count %> 件）</small>
             </p>
             <% @comments.each do |comment| %>
-              <div class="row comment-box mx-auto py-2">
+              <div class="comment-box row mx-auto py-1">
                 <p class="col-12 mb-2"><%= safe_join(comment.text.split("\r"),tag(:br)) %></p>
-                <p class="col-4 text-right px-0"><%= comment.user.name %></p>
-                <p class="col-6 text-right px-0" style="font-size:0.7rem; padding-top:2px;">
+                <p class="col-4 px-0 text-right"><%= comment.user.name %></p>
+                <p class="date-sm col-6 px-0">
                   <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
                 </p>
-                <div class="good_buttons_<%= comment.id %> col-2 text-right px-0">
+                <div class="good_buttons_<%= comment.id %> col-2 px-0 text-right">
                   <%= render partial: 'public/goods/good', locals: { post: @post, comment: comment } %>
                 </div>
-                <p class="col-12 text-right" style="font-size:0.7rem">
+                <p class="date-sm col-12">
                   <%= link_to 'コメントを削除', admin_post_comment_path(@post.id, comment.id), method: :delete,
                   data: {confirm: "削除したコメントは元に戻せません。本当にこのコメントを削除しますか？"} %>
                 </p>

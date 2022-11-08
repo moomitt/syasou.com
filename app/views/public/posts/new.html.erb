@@ -3,7 +3,7 @@
     <div class="map-container col-md-10 col-12 mx-auto mb-3 pb-3 text-center">
       <h5 class="heading mt-4">新しい投稿</h5>
 
-      <div class="row selected-section col-sm-10 col-12 text-center mx-auto px-4">
+      <div class="selected-section row col-sm-10 col-12 mx-auto px-4">
         <p class="col-12">
           投稿する区間を選択してください
           <button id="modal-new-open" class="btn btn-sm btn-light py-0 mx-3">
@@ -11,14 +11,14 @@
             操作方法
           </button>
         </p>
-        <p class="col-md-5 col-12 station-name-select text-right px-3 py-1 my-1 mx-auto">
+        <p class="station-name-select col-md-5 col-12 mx-auto my-1 px-3 py-1">
           <span id="startStationName"></span>　駅
         </p>
-        <p class="col-md-2 col-1 text-center py-1 my-1 mx-auto">↔</p>
-        <p class="col-md-5 col-11 station-name-select text-right px-3 py-1 my-1 mx-auto">
+        <p class="col-md-2 col-1 mx-auto my-1 py-1">↔</p>
+        <p class="station-name-select col-md-5 col-11 mx-auto my-1 px-3 py-1">
           <span id="endStationName"></span>　駅
         </p>
-        <p class="col-12 line-name mb-2">
+        <p class="col-12 line-name">
           <span id="LineName"></span>
         </p>
       </div>
@@ -36,11 +36,11 @@
           <%= f.hidden_field :line_code, :id => "LineCord" %>
           <%= f.hidden_field :line_name, :id => "LineNameInput" %>
           <div id="submitBtn" class="px-0">
-            <button disabled class="btn btn-sm btn-accent px-4 mb-1">選択されていません</button>
+            <button disabled class="btn btn-sm btn-accent px-4 my-1">選択されていません</button>
           </div>
         <% end %>
       </div>
-      <button id="resetButton" class="btn btn-sm btn-back px-4 mb-1">選択を解除</button>
+      <button id="resetButton" class="btn btn-sm btn-back px-4 my-1">選択を解除</button>
 
       <div id="map-new" class="mt-2"></div>
 

@@ -2,7 +2,7 @@
   <% posts.each do |post| %>
     <div class="post-list mb-4">
       <%= link_to admin_post_path(post.id), class: "row" do %>
-        <div class="post-text col-lg-6 col-12 mx-auto">
+        <div class="post-text col-md-6 col-11 mx-auto">
           <p class="section">
             <%= post.start_station_name %>駅
             －
@@ -22,7 +22,7 @@
           </p>
         </div>
 
-        <div class="post-image col-lg-6 col-12 mx-auto px-0">
+        <div class="post-image col-md-6 col-12 mx-auto px-0">
           <% if post.post_images.attached? %>
             <% if post.post_images.length == 1 %>
               <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 160]).processed %>
@@ -45,9 +45,9 @@
         </div>
       <% end %>
 
-      <div class="row bookmark-button">
-        <div class="bookmark_buttons_<%= post.id %> text-right col-12 px-0s">
-          <%= render partial: 'public/bookmarks/bookmark', locals: { post: post} %>
+      <div class="bookmark-button row">
+        <div class="bookmark_buttons_<%= post.id %> col-12 px-1">
+          <%= render partial: 'public/bookmarks/bookmark', locals: { post: post } %>
         </div>
       </div>
 

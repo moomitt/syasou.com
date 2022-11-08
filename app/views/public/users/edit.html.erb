@@ -10,7 +10,7 @@
           <h5 class="col-10 mx-auto px-0">ユーザ情報を変更</p>
         </div>
 
-        <div class="row input-group-sm mt-4 mb-5">
+        <div class="input-group-sm row mt-4 mb-5">
           <label class="label-control col-10 mx-auto px-0">ユーザアイコン</label>
 
           <div class="edit-icon col-sm-10 col-11 mx-auto">
@@ -35,7 +35,7 @@
           </div>
         </div>
 
-        <div class="row input-group-sm mx-3 text-danger">
+        <div class="input-group-sm row mx-3 text-danger">
           <% if @user.errors.any? %>
             <p class="col-12 mb-2"><strong>登録エラー</strong></p>
             <ul class="col-12">
@@ -49,13 +49,13 @@
           <% end %>
         </div>
 
-        <div class="row input-group-sm mb-4">
+        <div class="input-group-sm row mb-4">
           <label class="label-control col-10 mx-auto px-0">ニックネーム</label>
           <%= f.text_field :name, autofocus: true, autocomplete: "name",
           class: "form-control col-10 mx-auto"  %>
         </div>
 
-        <div class="row input-group-sm mb-5">
+        <div class="input-group-sm row mb-5">
           <label class="label-control col-10 mx-auto px-0">メールアドレス</label>
           <%= f.email_field :email, autofocus: true, autocomplete: "email",
           class: "form-control col-10 mx-auto"  %>
@@ -68,7 +68,7 @@
         </div>
       <% end %>
 
-      <div class="row my-5">
+      <div class="row mb-5">
         <div class="col-10 mx-auto text-center">
           <p>退会をご希望の方は<%= link_to ' こちら', users_confirm_path %></p>
         </div>

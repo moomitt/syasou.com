@@ -5,31 +5,31 @@
         退会をご希望の方へ
       </h5>
       <div class="row my-4">
-        <h5 class="col-11 mb-3 mx-auto">
+        <h5 class="col-11 mx-auto mb-3">
           【注意事項】
         </h5>
-        <h6 class="col-11 mb-5 mx-auto">
+        <h6 class="confirm-index col-11 mx-auto mb-5">
           下記の注意事項①②を必ずご確認ください。
         </h6>
-        <h6 class="col-11 mb-3 mx-auto">
+        <h6 class="confirm-index col-11 mx-auto mb-3">
           ① 退会後は、下記項目は実施できません。
         </h6>
-        <p class="col-sm-10 col-11 mb-5 mx-auto">
+        <p class="confirm-text col-sm-10 col-11 mx-auto mb-5">
           ・投稿の新規作成、投稿の編集、削除</br>
           ・投稿へのお気に入り登録</br>
           ・ユーザーのフォロー</br>
           ・コメント投稿、コメントへのいいね
         </p>
-        <h6 class="col-11 mb-3 mx-auto">
+        <h6 class="confirm-index col-11 mx-auto mb-3">
           ② 退会後も、ご自身の投稿・コメントは削除されません。
         </h6>
-        <p class="col-sm-10 col-11 mb-3 mx-auto">
+        <p class="confirm-text col-sm-10 col-11 mx-auto mb-3">
           ・必要に応じ、
           <%= link_to 'マイページ', users_mypage_path %>
           より退会前に削除をお願いいたします。</br>
           （退会後に投稿・コメントを削除いただくことはできません）
         </p>
-        <p class="col-sm-10 col-11 mb-5 mx-auto">
+        <p class="confirm-text col-sm-10 col-11 mx-auto mb-5">
           ・ユーザ名やユーザ別投稿一覧などの、
           ユーザ情報は表示されません。</br>
           （ "退会済みのユーザ" と表示されます）
@@ -37,9 +37,9 @@
 
         <%= link_to '上記内容を確認の上、退会する', users_withdraw_path, method: :patch,
         data: { confirm: "本当に退会しても宜しいですか？" },
-        class: "btn btn-sm btn-danger col-sm-10 col-11 mt-4 mx-auto" %>
+        class: "btn btn-sm btn-danger col-sm-10 col-11 mx-auto" %>
         <%= link_to '退会せず戻る', users_mypage_path,
-        class: "btn btn-sm btn-back col-sm-10 col-11 my-3 mx-auto" %>
+        class: "btn btn-sm btn-back col-sm-10 col-11 mx-auto my-3" %>
       </div>
 
 

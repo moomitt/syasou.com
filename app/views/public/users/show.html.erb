@@ -1,10 +1,10 @@
 <div class="container-fluid public">
   <div class="row">
-    <div class="input-container col-md-10 col-11 mx-auto mb-3">
-      <h5 class="heading mt-5 mb-4">
+    <div class="input-container col-md-10 col-11 mx-auto mb-3 text-center">
+      <h5 class="heading my-5">
         マイページ
       </h5>
-      <div class="row mb-4 text-center">
+      <div class="row mb-4">
         <p class="col-10 mx-auto mb-2">ユーザーアイコン</p>
         <div class="col-10 mx-auto">
           <% if @user.user_image.attached? %>
@@ -16,17 +16,17 @@
         </div>
       </div>
 
-      <div class="row mb-4 text-center">
+      <div class="row mb-4">
         <p class="col-10 mx-auto">ニックネーム</p>
         <p class="col-10 mx-auto"><strong><%= @user.name %></strong></p>
       </div>
 
-      <div class="row mb-5 text-center">
+      <div class="row mb-5">
         <p class="col-10 mx-auto">メールアドレス</p>
         <p class="col-10 mx-auto"><strong><%= @user.email %></strong></p>
       </div>
 
-      <div class="row text-center">
+      <div class="row">
         <p class="col-10 mx-auto mb-2">
           <%= link_to users_posts_path do %>
             あなたの投稿一覧を見る
@@ -49,7 +49,7 @@
         </p>
       </div>
 
-      <div class="row mb-4 text-center">
+      <div class="row mb-4">
         <p class="col-10 mx-auto text-right">
           <%= link_to users_information_edit_path do %>
             <i class="fas fa-edit"></i>
