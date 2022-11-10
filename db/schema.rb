@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_28_215647) do
+ActiveRecord::Schema.define(version: 2022_11_08_073604) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(version: 2022_10_28_215647) do
     t.string "time_zone"
     t.integer "start_station_prefecture"
     t.integer "end_station_prefecture"
-    t.integer "latitude"
-    t.integer "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.string "start_station_name"
     t.string "end_station_name"
     t.string "line_name"

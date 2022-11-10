@@ -61,11 +61,16 @@ class Public::PostsController < ApplicationController
       hash = {"post_id" => post.id, "post_body" => post.body,
       "start_station" => post.start_station, "end_station" => post.end_station,
       "line_code" => post.line_code,
-      "latitude" => post.latitude, "longitude" => post.longitude }
+      "latitude" => post.latitude.to_s, "longitude" => post.longitude.to_s,
+      "uniqueness" => 1 }
       if post.post_images.attached?
         hash["post_image"] = url_for(post.post_images[0].variant(resize_to_fill: [150, 100]))
       else
         hash["post_image"] = '/assets/no_image.png'
+      end
+      uniqueness = @map_posts.select{|hash| hash["start_station"] == post.start_station }
+      if uniqueness.present?
+        hash["uniqueness"] = 1 + uniqueness.length
       end
       @map_posts.push(hash)
     end
