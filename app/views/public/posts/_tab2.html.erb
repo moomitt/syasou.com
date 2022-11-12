@@ -27,8 +27,8 @@
             <% if bookmark.post.post_images.length == 1 %>
               <%= image_tag bookmark.post.post_images[0].variant(resize_to_fill: [240, 160]).processed %>
             <% elsif bookmark.post.post_images.length == 2 %>
-              <%= image_tag bookmark.post.post_images[0].variant(resize_to_fill: [120, 160]).processed %>
-              <%= image_tag bookmark.post.post_images[1].variant(resize_to_fill: [120, 160]).processed %>
+              <%= image_tag bookmark.post.post_images[0].variant(resize_to_fill: [119, 160]).processed %>
+              <%= image_tag bookmark.post.post_images[1].variant(resize_to_fill: [119, 160]).processed %>
             <% elsif bookmark.post.post_images.length == 3 %>
               <%= image_tag bookmark.post.post_images[0].variant(resize_to_fill: [240, 80]).processed %>
               <%= image_tag bookmark.post.post_images[1].variant(resize_to_fill: [119, 80]).processed %>

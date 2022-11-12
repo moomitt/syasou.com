@@ -56,7 +56,9 @@ $(function(){
     $("#counter-body").text(countNum1);
     if (countNum1 > 200){
       $("#counter-body").css('color','red');
-    };
+    } else {
+      $("#counter-body").css('color','black');
+    }
   });
   //おすすめ時間帯
   //初期表示
@@ -64,15 +66,16 @@ $(function(){
   $("#counter-timezone").text(countNum2);
   if (countNum2 > 200){
     $("#counter-timezone").css('color','red');
-  };
+  }
   //キーアップ時
   $("#input-timezone").on("keyup", function() {
     countNum2 = String($(this).val().length);
     $("#counter-timezone").text(countNum2);
     if (countNum2 > 200){
       $("#counter-timezone").css('color','red');
-    };
-  });
+    } else {
+      $("#counter-timezone").css('color','black');
+    }  });
   //おすすめスポット
   //初期表示
   let countNum3 = String($("#input-spot").val().length);
@@ -86,6 +89,8 @@ $(function(){
     $("#counter-spot").text(countNum3);
     if (countNum3 > 200){
       $("#counter-spot").css('color','red');
-    };
+    } else {
+      $("#counter-spot").css('color','black');
+    }
   });
 });

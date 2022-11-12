@@ -76,6 +76,8 @@ $(function(){
     $("#counter-comment").text(countNum);
     if (countNum > 150){
       $("#counter-comment").css('color','red');
-    };
+    } else {
+      $("#counter-comment").css('color','black');
+    }
   });
 });
