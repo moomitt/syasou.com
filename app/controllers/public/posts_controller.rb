@@ -43,7 +43,7 @@ class Public::PostsController < ApplicationController
     end
     if params[post_images: []]       #画像アップロード時に圧縮
       params[post_images: []].each do |image|
-        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_limit(600, 600).call
+        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_limit(200, 200).call
       end
     end
     if @post.update(post_params)
