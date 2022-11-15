@@ -57,10 +57,18 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.post_images.attached?
       @post.post_images.purge_later && @post.destroy
-      redirect_to session[:previous_url]    #showページの1つ前のページにリダイレクト
+      if session[:previous_url].match(/detail/)  #detailページに戻るとエラーになるため、
+        redirect_to new_post_path                #エラー回避のため、newページにリダイレクトさせる
+      else
+        redirect_to session[:previous_url]       #showページの1つ前のページにリダイレクト
+      end
     else
       @post.destroy
-      redirect_to session[:previous_url]    #showページの1つ前のページにリダイレクト
+      if session[:previous_url].match(/detail/)  #detailページに戻るとエラーになるため、
+        redirect_to new_post_path                #エラー回避のため、newページにリダイレクトさせる
+      else
+        redirect_to session[:previous_url]       #showページの1つ前のページにリダイレクト
+      end
     end
   end
 
