@@ -380,6 +380,12 @@ textarea.form-control {
     font-size: 0.9rem;
     padding: 10px 15px 0 0;
     text-align: right;
+    p {
+      display: inline-block;
+    }
+    .date {
+      padding-right: 90px;
+    }
   }
   .post-image {
     display: flex;
