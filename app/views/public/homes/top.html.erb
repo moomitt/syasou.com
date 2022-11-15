@@ -193,7 +193,10 @@
                         <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 78]).processed %>
                         <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 78]).processed %>
                       <% else %>
-                        
+                        <%= image_tag post.post_images[0].variant(resize_to_fill: [119, 78]).processed %>
+                        <%= image_tag post.post_images[1].variant(resize_to_fill: [119, 78]).processed %>
+                        <%= image_tag post.post_images[2].variant(resize_to_fill: [119, 78]).processed %>
+                        <%= image_tag post.post_images[3].variant(resize_to_fill: [119, 78]).processed %>
                       <% end %>
                     <% else %>
                       <%= image_tag 'no_image', size: "240x160" %>

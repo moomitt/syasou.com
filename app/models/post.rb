@@ -20,6 +20,14 @@ class Post < ApplicationRecord
   validates :end_station_name,         presence: true
   validates :line_name,                presence: true
 
+  def resize_image(width = 1280, height = 1280)
+    if post_params[:post_images].present?
+      post_params[:post_images].each do |image|
+        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fill(width, height).call
+      end
+    end
+  end
+
   def bookmarked_by?(user)                    #すでにブックマークされているか判定するメソッド
     bookmarks.exists?(user_id: user.id)
   end

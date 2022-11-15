@@ -59,3 +59,4 @@ gem 'devise'
 gem 'dotenv-rails'
 gem "enum_help"
 gem 'active_hash'
+gem 'pry-rails'

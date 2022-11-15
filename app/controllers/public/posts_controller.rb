@@ -9,9 +9,10 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.post_images.present?
-      resize_image(600, 400)
-      @post.post_images.attach(params[:post][:post_images])
+    if params[post_images: []]       #画像アップロード時に圧縮
+      params[post_images: []].each do |image|
+        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_limit(600, 600).call
+      end
     end
     if @post.save
       redirect_to post_path(@post.id)
@@ -38,6 +39,11 @@ class Public::PostsController < ApplicationController
       params[:post][:image_ids].each do |image_id|
         post_image = @post.post_images.find(image_id)
         post_image.purge_later
+      end
+    end
+    if params[post_images: []]       #画像アップロード時に圧縮
+      params[post_images: []].each do |image|
+        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_limit(600, 600).call
       end
     end
     if @post.update(post_params)
@@ -186,14 +192,6 @@ class Public::PostsController < ApplicationController
         @area_id = 7
       else
         @area_id = 8
-      end
-    end
-  end
-
-  def resize_image(width = 1280, height = 1280)
-    if post_params[:post_images].present?
-      post_params[:post_images].each do |image|
-        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fill(width, height).call
       end
     end
   end
