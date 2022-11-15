@@ -26,8 +26,8 @@ $(function(){
     var body = post.post_body;                //投稿データ 投稿者コメント
     var url = '/posts/' + post.post_id;       //投稿データ showページのurl
     //ポップアップ用のhtml
-    var html = '<a href=' + url + '><img class="popup-image" src=' +
-               src + '></img></br> <p class="popup-text">' + body + '</p></a>'
+    var html = '<a href=' + url + '><img class="popup-image" src="' +
+               src + '"></img></br> <p class="popup-text">' + body + '</p></a>'
     var uniqueness = Number(post.uniqueness); //投稿データ 駅1の重複数
 
     //htmlの内容でhtmlポップアップを作成
@@ -71,33 +71,7 @@ $(function(){
       .then(function (marker) {
         //初期はポップアップを閉じた状態にする
         marker.closePopup();
-        console.log(marker);
       });
-    } else {
-      var marker = L.marker([latitude, longitude]);
-      console.log(rosen);
-      console.log(marker);
-      rosen.leafletElement.addLayer();
-      marker.addTo(rosen);
-        // rosen.getStationByCode([post.start_station])
-        // .then(function (station){
-        //   console.log(station);
-        //   console.log(parseFloat(station._latlng.lat));
-        //   console.log(parseFloat(station._latlng.lng));
-        //   var lat = station._latlng.lat + 0.0005;
-        //   var lng = station._latlng.lng + 0.0005;
-        //   console.log(lat);
-        //   console.log(lng);
-        //   var point = latLngToCoords([lat, lng]);
-        //   console.log(point);
-        // })
-      // var lat = (latitude + uniqueness);
-      // var lng = (longitude + uniqueness);
-      // console.log(lat);
-      // console.log(lng);
-      // console.log(rosen);
-      // var marker = L.marker([lat, lng]).addTo(rosen);
-      // marker.bindPopup(post_popup).closePopup();
     };
     //路線コード・駅コードからsectionオブジェクトを取得
     rosen.getSectionsByStations(post.line_code, post.start_station, post.end_station)
