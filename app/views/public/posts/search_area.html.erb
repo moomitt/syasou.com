@@ -1,7 +1,15 @@
 <div class="container-fluid public">
   <div class="row">
     <div class="post-container col-md-11 col-sm-10 col-11 mx-auto mb-3 text-center">
-      <h5 class="heading mt-5">
+      <div class="col-12 mt-3 pl-3 text-left">
+        <%= link_to posts_path do %>
+          <small>
+            <i class="fas fa-arrow-left mr-1"></i>
+            一覧に戻る
+          </small>
+        <% end %>
+      </div>
+      <h5 class="heading mt-3">
         <%= @area_name %> エリアの投稿一覧
       </h5>
 
