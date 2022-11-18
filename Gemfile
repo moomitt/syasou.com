@@ -60,3 +60,4 @@ gem 'dotenv-rails'
 gem "enum_help"
 gem 'active_hash'
 gem 'pry-rails'
+gem 'kaminari','~> 1.2.1'

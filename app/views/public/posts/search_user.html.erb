@@ -35,9 +35,11 @@
         class="col-lg-10 col-md-11 col-sm-8 col-10 mx-auto mt-4 px-0 text-center">
           <div id="tab1" class="tab px-0">
             <%= render partial: 'tab', locals: { posts: @popular_posts} %>
+            <%= paginate @popular_posts %>
           </div>
           <div id="tab2" class="tab px-0">
             <%= render partial: 'tab', locals: { posts: @new_posts} %>
+            <%= paginate @new_posts %>
           </div>
         </div>
 
