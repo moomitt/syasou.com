@@ -101,9 +101,9 @@ class Public::PostsController < ApplicationController
     else
       posts = Post.where(user_id: @user.id)
       all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(6)
+      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(5)
       all_new_posts = posts.order('id desc')
-      @new_posts = all_new_posts.page(params[:page]).per(6)
+      @new_posts = all_new_posts.page(params[:page]).per(5)
     end
   end
 

@@ -982,3 +982,20 @@ textarea.form-control {
   background-color: #c8c8c8;
   color: #fff;
 }
+
+//*** ページネーション ***//
+
+.pagination-container {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  .pagination{
+    display: inline-block;
+    span {
+      margin-left: 5px;
+    }
+    span.page {
+      margin: 0px 7px;
+    }
+  }
+}

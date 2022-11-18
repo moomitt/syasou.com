@@ -73,6 +73,13 @@ ja:
             text:
               blank: が入力されていません
               too_long: が150文字を超えています
+ja:
+  views:
+    pagination:
+      previous: "< prev"
+      next: "next >"
+      first: "≪ first"
+      last: "last ≫"
 
 
 
