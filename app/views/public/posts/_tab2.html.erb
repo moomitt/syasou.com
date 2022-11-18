@@ -45,12 +45,12 @@
         </div>
       <% end %>
 
-      <div class="bookmark-button row">
-        <div class="bookmark_buttons_<%= bookmark.post.id %> col-12 px-1">
-          <p class="date">
-            <i class="fas fa-map-marker-alt mr-1"></i>
-            <%= bookmark.post.created_at.strftime('%Y/%m/%d %H:%M') %>
-          </p>
+      <div class="bookmark-button col-12 px-1">
+        <p class="date">
+          <i class="fas fa-map-marker-alt mr-1"></i>
+          <%= bookmark.post.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </p>
+        <div class="bookmark_buttons_<%= bookmark.post.id %>">
           <%= render partial: 'public/bookmarks/bookmark', locals: { post: bookmark.post } %>
         </div>
       </div>
