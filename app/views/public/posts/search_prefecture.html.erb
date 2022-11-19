@@ -27,9 +27,15 @@
         <div id="tab-contents" class="col-md-11 col-sm-8 col-10 mx-auto mt-4 px-0">
           <div id="tab1" class="tab px-0">
             <%= render partial: 'tab', locals: { posts: @popular_posts} %>
+            <div class="pagination-container">
+              <%= paginate @popular_posts %>
+            </div>
           </div>
           <div id="tab2" class="tab px-0">
             <%= render partial: 'tab', locals: { posts: @new_posts} %>
+            <div class="pagination-container">
+              <%= paginate @new_posts %>
+            </div>
           </div>
         </div>
       </div>
