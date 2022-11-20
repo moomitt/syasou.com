@@ -996,7 +996,12 @@ textarea.form-control {
       margin-left: 5px;
     }
     span.page {
+      display: inline-block;
+      text-align: center;
       margin: 0px 7px;
+      background-color: #d3d3d3;
+      padding: 5px 8px;
+      border-radius: 20px;
     }
   }
 }
