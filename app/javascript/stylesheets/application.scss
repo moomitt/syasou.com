@@ -993,15 +993,19 @@ textarea.form-control {
   .pagination{
     display: inline-block;
     span {
-      margin-left: 5px;
+      margin: 0px 5px;
     }
     span.page {
       display: inline-block;
       text-align: center;
-      margin: 0px 7px;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
       background-color: #d3d3d3;
-      padding: 5px 8px;
-      border-radius: 20px;
+      border-radius: 35px;
+    }
+    span.page.current {
+      background-color: #e4d2d8;
     }
   }
 }
