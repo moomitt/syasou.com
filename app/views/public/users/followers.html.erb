@@ -10,9 +10,9 @@
           <%= link_to 'マイページに戻る', users_mypage_path %>
         </div>
 
-        <div class="col-10 mx-auto mb-4 px-0">
-          <% if @all_users.present? %>
-            <% @all_users.each do |user| %>
+        <div class="col-10 mx-auto px-0">
+          <% if @followers.present? %>
+            <% @followers.each do |user| %>
               <div class="row mx-auto my-4 d-flex align-items-center">
                 <%= link_to search_user_path(user.id), class: "col-md-7 col-sm-8 col-12 px-0" do %>
                   <% if user.user_image.attached? %>
@@ -26,6 +26,9 @@
                 <div class="follow_buttons_<%= user.id %> col-md-5 col-sm-4 col-10 px-0 text-center">
                   <%= render partial: 'public/follows/follow', locals: { user: user } %>
                 </div>
+              </div>
+              <div class="pagination-container">
+                <%= paginate @followers %>
               </div>
             <% end %>
           <% else %>

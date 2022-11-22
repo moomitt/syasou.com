@@ -7,12 +7,12 @@ class Public::UsersController < ApplicationController
 
   def followings
     @user = current_user
-    @all_users = @user.followings
+    @followings = @user.followings.page(params[:page]).per(10)
   end
 
   def followers
     @user = current_user
-    @all_users = @user.followers
+    @followers = @user.followers.page(params[:page]).per(1)
   end
 
   def edit
@@ -31,7 +31,8 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if params[:user_image]       #画像アップロード時に圧縮
-      params[:user_image].tempfile = ImageProcessing::MiniMagick.source(params[:user_image].tempfile).resize_to_limit(00, 600).call
+      params[:user_image].tempfile = ImageProcessing::MiniMagick
+      .source(params[:user_image].tempfile).resize_to_limit(00, 600).call
     end
     if @user.update(user_params)
       redirect_to users_mypage_path
@@ -56,15 +57,13 @@ class Public::UsersController < ApplicationController
     @user = current_user
     posts = Post.where(user_id: @user.id)
     all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-    @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(2)
-    all_new_posts = posts.order('id desc')
-    @new_posts = all_new_posts.page(params[:page]).per(2)
+    @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
+    @new_posts = posts.order('id desc').page(params[:page]).per(4)
   end
 
   def bookmarks
     @user = current_user
-    all_bookmarks = Bookmark.where(user_id: @user.id)
-    @bookmarks = all_bookmarks.page(params[:page]).per(2)
+    @bookmarks = Bookmark.where(user_id: @user.id).page(params[:page]).per(4)
   end
 
   private

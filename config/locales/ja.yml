@@ -76,6 +76,7 @@ ja:
 ja:
   views:
     pagination:
+      page:
       previous: '<i class="fas fa-chevron-left"></i>'
       next: '<i class="fas fa-chevron-right"></i>'
       first: '<i class="fas fa-angle-double-left"></i>'

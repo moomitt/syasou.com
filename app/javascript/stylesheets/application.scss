@@ -999,7 +999,7 @@ textarea.form-control {
         color: #d3d3d3;
       }
     }
-    span.page {
+    span.page a {
       display: inline-block;
       text-align: center;
       width: 35px;
@@ -1008,8 +1008,14 @@ textarea.form-control {
       background-color: #d3d3d3;
       border-radius: 35px;
     }
-    span.page.current {
+    span.page.current{
+      display: inline-block;
+      text-align: center;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
       background-color: #e4d2d8;
+      border-radius: 35px;
     }
   }
 }
