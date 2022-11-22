@@ -993,7 +993,11 @@ textarea.form-control {
   .pagination{
     display: inline-block;
     span {
-      margin: 0px 5px;
+      margin: 0px 7px;
+      i {
+        font-size: 1.5rem;
+        color: #d3d3d3;
+      }
     }
     span.page {
       display: inline-block;

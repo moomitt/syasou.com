@@ -54,14 +54,17 @@ class Public::UsersController < ApplicationController
 
   def posts
     @user = current_user
-    all_posts = Post.where(user_id: @user.id)
-    @popular_posts = all_posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-    @new_posts = all_posts.order('id desc')
+    posts = Post.where(user_id: @user.id)
+    all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+    @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(2)
+    all_new_posts = posts.order('id desc')
+    @new_posts = all_new_posts.page(params[:page]).per(2)
   end
 
   def bookmarks
     @user = current_user
-    @all_bookmarks = Bookmark.where(user_id: @user.id)
+    all_bookmarks = Bookmark.where(user_id: @user.id)
+    @bookmarks = all_bookmarks.page(params[:page]).per(2)
   end
 
   private
