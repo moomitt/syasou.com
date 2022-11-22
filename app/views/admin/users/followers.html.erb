@@ -10,9 +10,9 @@
           <%= link_to 'ユーザページへ', admin_user_path(@user) %>
         </div>
 
-        <div class="col-10 mx-auto mb-4 px-0">
-          <% if @all_users.present? %>
-            <% @all_users.each do |user| %>
+        <div class="col-10 mx-auto px-0">
+          <% if @followers.present? %>
+            <% @followers.each do |user| %>
               <div class="row my-4 mx-auto d-flex align-items-center">
                 <%= link_to admin_user_path(user.id), class: "col-md-7 col-sm-8 col-12 px-0" do %>
                   <% if user.user_image.attached? %>
@@ -31,6 +31,9 @@
           <% else %>
             <p class="my-4 text-center">フォロワーがいません</p>
           <% end %>
+          <div class="pagination-container admin">
+            <%= paginate @followers %>
+          </div>
         </div>
       </div>
 

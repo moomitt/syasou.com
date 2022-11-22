@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @all_users = User.all
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def show
@@ -11,19 +11,20 @@ class Admin::UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:id])
-    @all_users = @user.followings
+    @followings = @user.followings.page(params[:page]).per(10)
   end
 
   def followers
     @user = User.find(params[:id])
-    @all_users = @user.followers
+    @followers = @user.followers.page(params[:page]).per(10)
   end
 
   def posts
     @user = User.find(params[:id])
-    all_posts = Post.where(user_id: @user.id)
-    @popular_posts = all_posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-    @new_posts = all_posts.order('id desc')
+    posts = Post.where(user_id: @user.id)
+    all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+    @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
+    @new_posts = posts.order('id desc').page(params[:page]).per(4)
   end
 
   def edit

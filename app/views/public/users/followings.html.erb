@@ -35,13 +35,13 @@
                   <%= render partial: 'public/follows/follow', locals: { user: user } %>
                 </div>
               </div>
-              <div class="pagination-container">
-                <%= paginate @followings %>
-              </div>
             <% end %>
           <% else %>
             <p class="my-4 text-center">フォロー中のユーザーがいません</p>
           <% end %>
+          <div class="pagination-container">
+            <%= paginate @followings %>
+          </div>
         </div>
       </div>
 
