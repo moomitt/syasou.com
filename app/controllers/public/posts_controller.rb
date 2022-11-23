@@ -11,7 +11,8 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     if params[post_images: []]       #画像アップロード時に圧縮
       params[post_images: []].each do |image|
-        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_limit(600, 600).call
+        image.tempfile = ImageProcessing::MiniMagick
+        .source(image.tempfile).resize_to_limit(600, 600).call
       end
     end
     if @post.save
@@ -43,7 +44,8 @@ class Public::PostsController < ApplicationController
     end
     if params[post_images: []]       #画像アップロード時に圧縮
       params[post_images: []].each do |image|
-        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_limit(200, 200).call
+        image.tempfile = ImageProcessing::MiniMagick
+        .source(image.tempfile).resize_to_limit(600, 600).call
       end
     end
     if @post.update(post_params)
@@ -100,9 +102,8 @@ class Public::PostsController < ApplicationController
       redirect_to users_mypage_path
     else
       posts = Post.where(user_id: @user.id)
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
   end
 
@@ -111,9 +112,8 @@ class Public::PostsController < ApplicationController
       @area_name = "北海道"
       posts = Post.where(start_station_prefecture: 1)
       .or(Post.where(end_station_prefecture: 1))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
     if params[:id] == "2"
       @area_name = "東北"
@@ -121,9 +121,8 @@ class Public::PostsController < ApplicationController
       @prefectures = Prefecture.find(ids)
       posts = Post.where(start_station_prefecture: 2..7)
       .or(Post.where(end_station_prefecture: 2..7))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
     if params[:id] == "3"
       @area_name = "関東"
@@ -131,9 +130,8 @@ class Public::PostsController < ApplicationController
       @prefectures = Prefecture.find(ids)
       posts = Post.where(start_station_prefecture: 8..14)
       .or(Post.where(end_station_prefecture: 8..14))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
     if params[:id] == "4"
       @area_name = "中央・北陸・東海"
@@ -141,9 +139,8 @@ class Public::PostsController < ApplicationController
       @prefectures = Prefecture.find(ids)
       posts = Post.where(start_station_prefecture: 15..23)
       .or(Post.where(end_station_prefecture: 15..23))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
     if params[:id] == "5"
       @area_name = "近畿"
@@ -151,9 +148,8 @@ class Public::PostsController < ApplicationController
       @prefectures = Prefecture.find(ids)
       posts = Post.where(start_station_prefecture: 24..30)
       .or(Post.where(end_station_prefecture: 24..30))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
     if params[:id] == "6"
       @area_name = "中国"
@@ -161,9 +157,8 @@ class Public::PostsController < ApplicationController
       @prefectures = Prefecture.find(ids)
       posts = Post.where(start_station_prefecture: 31..35)
       .or(Post.where(end_station_prefecture: 31..35))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
     if params[:id] == "7"
       @area_name = "四国"
@@ -171,9 +166,8 @@ class Public::PostsController < ApplicationController
       @prefectures = Prefecture.find(ids)
       posts = Post.where(start_station_prefecture: 36..39)
       .or(Post.where(end_station_prefecture: 36..39))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
     if params[:id] == "8"
       @area_name = "九州・沖縄"
@@ -181,9 +175,8 @@ class Public::PostsController < ApplicationController
       @prefectures = Prefecture.find(ids)
       posts = Post.where(start_station_prefecture: 40..47)
       .or(Post.where(end_station_prefecture: 40..47))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
     end
   end
 
@@ -192,9 +185,8 @@ class Public::PostsController < ApplicationController
       @prefecture = Prefecture.find(params[:id])
       posts = Post.where(start_station_prefecture: params[:id])
       .or(Post.where(end_station_prefecture: params[:id]))
-      all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-      @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-      @new_posts = posts.order('id desc').page(params[:page]).per(4)
+      @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+      @new_posts = posts.order('id desc')
       id = params[:id].to_i
       if id < 8
         @area_id = 2

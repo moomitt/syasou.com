@@ -1,8 +1,8 @@
 /*global $*/
 
 //もっと見るボタン
-var show = 4; //最初に表示する件数
-var num = 4;  //もっと見るで表示する件数
+var show = 4;   //最初に表示する件数
+var num = 4;    //もっと見るで表示する件数
 var contents = '.tab div';
 $(contents + ':nth-child(n + ' + (show + 1) + ')').addClass('is-hidden');
 $('.more').on('click', function () {
