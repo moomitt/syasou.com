@@ -1,0 +1,9 @@
+$('#popular-post-pagenate').append("<%= escape_javascript(render partial: 'admin/posts/tab', locals: { posts: @popular_posts } ) %>")
+$("#popular-more-link").replaceWith("<%= escape_javascript(
+  link_to_next_page( @popular_posts, 'もっと見る', remote: true, class: 'popular-more-link', id: 'popular-more-link')
+) %>");
+
+$('#new-post-pagenate').append("<%= escape_javascript(render partial: 'admin/posts/tab', locals: { posts: @new_posts } ) %>")
+$("#new-more-link").replaceWith("<%= escape_javascript(
+  link_to_next_page( @new_posts, 'もっと見る', remote: true, class: 'new-more-link', id: 'new-more-link')
+) %>");

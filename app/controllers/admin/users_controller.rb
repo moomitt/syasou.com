@@ -22,9 +22,8 @@ class Admin::UsersController < ApplicationController
   def posts
     @user = User.find(params[:id])
     posts = Post.where(user_id: @user.id)
-    all_popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
-    @popular_posts = Kaminari.paginate_array(all_popular_posts).page(params[:page]).per(4)
-    @new_posts = posts.order('id desc').page(params[:page]).per(4)
+    @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+    @new_posts = posts.order('id desc')
   end
 
   def edit
