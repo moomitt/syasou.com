@@ -11,7 +11,6 @@ $(function(){
     tileSetting: "https",                 // HTTPS版のタイルサーバを指定
     zoom: 10,                             // 初期ズーム：最小
     sideMenuControl: true,                // サイドメニュー表示
-    consoleViewControl: true
   });
 
   //htmlの#mappostsからjson形式で全投稿データを取得し、変数に格納

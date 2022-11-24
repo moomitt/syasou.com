@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
 
   def followers
     @user = current_user
-    @followers = @user.followers.page(params[:page]).per(1)
+    @followers = @user.followers.page(params[:page]).per(10)
   end
 
   def edit

@@ -41,6 +41,10 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    if params[:user_image]       #画像アップロード時に圧縮
+      params[:user_image].tempfile = ImageProcessing::MiniMagick
+      .source(params[:user_image].tempfile).resize_to_limit(600, 600).call
+    end
     if @user.update(user_params)
       redirect_to admin_user_path(@user)
     else
