@@ -11,7 +11,7 @@
             <%= image_tag @user.user_image.variant(resize_to_fill: [130, 130]).processed,
             class: "rounded-circle" %>
           <% else %>
-            <%= image_tag 'user', class: "rounded-circle", size: "130x130" %>
+            <%= image_tag asset_path('user.png'), class: "rounded-circle", size: "130x130" %>
           <% end %>
         </div>
       </div>

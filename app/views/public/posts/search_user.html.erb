@@ -9,7 +9,7 @@
               <%= image_tag @user.user_image.variant(resize_to_fill: [80, 80]).processed,
               class: "rounded-circle mx-2" %>
             <% else %>
-              <%= image_tag 'user', class: "rounded-circle mx-2", size: "80x80" %>
+              <%= image_tag asset_path('user.png'), class: "rounded-circle mx-2", size: "80x80" %>
             <% end %>
           </div>
           <div class="d-inline-block ml-3">
