@@ -45,7 +45,7 @@
           <% end %>
         <% else %>
           <div class="col-12 mb-4 px-0 text-center">
-            <%= image_tag asset_path('user.png'), size: "300x200" %>
+            <%= image_tag asset_path('no_image.png'), size: "300x200" %>
           </div>
         <% end %>
 
@@ -67,7 +67,7 @@
                   <%= image_tag @user.user_image.variant(resize_to_fill: [40, 40]).processed,
                   class: "rounded-circle mx-2" %>
                 <% else %>
-                  <%= image_tag asset_path('section-click01.png'), class: "rounded-circle mx-2", size: "40x40" %>
+                  <%= image_tag asset_path('user.png'), class: "rounded-circle mx-2", size: "40x40" %>
                 <% end %>
                 <%= @user.name %>
               </a>
