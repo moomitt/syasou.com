@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2022_11_08_073604) do
     t.string "start_station_name"
     t.string "end_station_name"
     t.string "line_name"
+    t.string "start_line_name"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
