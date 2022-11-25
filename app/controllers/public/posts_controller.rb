@@ -90,7 +90,7 @@ class Public::PostsController < ApplicationController
       if post.post_images.attached?
         hash["post_image"] = url_for(post.post_images[0].variant(resize_to_fill: [150, 100]))
       else
-        hash["post_image"] = '../images/no_image.png'
+        hash["post_image"] = '/images/no_image.png'
       end
       uniqueness = @map_posts.select{|hash| hash["start_station"] == post.start_station }
       if uniqueness.present?
