@@ -26,7 +26,7 @@ $(function(){
     var url = '/posts/' + post.post_id;       //投稿データ showページのurl
     //ポップアップ用のhtml
     var html = '<a href=' + url + '><img class="popup-image" src="' +
-               src + '"></img></br> <p class="popup-text">' + body + '</p></a>'
+              src + '"></img></br> <p class="popup-text">' + body + '</p></a>'
     var uniqueness = Number(post.uniqueness); //投稿データ 駅1の重複数
 
     //htmlの内容でhtmlポップアップを作成
