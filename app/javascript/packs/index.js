@@ -23,8 +23,6 @@ $(function(){
     var longitude = parseFloat(post.longitude);   //投稿データ 駅1の経度
     var src = post.post_image;                //投稿データ 画像のurl
     var body = post.post_body;                //投稿データ 投稿者コメント
-    console.log(src);
-    console.log(body);
     var url = '/posts/' + post.post_id;       //投稿データ showページのurl
     //ポップアップ用のhtml
     if(src == "no_image"){
