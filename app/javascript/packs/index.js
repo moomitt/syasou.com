@@ -25,7 +25,7 @@ $(function(){
     var body = post.post_body;                //投稿データ 投稿者コメント
     var url = '/posts/' + post.post_id;       //投稿データ showページのurl
     //ポップアップ用のhtml
-    if(src == "no_image"){
+    if(post.post_image == "no_image"){
       var html = '<a href=' + url +
                   '><div class="no-image"><span>no_image</span></div><p class="popup-text">'
                   + body + '</p></a>'
