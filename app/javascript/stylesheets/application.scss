@@ -524,22 +524,22 @@ textarea.form-control {
     animation-fill-mode: both;
   }
   .slide-img.slide1 {
-    background-image:image-url("slide1.jpg");
+    background-image: url('../images/slide1.jpg');
   }
   .slide-img.slide2 {
-    background-image:image-url("slide2.jpg");
+    background-image: url('../images/slide2.jpg');
   }
   .slide-img.slide3 {
-    background-image:image-url("slide3.jpg");
+    background-image: url('../images/slide3.jpg');
   }
   .slide-img.slide4 {
-    background-image:image-url("slide4.jpg");
+    background-image: url('../images/slide4.jpg');
   }
   .slide-img.slide5 {
-    background-image:image-url("slide5.jpg");
+    background-image: url('../images/slide5.jpg');
   }
   .slide-img.slide6 {
-    background-image:image-url("slide6.jpg");
+    background-image: url('../images/slide6.jpg');
   }
   .slide-img {
     background-size: cover;
@@ -599,7 +599,7 @@ textarea.form-control {
   }
   .top-caption-image {
     height: 350px;
-    background-image:image-url("top2.jpg");
+    background-image: url('../images/top2.jpg');
     background-size: cover;
     background-position: left;
   }
