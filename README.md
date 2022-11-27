@@ -1,24 +1,64 @@
-# README
+# 車窓.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+お気に入りの「車窓」を投稿・共有できるSNS
 
-Things you may want to cover:
+### テーマを選んだ理由
+いつもの電車の中や、ちょっとしたお出かけ、旅行先のふとした瞬間など、
+電車での移動中、車窓の向こうに広がる風景に思いがけず心ときめく瞬間があるかと思います。
 
-* Ruby version
+そんな素敵な「車窓」との出会いは、いつも突然だったり、偶然だったり、
+狙って出会える機会は少ないものです。
 
-* System dependencies
+そんな出会いの機会が少しでも増えるように、
+お気に入りの「車窓」を共有できる場があればいいなと思い、このテーマを選びました。
 
-* Configuration
+- あなたのお気に入りの「車窓」を投稿できます。
+  ブックマークやコメント機能で、他のユーザのリアクションを楽しめます。
 
-* Database creation
+- 投稿をさがす機能で、色々な楽しみ方ができます。
+  - 近所の投稿を見つけて、お気に入りの場所が増える
+  - 旅行先の近くに素敵な「車窓」がないか、事前にチェックできる
+  - 気になる「車窓」を見つけて、お出かけのきっかけになる
+  - 家にいながら旅行気分を味わえる
 
-* Database initialization
+- ブックマーク機能で、気になる投稿をキープできます。
+- フォロー機能で、気になるユーザの投稿をチェックできます。
+- コメント機能で、投稿にリアクションできます。
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+私自身、電車でのお出かけや、車窓の風景を見るのが大好きなので、
+「車窓」を楽しむ人が増えてくれたら良いなという思いでこのサイトを制作しました。
 
-* Deployment instructions
+また、「車窓」を楽しむ人が増えることで、
+新しいお出かけのきっかけになったり、乗客の少ない路線の魅力が見つかったり、
+人々の元気に繋がる出来事があれば良いなと思っています。
 
-* ...
+
+### ターゲットユーザ
+- 電車でのお出かけが好きな人
+- 電車の車窓から見る風景が好きな人
+- 自分のお気に入りの「車窓」を共有したい人
+- お出かけのきっかけが欲しい人
+
+### 主な利用シーン
+- お気に入りの「車窓」を共有したいとき
+- 素敵な「車窓」を見つけたとき
+- 旅行やお出かけの計画を立てたいとき
+- 家にいながら旅行気分を味わいたいとき
+
+## 開発環境
+- OS：Amazon Linux2
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+- アイコン：Font Awesome
+  https://fontawesome.com/
+- 画像：Adobe Stock
+  https://stock.adobe.com/jp/
+- 書籍情報（画像含む）： 駅すぱあと路線図（Rosen JS API）
+  https://ekiworld.net/service/sier/railmap/index.html
