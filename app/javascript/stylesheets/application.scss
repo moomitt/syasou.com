@@ -445,6 +445,16 @@ textarea.form-control {
   padding : 0;
   margin: 0;
 }
+.no-image {
+  width: 150px;
+  height: 100px;
+  padding : 0;
+  margin: 0;
+  text-align: center;
+  line-height: 100px;
+  background-color: #d3d3d3;
+  color: #fff;
+}
 .popup .leaflet-popup-content-wrapper {
   .leaflet-popup-content {
     margin: 16px 16px 5px 13px;
@@ -513,24 +523,24 @@ textarea.form-control {
     animation: zoomUp 12s linear 0s;
     animation-fill-mode: both;
   }
-  // .slide-img.slide1 {
-  //   background-image:image-url("slide1.jpg");
-  // }
-  // .slide-img.slide2 {
-  //   background-image:image-url("slide2.jpg");
-  // }
-  // .slide-img.slide3 {
-  //   background-image:image-url("slide3.jpg");
-  // }
-  // .slide-img.slide4 {
-  //   background-image:image-url("slide4.jpg");
-  // }
-  // .slide-img.slide5 {
-  //   background-image:image-url("slide5.jpg");
-  // }
-  // .slide-img.slide6 {
-  //   background-image:image-url("slide6.jpg");
-  // }
+  .slide-img.slide1 {
+    background-image:image-url("slide1.jpg");
+  }
+  .slide-img.slide2 {
+    background-image:image-url("slide2.jpg");
+  }
+  .slide-img.slide3 {
+    background-image:image-url("slide3.jpg");
+  }
+  .slide-img.slide4 {
+    background-image:image-url("slide4.jpg");
+  }
+  .slide-img.slide5 {
+    background-image:image-url("slide5.jpg");
+  }
+  .slide-img.slide6 {
+    background-image:image-url("slide6.jpg");
+  }
   .slide-img {
     background-size: cover;
     background-position: top;
@@ -589,7 +599,7 @@ textarea.form-control {
   }
   .top-caption-image {
     height: 350px;
-    // background-image:image-url("top2.jpg");
+    background-image:image-url("top2.jpg");
     background-size: cover;
     background-position: left;
   }
