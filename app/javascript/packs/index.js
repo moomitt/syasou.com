@@ -22,6 +22,7 @@ $(function(){
     var latitude = parseFloat(post.latitude);     //投稿データ 駅1の緯度
     var longitude = parseFloat(post.longitude);   //投稿データ 駅1の経度
     var src = post.post_image;                //投稿データ 画像のurl
+    console.log(src);
     var body = post.post_body;                //投稿データ 投稿者コメント
     var url = '/posts/' + post.post_id;       //投稿データ showページのurl
     //ポップアップ用のhtml
