@@ -10,7 +10,7 @@ class Admin::PostsController < ApplicationController
       if post.post_images.attached?
         hash["post_image"] = url_for(post.post_images[0].variant(resize_to_fill: [150, 100]))
       else
-        hash["post_image"] = 'no_image'
+        hash["post_image"] = "no_image"
       end
       @map_posts.push(hash)
     end
