@@ -574,7 +574,8 @@ textarea.form-control {
     vertical-align: middle;
     text-align: center;
     line-height: 45px;
-    word-break: keep-all;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 }
 .top-buttons {
@@ -615,7 +616,8 @@ textarea.form-control {
       font-size: 1.0rem;
       line-height: 30px;
       padding: 0px;
-      word-break: keep-all;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
   }
 }
