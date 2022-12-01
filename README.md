@@ -56,10 +56,10 @@
 - IDE：Cloud9
 
 ## 使用素材
-- アイコン：Font Awesome
+- アイコン：Font Awesome  
   https://fontawesome.com/
 - 画像：
-- Adobe Stock  
+  Adobe Stock  
   https://stock.adobe.com/jp/  
   PAKUTASO  
   https://www.pakutaso.com/  
