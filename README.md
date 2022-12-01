@@ -58,7 +58,10 @@
 ## 使用素材
 - アイコン：Font Awesome
   https://fontawesome.com/
-- 画像：Adobe Stock
-  https://stock.adobe.com/jp/
-- 書籍情報（画像含む）： 駅すぱあと路線図（Rosen JS API）
+- 画像：
+- Adobe Stock  
+  https://stock.adobe.com/jp/  
+  PAKUTASO  
+  https://www.pakutaso.com/  
+- 路線情報 ： 駅すぱあと路線図（Rosen JS API）
   https://ekiworld.net/service/sier/railmap/index.html
