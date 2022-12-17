@@ -59,8 +59,8 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.post_images.attached?
       @post.post_images.purge_later && @post.destroy
-      if session[:previous_url].match(/detail/)    #detailページに戻るとエラーになる
-        redirect_to new_post_path                  #newページにリダイレクトさせる
+      if session[:previous_url].match(/detail/)    #detailページに戻るとエラーになるため、newページにリダイレクトさせる
+        redirect_to new_post_path                  #
       elsif session[:previous_url].match(/edit/)   #editページに戻るとエラーになる
         redirect_to users_posts_path               #あなたの投稿ページにリダイレクトさせる
       else

@@ -1,4 +1,5 @@
 class Public::GoodsController < ApplicationController
+  # 非同期処理
   def create
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:comment_id])
@@ -6,6 +7,7 @@ class Public::GoodsController < ApplicationController
     good.save
   end
 
+  # 非同期処理
   def destroy
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:comment_id])
