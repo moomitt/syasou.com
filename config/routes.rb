@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
+  devise_for :admins, skip: %i[registrations passwords], controllers: {
+    sessions: 'admin/sessions'
   }
 
   devise_for :users, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
+    registrations: 'public/registrations',
+    sessions: 'public/sessions'
   }
 
   namespace :admin do
@@ -15,15 +14,15 @@ Rails.application.routes.draw do
     get 'users/:id/followings' => 'users#followings', as: 'user_followings'
     get 'users/:id/followers' => 'users#followers', as: 'user_followers'
     delete 'users/:id/user_image_destroy' => 'users#image_destroy', as: 'user_image_destroy'
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: %i[index show edit update]
 
     get 'posts/search_area/:id' => 'posts#search_area', as: 'search_area'
     get 'posts/search_prefecture/:id' => 'posts#search_prefecture', as: 'search_prefecture'
-    resources :posts, only: [:index, :show, :destroy] do
+    resources :posts, only: %i[index show destroy] do
       resources :comments, only: [:destroy]
     end
 
-    resources :tags, only: [:index, :destroy]
+    resources :tags, only: %i[index destroy]
   end
 
   scope module: 'public' do
@@ -40,18 +39,18 @@ Rails.application.routes.draw do
     patch 'users/withdraw'
     delete 'users/user_image_destroy' => 'users#image_destroy', as: 'user_image_destroy'
     resources :users do
-      resource :follows, only: [:create, :destroy]
+      resource :follows, only: %i[create destroy]
     end
 
     post 'posts/detail'
     get 'posts/user/:id' => 'posts#search_user', as: 'search_user'
     get 'posts/search_area/:id' => 'posts#search_area', as: 'search_area'
     get 'posts/search_prefecture/:id' => 'posts#search_prefecture', as: 'search_prefecture'
-    resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:create, :destroy] do
-        resource :goods, only: [:create, :destroy]        #URLにgoodのidを含む必要がない
+    resources :posts, only: %i[index new create show edit update destroy] do
+      resources :comments, only: %i[create destroy] do
+        resource :goods, only: %i[create destroy]        # URLにgoodのidを含む必要がない
       end
-      resource :bookmarks, only: [:create, :destroy]      #URLにbookmarkのidを含む必要がない
+      resource :bookmarks, only: %i[create destroy]      # URLにbookmarkのidを含む必要がない
     end
   end
 

@@ -10,146 +10,146 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_08_073604) do
-
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+ActiveRecord::Schema.define(version: 20_221_108_073_604) do
+  create_table 'active_storage_attachments', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'record_type', null: false
+    t.bigint 'record_id', null: false
+    t.bigint 'blob_id', null: false
+    t.datetime 'created_at', null: false
+    t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
+    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness',
+                                                    unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.string "service_name", null: false
-    t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  create_table 'active_storage_blobs', force: :cascade do |t|
+    t.string 'key', null: false
+    t.string 'filename', null: false
+    t.string 'content_type'
+    t.text 'metadata'
+    t.string 'service_name', null: false
+    t.bigint 'byte_size', null: false
+    t.string 'checksum', null: false
+    t.datetime 'created_at', null: false
+    t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
-    t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  create_table 'active_storage_variant_records', force: :cascade do |t|
+    t.bigint 'blob_id', null: false
+    t.string 'variation_digest', null: false
+    t.index %w[blob_id variation_digest], name: 'index_active_storage_variant_records_uniqueness', unique: true
   end
 
-  create_table "admins", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.boolean "is_deleted", default: false, null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  create_table 'admins', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.boolean 'is_deleted', default: false, null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['email'], name: 'index_admins_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_admins_on_reset_password_token', unique: true
   end
 
-  create_table "bookmarks", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_bookmarks_on_post_id"
-    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  create_table 'bookmarks', force: :cascade do |t|
+    t.integer 'post_id', null: false
+    t.integer 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['post_id'], name: 'index_bookmarks_on_post_id'
+    t.index ['user_id'], name: 'index_bookmarks_on_user_id'
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "user_id", null: false
-    t.string "text", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+  create_table 'comments', force: :cascade do |t|
+    t.integer 'post_id', null: false
+    t.integer 'user_id', null: false
+    t.string 'text', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['post_id'], name: 'index_comments_on_post_id'
+    t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.integer "follow_id"
-    t.index ["follow_id"], name: "index_follows_on_follow_id"
-    t.index ["user_id"], name: "index_follows_on_user_id"
+  create_table 'follows', force: :cascade do |t|
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'user_id'
+    t.integer 'follow_id'
+    t.index ['follow_id'], name: 'index_follows_on_follow_id'
+    t.index ['user_id'], name: 'index_follows_on_user_id'
   end
 
-  create_table "goods", force: :cascade do |t|
-    t.integer "comment_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["comment_id"], name: "index_goods_on_comment_id"
-    t.index ["user_id"], name: "index_goods_on_user_id"
+  create_table 'goods', force: :cascade do |t|
+    t.integer 'comment_id', null: false
+    t.integer 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['comment_id'], name: 'index_goods_on_comment_id'
+    t.index ['user_id'], name: 'index_goods_on_user_id'
   end
 
-  create_table "post_tags", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_post_tags_on_post_id"
-    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
+  create_table 'post_tags', force: :cascade do |t|
+    t.integer 'post_id', null: false
+    t.integer 'tag_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['post_id'], name: 'index_post_tags_on_post_id'
+    t.index ['tag_id'], name: 'index_post_tags_on_tag_id'
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "body", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "start_station"
-    t.integer "end_station"
-    t.string "spot"
-    t.integer "line_code"
-    t.string "time_zone"
-    t.integer "start_station_prefecture"
-    t.integer "end_station_prefecture"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "start_station_name"
-    t.string "end_station_name"
-    t.string "line_name"
-    t.index ["user_id"], name: "index_posts_on_user_id"
+  create_table 'posts', force: :cascade do |t|
+    t.integer 'user_id', null: false
+    t.string 'body', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'start_station'
+    t.integer 'end_station'
+    t.string 'spot'
+    t.integer 'line_code'
+    t.string 'time_zone'
+    t.integer 'start_station_prefecture'
+    t.integer 'end_station_prefecture'
+    t.float 'latitude'
+    t.float 'longitude'
+    t.string 'start_station_name'
+    t.string 'end_station_name'
+    t.string 'line_name'
+    t.index ['user_id'], name: 'index_posts_on_user_id'
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'tags', force: :cascade do |t|
+    t.string 'name', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.boolean "is_deleted", default: false, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'name'
+    t.boolean 'is_deleted', default: false, null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookmarks", "posts"
-  add_foreign_key "bookmarks", "users"
-  add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "users"
-  add_foreign_key "follows", "users"
-  add_foreign_key "follows", "users", column: "follow_id"
-  add_foreign_key "goods", "comments"
-  add_foreign_key "goods", "users"
-  add_foreign_key "post_tags", "posts"
-  add_foreign_key "post_tags", "tags"
-  add_foreign_key "posts", "users"
+  add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'bookmarks', 'posts'
+  add_foreign_key 'bookmarks', 'users'
+  add_foreign_key 'comments', 'posts'
+  add_foreign_key 'comments', 'users'
+  add_foreign_key 'follows', 'users'
+  add_foreign_key 'follows', 'users', column: 'follow_id'
+  add_foreign_key 'goods', 'comments'
+  add_foreign_key 'goods', 'users'
+  add_foreign_key 'post_tags', 'posts'
+  add_foreign_key 'post_tags', 'tags'
+  add_foreign_key 'posts', 'users'
 end

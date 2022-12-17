@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
 
   validates :text, presence: true, length: { maximum: 150 }
 
-  def gooded_by?(user)                    #すでにいいねされているか判定するメソッド
+  def gooded_by?(user)                    # すでにいいねされているか判定するメソッド
     goods.exists?(user_id: user.id)
   end
 end

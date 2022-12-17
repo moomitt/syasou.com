@@ -17,17 +17,15 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2, maximum: 10 }
 
   def follow(other_user)
-    unless self == other_user
-      self.follows.find_or_create_by(follow_id: other_user.id)
-    end
+    follows.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
 
   def unfollow(other_user)
-    follow = self.follows.find_by(follow_id: other_user.id)
+    follow = follows.find_by(follow_id: other_user.id)
     follow.destroy if follow
   end
 
   def following?(other_user)
-    self.followings.include?(other_user)
+    followings.include?(other_user)
   end
 end

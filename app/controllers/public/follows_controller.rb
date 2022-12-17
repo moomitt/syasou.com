@@ -6,7 +6,6 @@ class Public::FollowsController < ApplicationController
     following.save
   end
 
-  
   def destroy
     @user = User.find(params[:user_id])
     following = current_user.unfollow(@user)

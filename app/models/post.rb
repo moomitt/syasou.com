@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many_attached :post_images
   accepts_nested_attributes_for :post_images_attachments, allow_destroy: true
 
-  validates :body,                     presence: true, length: { maximum: 200 }
+  validates :body, presence: true, length: { maximum: 200 }
   validates :time_zone,                                length: { maximum: 200 }
   validates :spot,                                     length: { maximum: 200 }
   validates :start_station,            presence: true
@@ -20,7 +20,7 @@ class Post < ApplicationRecord
   validates :end_station_name,         presence: true
   validates :line_name,                presence: true
 
-  def bookmarked_by?(user)                    #すでにブックマークされているか判定するメソッド
+  def bookmarked_by?(user)                    # すでにブックマークされているか判定するメソッド
     bookmarks.exists?(user_id: user.id)
   end
 end

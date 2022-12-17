@@ -30,9 +30,9 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    if params[:user_image]       #画像アップロード時に圧縮
+    if params[:user_image]       # 画像アップロード時に圧縮
       params[:user_image].tempfile = ImageProcessing::MiniMagick
-      .source(params[:user_image].tempfile).resize_to_limit(600, 600).call
+                                     .source(params[:user_image].tempfile).resize_to_limit(600, 600).call
     end
     if @user.update(user_params)
       redirect_to users_mypage_path
@@ -56,7 +56,7 @@ class Public::UsersController < ApplicationController
   def posts
     @user = current_user
     posts = Post.where(user_id: @user.id)
-    @popular_posts = posts.sort{|a,b| b.bookmarks.size <=> a.bookmarks.size}
+    @popular_posts = posts.sort { |a, b| b.bookmarks.size <=> a.bookmarks.size }
     @new_posts = posts.order('id desc')
   end
 
@@ -66,6 +66,7 @@ class Public::UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :user_image)
   end

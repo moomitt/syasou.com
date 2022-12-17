@@ -8,7 +8,7 @@ class Public::CommentsController < ApplicationController
     else
       @user = @post.user
       @comments = Comment.where(post_id: @post.id)
-      render "public/posts/show"
+      render 'public/posts/show'
     end
   end
 
@@ -20,6 +20,7 @@ class Public::CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:text)
   end
